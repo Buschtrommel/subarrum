@@ -16,11 +16,10 @@ layout in two columns.
 Developed with westphalian stubbornness in Munich.
 
 License: GPLv3 - http://www.gnu.org/licenses/gpl-3.0.en.html
-Author: Matthias Fehring
+Author: Buschmann
 Author Site: http://www.buschmann23.de
 Theme Site: http://www.buschmann23.de/entwicklung/wordpress/themes/subar-rum/
 Theme Demo: http://subarrum-demo.buschmann23.de
-Version: 1.1.2
 
 
 
