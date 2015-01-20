@@ -1,0 +1,26 @@
+@import url("bootstrap/css/bootstrap.min.css");
+@import url("bootstrap/css/bootstrap-responsive.min.css");
+@import url("fontawesome/font-awesome.min.css");
+@import url("css/style-base.css"); 
+/**
+ * Editor css styles
+ *
+ * Used to display content in the editor almost the same as they appear
+ * on the frontend.
+ *
+ * @revised   April 24, 2013
+ * @author    Matthias Fehring, http://www.buschmann23.de
+ * @license   GPLv3, http://www.gnu.org/licenses/gpl-3.0.en.html
+ *
+ * @package Subar Rum
+ * @since Subar Rum 1.1
+ */
+
+html {
+	font-size: 87.5%;
+}
+html .mceContentBody {
+/* 	max-width: 630px; */
+	background-color: #FFFFFF;
+}
+

@@ -1,0 +1,32 @@
+/*
+Theme Name: Subar Rum
+Theme URI: http://www.buschmann23.de/entwicklung/wordpress/themes/subar-rum/
+Description: Subar Rum (old high german for clean room) is a clean and fully responsive WordPress theme built around Bootstrap with many options to adapt it to your needs. It features some built-in widgets for a nicer presentation and posts and images can be marked as recommended to present them in two different image sliders/carousels in the main content header. It makes intensive use of the post thumbnail feature and adds some additonal image sizes. Beside different stylings for post formats there is a optional page template for full width presentation and an own template for a static front page with own widgets. Furthermore it is possible to display the blog layout in two columns. Developed with westphalian stubbornness in munich.
+Author: Buschmann
+Author URI: http://www.buschmann23.de/
+Version: 1.2.0
+Tags: two-columns, gray, white, black, blue, fixed-width, custom-background, custom-header, featured-image-header, featured-images, post-formats, theme-options, translation-ready, threaded-comments, full-width-template
+Text Domain: subarrum
+
+License: GPLv3 - GNU General Pulic License 3
+License URI: http://www.gnu.org/licenses/gpl-3.0.en.html
+
+This theme inherits the following 3rd party technologies:
+Twitter Bootstrap - http://twitter.github.io/bootstrap/index.html
+Licensed under Apache License v2.0 - http://www.apache.org/licenses/LICENSE-2.0
+
+bxSlider - http://bxslider.com/
+Licensed under MIT License - http://opensource.org/licenses/MIT
+
+Font Awesome by Dave Gandy - http://fortawesome.github.com/Font-Awesome
+Font licensed under SIL Open Font License - http://scripts.sil.org/OFL
+CSS licensed under MIT License - http://opensource.org/licenses/mit-license.html
+
+HTML5 Shiv by Alexander Farkas, Jonathan Neal, Paul Irish et al.
+Licensed under MIT License - http://opensource.org/licenses/mit-license.html
+
+Justified Gallery by Miro Mannino
+Licensed under MIT License - http://opensource.org/licenses/MIT
+
+You can find the main style sheet in css/style-base.css
+*/

@@ -1,0 +1,1074 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Subar Rum 1.1.1\n"
+"POT-Creation-Date: 2013-04-25 18:50+0100\n"
+"PO-Revision-Date: 2013-04-25 18:50+0100\n"
+"Last-Translator: Matthias Fehring <info@buschmann23.de>\n"
+"Language-Team: Buschtrommel <info@buschmann23.de>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: __;_e;_x;_n:1,2\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../searchform.php:18 ../searchform.php:19 ../header.php:51
+msgid "Search"
+msgstr ""
+
+#: ../sidebar-footer.php:47 ../sidebar-footer.php:84
+msgid "Warning!"
+msgstr ""
+
+#: ../sidebar-footer.php:48
+msgid ""
+"Apologies, but there are more than four widgets set for Footer Area 1. This "
+"area is only designed for a maximum of four widgets."
+msgstr ""
+
+#: ../sidebar-footer.php:85
+msgid ""
+"Apologies, but there are more than four widgets set for Footer Area 2. This "
+"area is only designed for a maximum of four widgets."
+msgstr ""
+
+#: ../info-copy.php:31
+#, php-format
+msgid "Powered by %1$s, Theme %2$s"
+msgstr ""
+
+#: ../404.php:28
+msgid "This is somewhat embarrassing, isn&rsquo;t it?"
+msgstr ""
+
+#: ../404.php:34
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#: ../404.php:41 ../search.php:106
+msgid "Or try your luck and hit or miss"
+msgstr ""
+
+#: ../home.php:78 ../search.php:99 ../category.php:97 ../single.php:57
+#: ../author.php:84 ../date.php:115 ../index.php:78 ../page.php:30
+#: ../tag.php:99 ../archive.php:80 ../image.php:143
+#: ../page-templates/front-page-no-title.php:50
+#: ../page-templates/full-width-no-title.php:36
+#: ../page-templates/front-page.php:49 ../page-templates/full-width.php:35
+#: ../page-templates/gallery.php:39
+msgid "Sorry, no posts matched your criteria."
+msgstr ""
+
+#: ../content.php:68 ../content-link.php:37 ../content-status.php:27
+#: ../content-quote.php:22 ../content-aside.php:22
+msgid "Continue reading &rarr;"
+msgstr ""
+
+#: ../content-link.php:23 ../content-link.php:44
+msgid "Link"
+msgstr ""
+
+#: ../content-link.php:51 ../content-status.php:26 ../content-quote.php:29
+#: ../content-aside.php:29
+#, php-format
+msgid "Permalink to %s"
+msgstr ""
+
+#: ../search.php:26
+#, php-format
+msgid "%1$s %2$s for <span class=\"grey\">%3$s</span>"
+msgstr ""
+
+#: ../search.php:28
+msgid "result"
+msgstr ""
+
+#: ../search.php:28
+msgid "results"
+msgstr ""
+
+#: ../search.php:35
+msgid "Subscribe to this search RSS feed"
+msgstr ""
+
+#: ../search.php:37
+#, php-format
+msgid "%1$s search feed"
+msgstr ""
+
+#: ../category.php:25
+#, php-format
+msgid "%1$s %2$s in category <span class=\"grey\">%3$s</span>"
+msgstr ""
+
+#: ../category.php:27 ../author.php:27 ../date.php:34 ../date.php:42
+#: ../date.php:51 ../tag.php:29
+msgid "post"
+msgstr ""
+
+#: ../category.php:27 ../author.php:27 ../date.php:34 ../date.php:42
+#: ../date.php:51 ../tag.php:29
+msgid "posts"
+msgstr ""
+
+#: ../category.php:35
+msgid "Subscribe to this category RSS feed"
+msgstr ""
+
+#: ../category.php:37
+#, php-format
+msgid "%1$s category feed"
+msgstr ""
+
+#: ../info-author.php:26
+msgid "About the author"
+msgstr ""
+
+#: ../info-author.php:31
+msgid " alias "
+msgstr ""
+
+#: ../info-author.php:37 ../functions.php:725
+#, php-format
+msgid "View all posts by %s"
+msgstr ""
+
+#: ../info-author.php:38 ../inc/subarrum-widgets.php:519
+msgid "Posts"
+msgstr ""
+
+#: ../info-author.php:40
+msgid "Visit author's website"
+msgstr ""
+
+#: ../info-author.php:40
+msgid "Website"
+msgstr ""
+
+#: ../info-author.php:43
+msgid "Subscribe to the author's RSS feed"
+msgstr ""
+
+#: ../info-author.php:45
+msgid "Author feed"
+msgstr ""
+
+#: ../functions.php:129
+msgid "Navigation Bar Menu"
+msgstr ""
+
+#: ../functions.php:130
+msgid "Primary Menu"
+msgstr ""
+
+#: ../functions.php:363 ../functions.php:369
+msgid "on"
+msgstr ""
+
+#: ../functions.php:426
+msgid "Main Sidebar"
+msgstr ""
+
+#: ../functions.php:428
+msgid ""
+"The standard widgets area appears by default everywhere, when no widgets are "
+"in the entry widgets or the pages area, except the static start page which "
+"has its own area."
+msgstr ""
+
+#: ../functions.php:436
+msgid "Entries Area"
+msgstr ""
+
+#: ../functions.php:438
+msgid ""
+"Appears on single entries when widgets are set, and also on pages when no "
+"widget is set in Pages Area."
+msgstr ""
+
+#: ../functions.php:446
+msgid "Pages Area"
+msgstr ""
+
+#: ../functions.php:448
+msgid "Appears on pages when widgets are set."
+msgstr ""
+
+#: ../functions.php:456
+msgid "Footer Area 1"
+msgstr ""
+
+#: ../functions.php:458 ../functions.php:468
+msgid "Appears on the footer and has space for a maximum of four widgets."
+msgstr ""
+
+#: ../functions.php:466
+msgid "Footer Area 2"
+msgstr ""
+
+#: ../functions.php:476
+msgid "Front Page Area 1"
+msgstr ""
+
+#: ../functions.php:478 ../functions.php:488
+msgid ""
+"Appears when using the optional Front Page template with a page set as "
+"Static Front Page."
+msgstr ""
+
+#: ../functions.php:486
+msgid "Front Page Area 2"
+msgstr ""
+
+#: ../functions.php:496
+msgid "Gallery"
+msgstr ""
+
+#: ../functions.php:498
+msgid "Appears when using the optional Gallery template with a page."
+msgstr ""
+
+#: ../functions.php:525
+#, php-format
+msgid ""
+"Apologies. But your browser does not support the HTML5 audio tag, you can <a "
+"href=\"%1$s\">download the file</a> instead."
+msgstr ""
+
+#: ../functions.php:641
+#, php-format
+msgid "Last page: %1$d"
+msgstr ""
+
+#: ../functions.php:651
+msgid "Newer"
+msgstr ""
+
+#: ../functions.php:654
+msgid "Older"
+msgstr ""
+
+#: ../functions.php:679 ../functions.php:682
+msgid ", "
+msgstr ""
+
+#: ../functions.php:695
+msgid "Posted in"
+msgstr ""
+
+#: ../functions.php:698
+msgid "Categories"
+msgstr ""
+
+#: ../functions.php:708
+msgid "Tagged as"
+msgstr ""
+
+#: ../functions.php:711
+msgid "Tags"
+msgstr ""
+
+#: ../functions.php:732
+#, php-format
+msgid ""
+"<small class=\"grey\">Posted in %1$s and tagged %2$s on %3$s<span class=\"by-"
+"author\"> by %4$s</span>.</small>"
+msgstr ""
+
+#: ../functions.php:734
+#, php-format
+msgid ""
+"<small class=\"grey\">Posted in %1$s on %3$s<span class=\"by-author\"> by "
+"%4$s</span>.</small>"
+msgstr ""
+
+#: ../functions.php:736
+#, php-format
+msgid ""
+"<small class=\"grey\">Posted on %3$s<span class=\"by-author\"> by %4$s</"
+"span>.</small>"
+msgstr ""
+
+#: ../functions.php:760 ../inc/subarrum-customize-theme.php:154
+msgid "Meta Data"
+msgstr ""
+
+#: ../functions.php:886
+msgid "Pingback:"
+msgstr ""
+
+#: ../functions.php:888
+msgid "(Edit)"
+msgstr ""
+
+#: ../functions.php:906
+msgid "Post author"
+msgstr ""
+
+#: ../functions.php:912
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: ../functions.php:922
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: ../functions.php:928
+msgid "Edit"
+msgstr ""
+
+#: ../functions.php:932
+msgid "Reply"
+msgstr ""
+
+#: ../functions.php:1041
+msgid "Page"
+msgstr ""
+
+#: ../functions.php:1046
+msgid "Next page"
+msgstr ""
+
+#: ../functions.php:1047
+msgid "Previous page"
+msgstr ""
+
+#: ../functions.php:1115
+msgid "Continue reading"
+msgstr ""
+
+#: ../functions.php:1132
+msgid "There is no excerpt because this is a protected post."
+msgstr ""
+
+#: ../functions.php:1165 ../functions.php:1184 ../functions.php:1202
+#: ../inc/subarrum-widgets.php:396
+msgid "Recommended"
+msgstr ""
+
+#: ../functions.php:1184 ../functions.php:1202
+msgid "Not recommended"
+msgstr ""
+
+#: ../functions.php:1225
+msgid "Recommend this"
+msgstr ""
+
+#: ../functions.php:1439
+msgid "Post"
+msgstr ""
+
+#: ../functions.php:1439
+msgid "Date"
+msgstr ""
+
+#: ../functions.php:1462 ../inc/subarrum-widgets.php:124
+#: ../inc/subarrum-widgets.php:422
+msgid "Placeholder"
+msgstr ""
+
+#: ../functions.php:1527
+msgid ""
+"This post is password protected. To view it please enter your password below:"
+msgstr ""
+
+#: ../functions.php:1527
+msgid "Password"
+msgstr ""
+
+#: ../functions.php:1542 ../inc/subarrum-widgets.php:326
+msgid "Try your luck and hit or miss"
+msgstr ""
+
+#: ../comments.php:31
+#, php-format
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../comments.php:36
+msgid "Subscribe to this post's comments RSS feed"
+msgstr ""
+
+#: ../comments.php:38
+msgid "Comments feed"
+msgstr ""
+
+#: ../comments.php:53
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: ../comments.php:56
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: ../comments.php:67
+msgid "Comments are closed."
+msgstr ""
+
+#: ../comments.php:75
+msgid "Your email address will not be published."
+msgstr ""
+
+#: ../comments.php:76
+#, php-format
+msgid ""
+"You may use these <abbr title=\"HyperText Markup Language\">HTML</abbr> tags "
+"and attributes: %s"
+msgstr ""
+
+#: ../comments.php:77
+msgid "Comment"
+msgstr ""
+
+#: ../single.php:43 ../inc/subarrum-customize-theme.php:122
+msgid "Comments"
+msgstr ""
+
+#: ../single.php:44
+msgid "Similar posts"
+msgstr ""
+
+#: ../single.php:46
+msgid "Author"
+msgstr ""
+
+#: ../author.php:27
+#, php-format
+msgid "%1$s %2$s by <span class=\"grey\">%3$s</span>"
+msgstr ""
+
+#: ../date.php:32
+#, php-format
+msgid "%1$s %2$s in <span class=\"grey\">%3$s</span>"
+msgstr ""
+
+#: ../date.php:40
+#, php-format
+msgid "%1$s %2$s in <span class=\"grey\">%3$s %4$s</span>"
+msgstr ""
+
+#: ../date.php:49
+#, php-format
+msgid "%1$s %2$s on <span class=\"grey\">%3$s %4$s. %5$s</span>"
+msgstr ""
+
+#: ../tag.php:27
+#, php-format
+msgid "%1$s %2$s tagged with <span class=\"grey\">%3$s</span>"
+msgstr ""
+
+#: ../tag.php:37
+msgid "Subscribe to this tag RSS feed"
+msgstr ""
+
+#: ../tag.php:39
+#, php-format
+msgid "%1$s tag feed"
+msgstr ""
+
+#: ../archive.php:23
+msgid "Archive"
+msgstr ""
+
+#: ../image.php:52
+msgid "Metadata"
+msgstr ""
+
+#: ../image.php:58
+msgid "Title"
+msgstr ""
+
+#: ../image.php:64
+msgid "Caption"
+msgstr ""
+
+#: ../image.php:70
+msgid "Credit"
+msgstr ""
+
+#: ../image.php:76
+msgid "Copyright"
+msgstr ""
+
+#: ../image.php:82
+msgid "Date taken"
+msgstr ""
+
+#: ../image.php:88
+msgid "Camera"
+msgstr ""
+
+#: ../image.php:93
+msgid "Original size"
+msgstr ""
+
+#: ../image.php:98
+msgid "Aperture"
+msgstr ""
+
+#: ../image.php:104
+msgid "Focal length"
+msgstr ""
+
+#: ../image.php:110
+msgid "Film speed"
+msgstr ""
+
+#: ../image.php:116
+msgid "Shutter speed"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:27
+msgid "Log in/out, admin, feed and WordPress links"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:28
+msgid "Subar Rum Meta"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:33
+msgid "Meta"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:42
+msgid "Syndicate this site using RSS 2.0"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:42
+msgid "Entries <abbr title=\"Really Simple Syndication\">RSS</abbr>"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:43
+msgid "The latest comments to all posts in RSS"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:43
+msgid "Comments <abbr title=\"Really Simple Syndication\">RSS</abbr>"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:44
+msgid ""
+"Powered by WordPress, state-of-the-art semantic personal publishing platform."
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:46
+msgid "WordPress.org"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:65 ../inc/subarrum-widgets.php:176
+#: ../inc/subarrum-widgets.php:296 ../inc/subarrum-widgets.php:350
+#: ../inc/subarrum-widgets.php:514
+msgid "Title:"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:80
+msgid "The most recent posts on your site"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:81
+msgid "Subar Rum Recent Posts"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:106
+msgid "Recent Posts"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:179
+msgid "Number of posts to show:"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:183 ../inc/subarrum-widgets.php:537
+msgid "Display post date?"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:186 ../inc/subarrum-widgets.php:540
+msgid "Display post thumbnail?"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:200
+msgid "The most recent comments"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:201
+msgid "Subar Rum Recent Comments"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:242
+msgid "Recent Comments"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:265
+#, php-format
+msgid "%1$s on<br />%2$s"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:266
+#, php-format
+msgid "%1$s ago"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:299
+msgid "Number of comments to show:"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:303
+msgid "Display avatar image?"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:319
+msgid "Displays a button that loads a random post"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:320
+msgid "Subar Rum Random Post"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:325
+msgid "Random post"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:352
+msgid "Button-Text:"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:370
+msgid "Display as recommended marked posts or images"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:371
+msgid "Subar Rum Recommended"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:517
+msgid "Type:"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:520
+msgid "Images"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:525
+msgid "Sort by:"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:527 ../inc/subarrum-customize-theme.php:306
+msgid "ID ascending"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:528 ../inc/subarrum-customize-theme.php:307
+msgid "ID descending"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:529 ../inc/subarrum-customize-theme.php:305
+msgid "Random"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:533
+msgid "Number of items to show:"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:15
+msgid "Navigation Bar"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:27
+msgid "Position"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:32
+msgid "Disabled"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:33
+msgid "Fixed to top"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:34
+msgid "Static top"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:46
+msgid "Base Color"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:51
+msgid "Black"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:52
+msgid "White"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:64
+#: ../inc/subarrum-customize-theme.php:645
+msgid "Background Image"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:72
+msgid "Featured Images"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:85
+msgid "Link Target on Post Page"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:89
+msgid "Image page"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:90
+msgid "Lightbox (not included)"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:102
+msgid "Slider/Carousel Placeholder Image (960x320px)"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:115
+msgid "Small Placeholder Image (~200px)"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:134
+msgid "Comments on image pages"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:147
+msgid "Comments on pages"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:167
+msgid "Show author info on non multi author sites"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:180
+msgid "Position of Article Meta Data"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:185
+msgid "Article Header"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:186
+msgid "Article Footer"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:198
+msgid "Style of Article Meta Data"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:203
+msgid "Text"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:204
+msgid "Icons"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:205
+msgid "Single Icon"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:217
+msgid "Similar Posts Presentation"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:222
+msgid "Pictures"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:223
+msgid "Table"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:235
+msgid "Number of Similar Posts"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:255
+msgid "bxSlider / Bootstrap Carousel"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:267
+msgid "What to Slide"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:272
+msgid "Recommended images"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:273
+msgid "Recommended posts"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:287
+msgid "Limit Shown Items"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:301
+msgid "Item Order"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:320
+msgid "Delay Between Change"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:324
+msgid "1 second"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:325
+msgid "2 seconds"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:326
+msgid "3 seconds"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:327
+msgid "4 seconds"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:328
+msgid "5 seconds"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:329
+msgid "6 seconds"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:330
+msgid "7 seconds"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:331
+msgid "8 seconds"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:332
+msgid "9 seconds"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:333
+msgid "10 seconds"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:347
+msgid "Animation Speed (bxSlider only)"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:351
+msgid "100 ms"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:352
+msgid "200 ms"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:353
+msgid "300 ms"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:354
+msgid "400 ms"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:355
+msgid "500 ms"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:356
+msgid "600 ms"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:357
+msgid "700 ms"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:358
+msgid "800 ms"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:359
+msgid "900 ms"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:372
+msgid "Image change mode (bxSlider only)"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:376
+msgid "Fade"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:377
+msgid "Horizontal"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:378
+msgid "Vertical"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:409
+msgid "Show caption"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:423
+msgid "Show excerpt in caption, too (Bootstrap Carousel only)"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:437
+msgid "Show controls"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:451
+msgid "Show pager"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:465
+msgid "Link items to posts/images"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:479
+msgid "Transit slides automatically"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:486
+msgid "Two Content Columns"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:499
+msgid "Enable two content columns"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:513
+msgid "Box Color 1"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:527
+msgid "Box Color 2"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:541
+msgid "Transparent boxes"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:555
+msgid "Rounded box corners"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:569
+msgid "Box shadow"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:577
+msgid "Container Styling"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:590
+msgid "Rounded corners"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:604
+msgid "Shadow"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:618
+msgid "Border"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:632
+msgid "Background Color"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:658
+msgid "Background Repeat"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:663
+msgid "No Repeat"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:664
+msgid "Tile"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:665
+msgid "Tile Horizontally"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:666
+msgid "Tile Vertically"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:678
+msgid "Background Position"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:683
+msgid "Left"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:684
+msgid "Center"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:685
+msgid "Right"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:693
+msgid "Header"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:705
+msgid "Header Type"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:710
+msgid "Header Image"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:711
+msgid "bxSlider"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:712
+msgid "Bootstrap Carousel"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:726
+msgid "Show on blog frontpage"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:740
+msgid "Show on static frontpage "
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:754
+msgid "Show on other posts/pages"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:761
+msgid "Miscellaneous"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:774
+msgid ""
+"Show unobtrusive credits in the footer. Would be nice to keep them there."
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:788
+msgid "Show copyright info (your blog name)"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:801
+msgid "Link copyright to"
+msgstr ""
