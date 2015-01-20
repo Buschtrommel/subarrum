@@ -1,8 +1,8 @@
-=== Subar Rum WordPress Theme ===
+# Subar Rum WordPress Theme
 
 
 
-== About ==
+## About
 Subar Rum (old high german for clean room) is a clean and fully responsive
 WordPress theme built around Bootstrap with many options to adapt it to
 your needs. It features some built-in widgets for a nicer presentation and
@@ -24,7 +24,7 @@ Version: 1.1.2
 
 
 
-== Features ==
+## Features
 * base colors: black, blue, gray and white
 * two columns: content and widget area on the right
 * two blog columns: optionally you can present your blog entries in two columns
@@ -59,9 +59,9 @@ Version: 1.1.2
 * built in widgets: there are some built in widgets to present your content in a
   nicer way (recent posts/comments, recommended posts/images)
 
-  
 
-== Usage Notes==
+
+## Usage Notes
 |--------------------------------------------------------------------------------------|
 |                Top Navigation Bar (fixed/static/or disabled)                         | 
 |--------------------------------------------------------------------------------------|
@@ -127,7 +127,7 @@ Version: 1.1.2
 |--------------------------------------------------------------------------------------|
 
 
-= Recommended Items=
+### Recommended Items
 In the edit view of posts and images you can mark the item to be recommended.
 Recommended items can be shown in the header carousel/slider or in a special sidebar
 widget. In the carousel/slider you can link the images directly to the posts/image
@@ -135,13 +135,13 @@ pages. For posts without a post thumbnail you can specify placeholder images.
 The recommended status is saved in wp_post_meta database with the subarrum_featured
 key.
 
-=Different Headers=
+### Different Headers
 There are three different base header styles: WP Header Image, bxSlider and Bootstrap
 Carousel. With the slider and the carousel you can show your recommended content (posts
 or images). If posts don't have a post thumbnail, you can specify placeholder images
 that are shown then.
 
-=Menus=
+### Menus
 You can use the built in WordPress function to build your custom menus. A custom
 walker function of Subar Rum then builds the code to present them in expandable 
 pop up menus. There are two menu positions. One in the top navigation bar and another
@@ -149,7 +149,7 @@ below the header (bxSlider/Carousel/WP Header Image). You can use both positions
 the same time. But be aware that the navigation bar menu does not have that much of
 space for top level entries than the primary menu down below the header image.
 
-=Widget Areas=
+### Widget Areas
 There are different widget areas. The main area is on the right side and their image are
 shown everywhere when the areas for single posts and pages are empty. There are two
 footer areas for widgets which can hold 4 widgets side by side. There will be a warning in
@@ -159,7 +159,7 @@ in the right widget are, then the content is shown over the full width of 960px.
 There are some special widget areas that are only shown on special pages: two for the
 front page template and one for a possible gallery or whatever.
 
-=Custom Functions/Classes=
+### Custom Functions/Classes
 Subar Rum uses some custom functions to override WordPress functions.
 
 * subarrum_walker_nav_menu extends the walker menu class to build the menu.
@@ -171,21 +171,21 @@ Subar Rum uses some custom functions to override WordPress functions.
   (instead of the_post_thumbnail)
 
 
-== Tips & Tricks ==
-=Image Decorations=
+## Tips & Tricks ##
+### Image Decorations
 By default the images in the main content area get styled with rounded corners and a
 shadow around. This looks good for photos and similar stuff but not for things with
 transparent background like icons. For this you can use the following CSS class "img.no-deco"
 to disable the decoration.
 
-=Link Decorations=
+### Link Decorations
 By default hovered links get underlined. But if you for example want to use links with
 only Font Awesoma Icons it doesn't look that good. For this purpose there is the CSS class
 "a.no-deco" to disable the decoration.
-  
-  
-  
-== Bundled Resources ==
+
+
+
+## Bundled Resources ##
 Twitter Bootstrap - http://twitter.github.io/bootstrap/index.html
 Licensed under Apache License v2.0 - http://www.apache.org/licenses/LICENSE-2.0
 
@@ -199,5 +199,5 @@ CSS licensed under MIT License - http://opensource.org/licenses/mit-license.html
 HTML5 Shiv by Alexander Farkas, Jonathan Neal, Paul Irish et al.
 Licensed under MIT License - http://opensource.org/licenses/mit-license.html
 
-Justified Gallery by Miro Mannino
+Justified Gallery by Miro Mannino - http://miromannino.com/projects/justified-gallery/
 Licensed under MIT License - http://opensource.org/licenses/MIT
