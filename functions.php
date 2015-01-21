@@ -1890,7 +1890,7 @@ function subarrum_add_excerpt_to_ages() {
  * @param int $columns column count
  * @return string HTML content to display gallery overview
  */
-function subarrum_gallery_overview_private($ids = null, $page_id = null, $columns = 3, $style = '') {
+function subarrum_gallery_overview_private($ids = null, $page_id = null, $columns = 0, $style = '') {
 
         global $content_width;
         $_pages = array();
@@ -1914,7 +1914,11 @@ function subarrum_gallery_overview_private($ids = null, $page_id = null, $column
         }
         
         if ($style == '') {
-                $style = get_theme_mod('gallery_overview_style', 'grid');
+                $style = get_theme_mod('gallery_overview_layout', 'grid');
+        }
+        
+        if ($columns == 0) {
+                $columns = get_theme_mod('gallery_overview_columns', 3);
         }
         
         
@@ -2029,7 +2033,7 @@ function subarrum_gallery_overview_private($ids = null, $page_id = null, $column
 
 
 
-function subarrum_get_gallery_overview($columns = 3) {
+function subarrum_get_gallery_overview($columns = 0) {
         
         $_page = get_post();
         $page_id = $_page->ID;
@@ -2056,7 +2060,7 @@ function subarrum_gallery_overview($attr = null) {
 
         extract(shortcode_atts(array(
                         'ids'       => '',
-                        'columns'   => 3,
+                        'columns'   => 0,
                         'style'     => ''
                ), $attr, 'sr_gallery_overview'));
                
