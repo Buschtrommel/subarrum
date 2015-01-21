@@ -983,7 +983,7 @@ class subarrum_walker_nav_menu extends Walker_Nav_Menu {
 		$output .= "\n" . $indent . '<ul class="dropdown-menu">' . "\n";
 	}
 	
-	function display_element ($element, &$children_elements, $max_depth, $depth = 0, $args, &$output) {
+	function display_element ($element, &$children_elements, $max_depth, $depth, $args, &$output) {
 		// check, whether there are children for the given ID and append it to the element with a (new) ID
 		$element->hasChildren = isset($children_elements[$element->ID]) && !empty($children_elements[$element->ID]);
 
