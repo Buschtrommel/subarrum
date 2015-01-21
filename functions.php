@@ -1922,7 +1922,9 @@ function subarrum_gallery_overview_private($ids = null, $page_id = null, $column
         }
         
         
-        $output = "";
+        $output = "\n<h4>";
+        $output .= __('Sub albums', 'subarrum');
+        $output .= "</h4>\n";
         
         
         if ($style == 'list') {
@@ -1998,7 +2000,7 @@ function subarrum_gallery_overview_private($ids = null, $page_id = null, $column
                 }
                 
 
-                $output = "\n<ul class='thumbnails'>\n";
+                $output .= "\n<ul class='thumbnails'>\n";
 
                 $i = 0;
                 foreach ($_pages as $page) {

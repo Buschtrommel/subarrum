@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Subar Rum 1.1.1\n"
-"POT-Creation-Date: 2015-01-21 14:49+0100\n"
-"PO-Revision-Date: 2015-01-21 14:49+0100\n"
+"Project-Id-Version: Subar Rum 1.3.0\n"
+"POT-Creation-Date: 2015-01-21 18:25+0100\n"
+"PO-Revision-Date: 2015-01-21 18:25+0100\n"
 "Last-Translator: Buschmann <kontakt@buschmann23.de>\n"
 "Language-Team: Buschtrommel <info@buschmann23.de>\n"
 "MIME-Version: 1.0\n"
@@ -211,7 +211,7 @@ msgstr ""
 msgid "Front Page Area 2"
 msgstr ""
 
-#: ../functions.php:505 ../inc/subarrum-customize-theme.php:725
+#: ../functions.php:505
 msgid "Gallery"
 msgstr ""
 
@@ -285,7 +285,7 @@ msgid ""
 "span>.</small>"
 msgstr ""
 
-#: ../functions.php:769 ../inc/subarrum-customize-theme.php:149
+#: ../functions.php:769 ../inc/subarrum-customize-theme.php:665
 msgid "Meta Data"
 msgstr ""
 
@@ -377,6 +377,10 @@ msgstr ""
 msgid "Try your luck and hit or miss"
 msgstr ""
 
+#: ../functions.php:1926
+msgid "Sub albums"
+msgstr ""
+
 #: ../header.php:55 ../searchform.php:18 ../searchform.php:19
 msgid "Search"
 msgstr ""
@@ -397,7 +401,7 @@ msgstr ""
 msgid "Credit"
 msgstr ""
 
-#: ../image.php:76
+#: ../image.php:76 ../inc/subarrum-customize-theme.php:985
 msgid "Copyright"
 msgstr ""
 
@@ -429,437 +433,528 @@ msgstr ""
 msgid "Shutter speed"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:16
-msgid "Navigation Bar"
+#: ../inc/subarrum-customize-theme.php:21
+msgid "Layout"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:29
-msgid "Position"
+#: ../inc/subarrum-customize-theme.php:31
+msgid "Container"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:34
-msgid "Disabled"
+#: ../inc/subarrum-customize-theme.php:33
+msgid "Layout for the main content container."
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:35
-msgid "Fixed to top"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:36
-msgid "Static top"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:47
-msgid "Base Color"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:52
-msgid "Black"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:53
-msgid "White"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:64
-#: ../inc/subarrum-customize-theme.php:614
-msgid "Background Image"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:72
-msgid "Featured Images"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:84
-msgid "Link Target on Post Page"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:88
-msgid "Image page"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:89
-msgid "Lightbox (not included)"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:100
-msgid "Slider/Carousel Placeholder Image (960x320px)"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:112
-msgid "Small Placeholder Image (~200px)"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:119 ../single.php:43
-msgid "Comments"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:130
-msgid "Comments on image pages"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:142
-msgid "Comments on pages"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:161
-msgid "Show author info on non multi author sites"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:173
-msgid "Position of Article Meta Data"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:178
-msgid "Article Header"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:179
-msgid "Article Footer"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:190
-msgid "Style of Article Meta Data"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:195
-msgid "Text"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:196
-msgid "Icons"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:197
-msgid "Single Icon"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:208
-msgid "Similar Posts Presentation"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:213
-msgid "Pictures"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:214
-msgid "Table"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:225
-msgid "Number of Similar Posts"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:245
-msgid "bxSlider / Bootstrap Carousel"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:256
-msgid "What to Slide"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:261
-msgid "Recommended images"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:262
-msgid "Recommended posts"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:275
-msgid "Limit Shown Items"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:288
-msgid "Item Order"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:292 ../inc/subarrum-widgets.php:529
-msgid "Random"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:293 ../inc/subarrum-widgets.php:527
-msgid "ID ascending"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:294 ../inc/subarrum-widgets.php:528
-msgid "ID descending"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:306
-msgid "Delay Between Change"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:310
-msgid "1 second"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:311
-msgid "2 seconds"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:312
-msgid "3 seconds"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:313
-msgid "4 seconds"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:314
-msgid "5 seconds"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:315
-msgid "6 seconds"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:316
-msgid "7 seconds"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:317
-msgid "8 seconds"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:318
-msgid "9 seconds"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:319
-msgid "10 seconds"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:332
-msgid "Animation Speed (bxSlider only)"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:336
-msgid "100 ms"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:337
-msgid "200 ms"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:338
-msgid "300 ms"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:339
-msgid "400 ms"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:340
-msgid "500 ms"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:341
-msgid "600 ms"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:342
-msgid "700 ms"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:343
-msgid "800 ms"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:344
-msgid "900 ms"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:356
-msgid "Image change mode (bxSlider only)"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:360
-msgid "Fade"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:361
-msgid "Horizontal"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:362
-msgid "Vertical"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:392
-msgid "Show caption"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:405
-msgid "Show excerpt in caption, too (Bootstrap Carousel only)"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:418
-msgid "Show controls"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:431
-msgid "Show pager"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:445
-msgid "Link items to posts/images"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:458
-msgid "Transit slides automatically"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:465
-msgid "Two Content Columns"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:477
-msgid "Enable two content columns"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:491
-msgid "Box Color 1"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:504
-msgid "Box Color 2"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:517
-msgid "Transparent boxes"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:530
-msgid "Rounded box corners"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:543
-msgid "Box shadow"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:551
-msgid "Container Styling"
-msgstr ""
-
-#: ../inc/subarrum-customize-theme.php:563
+#: ../inc/subarrum-customize-theme.php:45
 msgid "Rounded corners"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:576
+#: ../inc/subarrum-customize-theme.php:58
 msgid "Shadow"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:589
+#: ../inc/subarrum-customize-theme.php:71
 msgid "Border"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:602
+#: ../inc/subarrum-customize-theme.php:84
 msgid "Background Color"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:626
+#: ../inc/subarrum-customize-theme.php:96
+#: ../inc/subarrum-customize-theme.php:617
+msgid "Background Image"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:108
 msgid "Background Repeat"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:631
+#: ../inc/subarrum-customize-theme.php:113
 msgid "No Repeat"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:632
+#: ../inc/subarrum-customize-theme.php:114
 msgid "Tile"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:633
+#: ../inc/subarrum-customize-theme.php:115
 msgid "Tile Horizontally"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:634
+#: ../inc/subarrum-customize-theme.php:116
 msgid "Tile Vertically"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:645
+#: ../inc/subarrum-customize-theme.php:127
 msgid "Background Position"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:650
+#: ../inc/subarrum-customize-theme.php:132
 msgid "Left"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:651
+#: ../inc/subarrum-customize-theme.php:133
 msgid "Center"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:652
+#: ../inc/subarrum-customize-theme.php:134
 msgid "Right"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:660
+#: ../inc/subarrum-customize-theme.php:147
+msgid "Two Content Columns"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:160
+msgid "Enable two content columns"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:174
+msgid "Box Color 1"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:187
+msgid "Box Color 2"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:200
+msgid "Transparent boxes"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:213
+msgid "Rounded box corners"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:226
+msgid "Box shadow"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:245
 msgid "Header"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:671
+#: ../inc/subarrum-customize-theme.php:251
+msgid "Basics"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:263
 msgid "Header Type"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:676
+#: ../inc/subarrum-customize-theme.php:268
+#: ../inc/subarrum-customize-theme.php:319
 msgid "Header Image"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:677
+#: ../inc/subarrum-customize-theme.php:269
 msgid "bxSlider"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:678
+#: ../inc/subarrum-customize-theme.php:270
 msgid "Bootstrap Carousel"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:691
+#: ../inc/subarrum-customize-theme.php:282
 msgid "Show on blog frontpage"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:704
+#: ../inc/subarrum-customize-theme.php:295
 msgid "Show on static frontpage "
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:717
+#: ../inc/subarrum-customize-theme.php:308
 msgid "Show on other posts/pages"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:738
-msgid "Default style"
+#: ../inc/subarrum-customize-theme.php:329
+msgid "bxSlider / Bootstrap Carousel"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:742
+#: ../inc/subarrum-customize-theme.php:341
+msgid "What to Slide"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:346
+msgid "Recommended images"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:347
+msgid "Recommended posts"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:360
+msgid "Limit Shown Items"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:373
+msgid "Item Order"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:377 ../inc/subarrum-widgets.php:529
+msgid "Random"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:378 ../inc/subarrum-widgets.php:527
+msgid "ID ascending"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:379 ../inc/subarrum-widgets.php:528
+msgid "ID descending"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:391
+msgid "Delay Between Change"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:395
+msgid "1 second"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:396
+msgid "2 seconds"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:397
+msgid "3 seconds"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:398
+msgid "4 seconds"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:399
+msgid "5 seconds"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:400
+msgid "6 seconds"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:401
+msgid "7 seconds"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:402
+msgid "8 seconds"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:403
+msgid "9 seconds"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:404
+msgid "10 seconds"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:417
+msgid "Animation Speed (bxSlider only)"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:421
+msgid "100 ms"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:422
+msgid "200 ms"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:423
+msgid "300 ms"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:424
+msgid "400 ms"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:425
+msgid "500 ms"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:426
+msgid "600 ms"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:427
+msgid "700 ms"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:428
+msgid "800 ms"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:429
+msgid "900 ms"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:441
+msgid "Image change mode (bxSlider only)"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:445
+msgid "Fade"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:446
+msgid "Horizontal"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:447
+msgid "Vertical"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:477
+msgid "Show caption"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:490
+msgid "Show excerpt in caption, too (Bootstrap Carousel only)"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:503
+msgid "Show controls"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:516
+msgid "Show pager"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:530
+msgid "Link items to posts/images"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:543
+msgid "Transit slides automatically"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:563
+msgid "Navigation"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:569
+msgid "Navigation Bar"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:582
+msgid "Position"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:587
+msgid "Disabled"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:588
+msgid "Fixed to top"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:589
+msgid "Static top"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:600
+msgid "Base Color"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:605
+msgid "Black"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:606
+msgid "White"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:624
+msgid "Menus"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:636 ../inc/subarrum-widgets.php:519
+#: ../info-author.php:38
+msgid "Posts"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:642
+msgid "Author info"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:654
+msgid "Show author info on non multi author sites"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:679
+msgid "Position of Article Meta Data"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:684
+msgid "Article Header"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:685
+msgid "Article Footer"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:696
+msgid "Style of Article Meta Data"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:701
+msgid "Text"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:702
+msgid "Icons"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:703
+msgid "Single Icon"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:712 ../single.php:44
+msgid "Similar posts"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:724
+msgid "Similar Posts Presentation"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:729
+msgid "Pictures"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:730
+msgid "Table"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:741
+msgid "Number of Similar Posts"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:765 ../single.php:43
+msgid "Comments"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:777
+msgid "Comments on image pages"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:789
+msgid "Comments on pages"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:800
+msgid "Featured Images"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:813
+msgid "Link Target on Post Page"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:817
+msgid "Image page"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:818
+msgid "Lightbox (not included)"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:829
+msgid "Slider/Carousel Placeholder Image (960x320px)"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:841
+msgid "Small Placeholder Image (~200px)"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:861
+msgid "Gallery function"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:862
+msgid ""
+"Subar Rum has a simple built in gallery function. If you use the gallery "
+"page template, it automatically generates a overview for the direct child "
+"pages. Beside that you can use the <strong>[sr_gallery_overview]</strong> "
+"shortcode everywhere to implement a gallery overview into your posts and "
+"pages."
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:868
+msgid "Gallery overview"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:870
+msgid ""
+"Defaults that are used on gallery style pages and on shortcode where the "
+"style info is missing."
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:883
+msgid "Default layout"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:887
 msgid "Grid"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:743
+#: ../inc/subarrum-customize-theme.php:888
 msgid "List"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:750
+#: ../inc/subarrum-customize-theme.php:902
+msgid "Columns"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:903
+msgid "Number of columns used in grid layout."
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:919
+msgid "Placeholder images"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:921
+msgid "Placeholder images for sub gallery pages without post thumbnail."
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:933
+msgid "Placeholder for grids"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:934
+msgid ""
+"Should be at least 960px width and in your preferred aspect ratio for "
+"gallery images."
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:947
+msgid "Placeholder for lists"
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:948
+msgid "Should be 150x150px."
+msgstr ""
+
+#: ../inc/subarrum-customize-theme.php:959
 msgid "Miscellaneous"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:762
+#: ../inc/subarrum-customize-theme.php:971
 msgid ""
 "Show unobtrusive credits in the footer. Would be nice to keep them there."
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:763
+#: ../inc/subarrum-customize-theme.php:972
 msgid "Credits"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:776
+#: ../inc/subarrum-customize-theme.php:986
 msgid "Show copyright info (your blog name)"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:788
+#: ../inc/subarrum-customize-theme.php:998
 msgid "Link copyright to"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:801
+#: ../inc/subarrum-customize-theme.php:1011
 msgid "Favicon (ICO, GIF or PNG)"
 msgstr ""
 
@@ -988,10 +1083,6 @@ msgstr ""
 msgid "Type:"
 msgstr ""
 
-#: ../inc/subarrum-widgets.php:519 ../info-author.php:38
-msgid "Posts"
-msgstr ""
-
 #: ../inc/subarrum-widgets.php:520
 msgid "Images"
 msgstr ""
@@ -1069,10 +1160,6 @@ msgstr ""
 msgid ""
 "Apologies, but there are more than four widgets set for Footer Area 2. This "
 "area is only designed for a maximum of four widgets."
-msgstr ""
-
-#: ../single.php:44
-msgid "Similar posts"
 msgstr ""
 
 #: ../single.php:46

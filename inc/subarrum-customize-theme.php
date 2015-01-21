@@ -900,7 +900,7 @@ function subarrum_customize_register( $wp_customize ) {
                 'settings'      => 'gallery_overview_columns',
                 'section'       => 'sr_gallery_overview',
                 'label'         => __('Columns', 'subarrum'),
-                'description'   => __('Number of columns used in list layout.', 'subarrum'),
+                'description'   => __('Number of columns used in grid layout.', 'subarrum'),
                 'type'          => 'select',
                 'choices'	=> array(
                         '1'     => '1',
