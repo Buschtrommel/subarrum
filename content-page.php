@@ -29,7 +29,7 @@
 	    <div class="entry-content row-fluid">
 	      <div class="span12">
 		<?php
-		if (!( is_page_template('page-templates/front-page.php') || is_page_template('page-templates/front-page-no-title.php') )) {
+		if (!( is_page_template('page-templates/front-page.php') || is_page_template('page-templates/front-page-no-title.php') || is_page_template('page-templates/gallery.php') )) {
 		  if ($page < 2) {
 		    if ( is_active_sidebar( 'sidebar-1' ) || ( is_active_sidebar( 'entries-1' ) || is_active_sidebar( 'pages-1' ) ) ) {
 		      if ( has_post_thumbnail()) { subarrum_post_thumbnail('post-image-full'); } 
@@ -42,6 +42,9 @@
 		  the_excerpt();
 		} else {
 		  the_content();
+		  if (is_page_template('page-templates/gallery.php')) {
+                    subarrum_get_gallery_overview();
+		  }
 		}
 		?>
 	      </div>

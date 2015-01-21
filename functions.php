@@ -46,11 +46,12 @@ function subarrum_register_hooks() {
 	add_action( 'widgets_init', 		'subarrum_widgets_init' );
 	add_action( 'template_redirect',	'subarrum_content_width' );
 	add_action( 'wp_enqueue_scripts',	'subarrum_fonts' );
+	add_action( 'init',                     'subarrum_add_excerpt_to_ages' );
+	add_action( 'customize_register',			'subarrum_customize_register', 11 );
 	
 	// admin only hooks
       if(is_admin()) {
 	add_filter( 'image_size_names_choose',			'subarrum_insert_custom_image_sizes' );
-	add_action( 'customize_register',			'subarrum_customize_register' );
 	add_filter( 'manage_posts_columns', 			'subarrum_featured_column_title' );
 	add_filter( 'manage_media_columns', 			'subarrum_featured_column_title' );
 	add_filter( 'manage_posts_custom_column', 		'subarrum_posts_column_content', 10, 2 );
@@ -79,6 +80,8 @@ function subarrum_register_hooks() {
 	add_shortcode( 'audio',			'subarrum_audio_shortcode');
 	remove_shortcode( 'gallery',		'gallery_shortcode' );
 	add_shortcode( 'gallery',		'subarrum_gallery_shortcode' );
+	add_shortcode( 'sr_thumbnail',          'subarrum_thumbnail_shortcode' );
+	add_shortcode( 'sr_gallery_overview',   'subarrum_gallery_overview' );
       }
 }
 subarrum_register_hooks();
@@ -1808,6 +1811,267 @@ function subarrum_enqueue_comments_reply() {
 	  wp_enqueue_script('comment-reply');
 }
 
+
+/**
+ * Subar Rum Thumbnail shortcode
+ *
+ * This makes the Bootstrap2 thumbnail code available via a shortcode.
+ * Attributes:
+ * src = image source
+ * link = link for the image
+ * label = thumbnail label
+ * caption = thumbnail caption
+ *
+ * @since Subar Rum 1.3.0
+ * @param array $attr Atrributes of the shortcode
+ * @return string HTML content to display
+ */
+function subarrum_thumbnail_shortcode($attr) {
+        extract(shortcode_atts(array(
+                'src'       => '',
+                'label'     => '',
+                'caption'   => '',
+                'link'      => '#'
+        ), $attr, 'sr_thumbnail'));
+        
+        if ($src == '') { return ""; };
+        
+        if ($label != '' || $caption != '') {
+        
+                $output = "\n<div class='thumbnail'>\n";
+                $output .= "<a href='". $link ."'>";
+                $output .= "<img src='". $src ."' alt='' />";
+                $output .= "</a>\n";
+                if ($label != '') {
+                        $output .= "<h4>". $label ."</h4>\n";
+                }
+                if ($caption != '') {
+                        $output .= "<p>". $caption ."</p>\n";
+                }
+                $output .= "</div>\n";
+            
+        } else {
+                $output  = "\n<a href='". $link ."' class='thumbnail'>\n";
+                $output .= "<img src='". $src ."' alt'' />";
+                $output .= "</a>\n";
+        };
+        
+        return $output;
+};
+
+
+
+/**
+ * Subar Rum Add Excerpt to pages
+ * 
+ * Adds the excerpt field to page for use in gallery overview shortcode.
+ *
+ * @since Subar Rum 1.3.0
+ */
+function subarrum_add_excerpt_to_ages() {
+        add_post_type_support( 'page', 'excerpt' );
+};
+
+
+
+
+
+/**
+ * Subar Rum gallery overview private function
+ *
+ * Takes page ID or list of page IDs to generate a gallery overview, consisting of
+ * post tumbunail, excerpt and page permalink.
+ * 
+ * Used internally by 
+ *
+ * @since Subar Rum 1.3.0
+ * @param array $ids page IDs
+ * @param int $page_id current page ID
+ * @param int $columns column count
+ * @return string HTML content to display gallery overview
+ */
+function subarrum_gallery_overview_private($ids = null, $page_id = null, $columns = 3, $style = '') {
+
+        global $content_width;
+        $_pages = array();
+
+        if (is_null($ids) && is_null($page_id)) {
+    
+            return "";
+            
+        } elseif (is_null($ids) || empty($ids)) {
+            
+            $_pages = get_pages( array('hierarchical' => 'false', 'parent' => $page_id) );
+            
+        } else {
+    
+            $_pages = get_pages( array('include' => $ids) );
+            
+        }
+        
+        if (is_null($_pages)) {
+                return "";
+        }
+        
+        if ($style == '') {
+                $style = get_theme_mod('gallery_overview_style', 'grid');
+        }
+        
+        
+        $output = "";
+        
+        
+        if ($style == 'list') {
+        
+        
+                
+                
+                foreach($_pages as $page) {
+                        $_thumb_image_url = wp_get_attachment_image_src( get_post_thumbnail_id($page->ID), 'thumbnail');
+                        $_page_link = get_permalink($page);
+                
+                        $output .= "<div class='media'>\n";
+                
+                        $output .= "<a class='pull-left' href='{$_page_link}'>";
+//                         $output .= "<img class='media-object' src='". esc_url( $_thumb_image_url[0] ) ."' width='". $_thumb_image_url[1] ."' height='". $_thumb_image_url[3] ."' alt='". $page->post_title ."' /></a>\n";
+                        $output .= "<img class='media-object' src='". esc_url( $_thumb_image_url[0] ) ."' width='96' height='96' alt='". $page->post_title ."' /></a>\n";
+                        
+                        $output .= "<div class='media-body'>\n";
+                        $output .= "<h4 class='media-heading'>{$page->post_title}</h4>\n";
+                        $output .= "{$page->post_excerpt}\n";
+                        $output .= "</div>\n";
+                        
+                        
+                        $output .= "</div>\n";
+                }
+        
+        
+        } else {
+    
+    
+                $size = 'post-image-full';
+                switch($content_width) {
+                        case 630:
+                        case 460:
+                        case 300:
+                                $size = 'post-image-full';
+                                break;
+                        case 960:
+                                $size = 'post-image-full-width';
+                }
+                
+                $span = "span4";
+                switch($columns) {
+                        case 0:
+                        case 1:
+                                $span = "span12";
+                                break;
+                        case 2:
+                                $span = "span6";
+                                break;
+                        case 3:
+                                $span = "span4";
+                                break;
+                        case 4:
+                                $span = "span3";
+                                break;
+                        case 5:
+                        case 6:
+                                $span = "span2";
+                                break;
+                        case 7:
+                        case 8:
+                        case 9:
+                        case 10:
+                        case 11:
+                        case 12:
+                                $span = "span1";
+                }
+                
+
+                $output = "\n<ul class='thumbnails'>\n";
+
+                $i = 0;
+                foreach ($_pages as $page) {
+                
+                        $output .= "<li class='".$span."'>\n";
+                        
+                        $output .= "<div class='thumbnail'>\n";
+                        
+                        $thumb_image_url = wp_get_attachment_image_src( get_post_thumbnail_id($page->ID), $size);
+                        $page_link = get_permalink($page);
+                        
+                        $output .= "<a href='{$page_link}'>";
+                        
+                        $output .= "<img src='". esc_url( $thumb_image_url[0] ) ."' width='". $thumb_image_url[1] ."' height='". $thumb_image_url[3] ."' alt='". $page->post_title ."' /></a>\n";
+                        
+                        $output .= "<h4>{$page->post_title}</h4>\n";
+                        
+                        $output .= "<p>{$page->post_excerpt}</p>\n";
+                        
+                        
+                        $output .= "</div>\n";                
+                        
+                        $output .= "</li>\n";
+                
+                
+                        if ( $columns > 0 && ++$i % $columns == 0 )
+                                $output .= "</ul>\n<ul class='thumbnails'>";
+                    
+                }
+                
+                $output .= "</ul>\n";
+        
+        }
+    
+        return $output;
+}
+
+
+
+function subarrum_get_gallery_overview($columns = 3) {
+        
+        $_page = get_post();
+        $page_id = $_page->ID;
+        
+        echo subarrum_gallery_overview_private(null, $page_id, $columns);
+        
+};
+
+
+ 
+/**
+ * Subar Rum gallery overview shortcode
+ *
+ * Generates a Bootstrap style thumbnail gallery linking to the respective
+ * pages. Uses page excerpt and page image.
+ *
+ * @since Subar Rum 1.3.0
+ */
+function subarrum_gallery_overview($attr = null) {
+
+        $columns = 3;
+        $ids = array();
+        $style = '';
+
+        extract(shortcode_atts(array(
+                        'ids'       => '',
+                        'columns'   => 3,
+                        'style'     => ''
+               ), $attr, 'sr_gallery_overview'));
+               
+        $page_id = null;
+               
+        if (empty($ids)) {
+                $_page = get_post();
+                echo var_dump($_page);
+                $page_id = $_page->ID;
+        }
+        
+        echo var_dump($_page->ID);
+        
+        return subarrum_gallery_overview_private($ids, $page_id, $columns, $style);
+}
 
 
 /**

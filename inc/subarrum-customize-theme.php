@@ -10,16 +10,18 @@
  * @since Subar Rum 1.0
  */
 function subarrum_customize_register( $wp_customize ) {
+        
 	// add section for setting header appearance
 	$wp_customize->add_section('subarrum_navbar_style', array(
 		'title'		=> __( 'Navigation Bar', 'subarrum'),
 		'priority'	=> 99,
+		'panel'         => 'sr_test_panel'
 	));
 	
 	// add option to choose header base color style
 	$wp_customize->add_setting('navbar_position', array(
 		'default'	=> 'navbar-fixed-top',
-		'capability'	=> 'edit_theme_options',
+		'transport'     => 'postMessage'
 	));
 	
 	$wp_customize->add_control('subarrum_navbar_position', array(
@@ -31,14 +33,13 @@ function subarrum_customize_register( $wp_customize ) {
 		'choices'	=> array(
 			'navbar-disabled'	=> __('Disabled', 'subarrum'),
 			'navbar-fixed-top'	=> __('Fixed to top', 'subarrum'),
-			'navbar-static-top'	=> __('Static top', 'subarrum'),
-			),
+			'navbar-static-top'	=> __('Static top', 'subarrum')
+			)
 	));
 	
 	// add option to choose header base color style
 	$wp_customize->add_setting('navbar_base_color', array(
-		'default'	=> 'navbar',
-		'capability'	=> 'edit_theme_options',
+		'default'	=> 'navbar'
 		));
 	
 	$wp_customize->add_control('subarrum_navbar_base_color', array(
@@ -49,34 +50,32 @@ function subarrum_customize_register( $wp_customize ) {
 		'type'		=> 'radio',
 		'choices'	=> array(
 			'navbar navbar-inverse' => __('Black', 'subarrum'),
-			'navbar' => __('White', 'subarrum'),
-			),
+			'navbar' => __('White', 'subarrum')
+			)
 		));
 	
 	// add option to choose optional header background image
 	$wp_customize->add_setting('navbar_background', array(
-		'default'	=> '0',
-		'capability'	=> 'edit_theme_options',
+		'default'	=> '0'
 		));
 	
 	$wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'subarrum_navbar_background', array(
 		'priority'	=> '4',
 		'label'		=> __('Background Image', 'subarrum'),
 		'section'	=> 'subarrum_navbar_style',
-		'settings'	=> 'navbar_background',
+		'settings'	=> 'navbar_background'
 		)));
 	
 	
 	// add section to choose how thumbnail links are generated
 	$wp_customize->add_section('subarrum_post_thumbnails', array(
 		'title'		=> __( 'Featured Images', 'subarrum' ),
-		'priority'	=> 81,
+		'priority'	=> 81
 		));
 	
 	// add option to choose wether post thumbnails on single sites should link to image page or lightbox popup
 	$wp_customize->add_setting('post_thumbnail_link', array(
-		'capability'	=> 'edit_theme_options',
-		'default'	=> 0,
+		'default'	=> 0
 	));
 	
 	$wp_customize->add_control('subarrum_post_thumbnail_link', array(
@@ -87,78 +86,73 @@ function subarrum_customize_register( $wp_customize ) {
 		 'type'		=> 'radio',
 		 'choices'	=> array(
 			0 => __('Image page', 'subarrum'),
-			1 => __('Lightbox (not included)', 'subarrum'),
-			),
+			1 => __('Lightbox (not included)', 'subarrum')
+			)
 	));
 	
 	// add option to choose placeholder image for slider items without post thumbnail
 	$wp_customize->add_setting('image_slider_placeholder', array(
-		'default'	=> get_template_directory_uri() . '/images/slider-placeholder.jpg',
-		'capability'	=> 'edit_theme_options',
+		'default'	=> get_template_directory_uri() . '/images/slider-placeholder.jpg'
 	));
 	
 	$wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'subarrum_image_slider_placeholder', array(
 		'priority'	=> '2',
 		'label'		=> __('Slider/Carousel Placeholder Image (960x320px)', 'subarrum'),
 		'section'	=> 'subarrum_post_thumbnails',
-		'settings'	=> 'image_slider_placeholder',
+		'settings'	=> 'image_slider_placeholder'
 	)));
 	
 	// add option to choose placeholder image for similar posts items without post thumbnail
 	$wp_customize->add_setting('small_placeholder_image', array(
-		'default'	=> get_template_directory_uri() . '/images/similarposts-placeholder.jpg',
-		'capability'	=> 'edit_theme_options',
+		'default'	=> get_template_directory_uri() . '/images/similarposts-placeholder.jpg'
 		));
 	
 	$wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'subarrum_small_posts_placeholder', array(
 		'priority'	=> '3',
 		'label'		=> __('Small Placeholder Image (~200px)', 'subarrum'),
 		'section'	=> 'subarrum_post_thumbnails',
-		'settings'	=> 'small_placeholder_image',
+		'settings'	=> 'small_placeholder_image'
 		)));
 	
 	// add section to choose where comments should be shown
 	$wp_customize->add_section('subarrum_comment_control', array(
 		  'title'	=> __('Comments', 'subarrum'),
-		  'priority'	=> 56,
+		  'priority'	=> 56
 		  ));
 	
 	// add option to choose if comments are possible on image pages
 	$wp_customize->add_setting('image_comments', array(
-		  'capability'	=> 'edit_theme_options',
-		  'default'	=> 0,
+		  'default'     => 0
 	));
 	
 	$wp_customize->add_control('subarrum_image_comments', array(
 		  'settings'	=> 'image_comments',
 		  'label'	=> __('Comments on image pages', 'subarrum'),
 		  'section'	=> 'subarrum_comment_control',
-		  'type'	=> 'checkbox',
+		  'type'	=> 'checkbox'
 		  ));
 	
 	// add option to choose if comments are possible on pages
 	$wp_customize->add_setting('page_comments', array(
-		  'capability'	=> 'edit_theme_options',
-		  'default'	=> 0,
+		  'default'	=> 0
 	));
 	
 	$wp_customize->add_control('subarrum_page_comments', array(
 		  'settings'	=> 'page_comments',
 		  'label'	=> __('Comments on pages', 'subarrum'),
 		  'section'	=> 'subarrum_comment_control',
-		  'type'	=> 'checkbox',
+		  'type'	=> 'checkbox'
 	));
 	
 	// add section to choose if author info is shown on non multi author blogs
 	$wp_customize->add_section('subarrum_meta_data', array(
 		  'title'	=> __('Meta Data', 'subarrum'),
-		  'priority'	=> 55,
+		  'priority'	=> 55
 		  ));
 	
 	// add option to choose if author info is shown on non multi author blogs
 	$wp_customize->add_setting('author_info', array(
-		  'capability'	=> 'edit_theme_options',
-		  'default'	=> 0,
+		  'default'	=> 0
 	));
 	
 	$wp_customize->add_control('subarrum_author_info', array(
@@ -166,13 +160,12 @@ function subarrum_customize_register( $wp_customize ) {
 		  'settings'	=> 'author_info',
 		  'label'	=> __('Show author info on non multi author sites', 'subarrum'),
 		  'section'	=> 'subarrum_meta_data',
-		  'type'	=> 'checkbox',
+		  'type'	=> 'checkbox'
 	));
 	
 	// add option to choose slider source
 	$wp_customize->add_setting('meta_data_position', array(
-		'default'	=> 'footer',
-		'capability'	=> 'edit_theme_options',
+		'default'	=> 'footer'
 	));
 	
 	$wp_customize->add_control('subarrum_meta_data_position', array(
@@ -183,14 +176,13 @@ function subarrum_customize_register( $wp_customize ) {
 		'type'		=> 'radio',
 		'choices'	=> array(
 			'header' => __('Article Header', 'subarrum'),
-			'footer' => __('Article Footer', 'subarrum'),
-			),
+			'footer' => __('Article Footer', 'subarrum')
+			)
 	));
 	
 	// add option to choose style of entry meta data
 	$wp_customize->add_setting('meta_data_style', array(
-		'default'	=> 'icons',
-		'capability'	=> 'edit_theme_options',
+		'default'	=> 'icons'
 	));
 	
 	$wp_customize->add_control('subarrum_meta_data_style', array(
@@ -202,14 +194,13 @@ function subarrum_customize_register( $wp_customize ) {
 		'choices'	=> array(
 			'text'		=> __('Text', 'subarrum'),
 			'icons'		=> __('Icons', 'subarrum'),
-			'popover'	=> __('Single Icon', 'subarrum'),
-			),
+			'popover'	=> __('Single Icon', 'subarrum')
+			)
 	));
 	
 	// add option to choose presentation of similar posts on single pages
 	$wp_customize->add_setting('similar_posts_presentation', array(
-		'default'	=> 'pictures',
-		'capability'	=> 'edit_theme_options',
+		'default'	=> 'pictures'
 	));
 	
 	$wp_customize->add_control('subarrum_similar_posts_presentation', array(
@@ -220,14 +211,13 @@ function subarrum_customize_register( $wp_customize ) {
 		'type'		=> 'radio',
 		'choices'	=> array(
 			'pictures'	=> __('Pictures', 'subarrum'),
-			'table'		=> __('Table', 'subarrum'),
-			),
+			'table'		=> __('Table', 'subarrum')
+			)
 	));
 	
 	// add option to choose limit for similar posts to show
 	$wp_customize->add_setting('similar_posts_limit', array(
-		'default'	=> '4',
-		'capability'	=> 'edit_theme_options',
+		'default'	=> '4'
 	));
 	
 	$wp_customize->add_control('subarrum_similar_posts_limit', array(
@@ -246,20 +236,19 @@ function subarrum_customize_register( $wp_customize ) {
 			    '7' => '7',
 			    '8' => '8',
 			    '9' => '9',
-			    '10' => '10',
-			),
+			    '10' => '10'
+			)
 	));
 	
 	// add section to configure the image slider
 	$wp_customize->add_section('subarrum_image_slider', array(
 		  'title'	=> __('bxSlider / Bootstrap Carousel', 'subarrum'),
-		  'priority'	=> 59,
+		  'priority'	=> 59
 		  ));
 	
 	// add option to choose slider source
 	$wp_customize->add_setting('image_slider_source', array(
-		'default'	=> 'attachment',
-		'capability'	=> 'edit_theme_options',
+		'default'	=> 'attachment'
 		));
 	
 	$wp_customize->add_control('subarrum_image_slider_source', array(
@@ -270,13 +259,12 @@ function subarrum_customize_register( $wp_customize ) {
 		'type'		=> 'radio',
 		'choices'	=> array(
 			'attachment'	=> __('Recommended images', 'subarrum'),
-			'post'		=> __('Recommended posts', 'subarrum'),
-			),
+			'post'		=> __('Recommended posts', 'subarrum')
+			)
 		));
 	
 	// add option to select the maximum amount of items to show
 	$wp_customize->add_setting('image_slider_limit', array(
-		  'capability'	=> 'edit_theme_options',
 		  'sanitize_callback' => 'absint',
 		  'default'	=> 100
 	));
@@ -286,12 +274,11 @@ function subarrum_customize_register( $wp_customize ) {
 		  'settings'	=> 'image_slider_limit',
 		  'label'	=> __('Limit Shown Items', 'subarrum'),
 		  'section'	=> 'subarrum_image_slider',
-		  'type'	=> 'text',
+		  'type'	=> 'text'
 	));
 	
 	// add option to select image slider item order
 	$wp_customize->add_setting('image_slider_order', array(
-		  'capability'	=> 'edit_theme_options',
 		  'default'	=> 'random'
 	));
 	
@@ -304,14 +291,13 @@ function subarrum_customize_register( $wp_customize ) {
 		  'choices'	=> array(
 			'random'	=> __('Random', 'subarrum'),
 			'ascending'	=> __('ID ascending', 'subarrum'),
-			'descending'	=> __('ID descending', 'subarrum'),
-		  ),
+			'descending'	=> __('ID descending', 'subarrum')
+		  )
 	));	
 	
 	// add option to select pause time between image change
 	$wp_customize->add_setting('image_slider_pause', array(
-		  'capability'	=> 'edit_theme_options',
-		  'default'	=> '5000',
+		  'default'	=> '5000'
 	));
 	
 	$wp_customize->add_control('subarrum_image_slider_pause', array(
@@ -330,15 +316,14 @@ function subarrum_customize_register( $wp_customize ) {
 			'7000' => __('7 seconds', 'subarrum'),
 			'8000' => __('8 seconds', 'subarrum'),
 			'9000' => __('9 seconds', 'subarrum'),
-			'10000' => __('10 seconds', 'subarrum'),
-		  ),
+			'10000' => __('10 seconds', 'subarrum')
+		  )
 	));
 	
 	
 	// add option to select image slider change speed
 	$wp_customize->add_setting('image_slider_speed', array(
-		  'capability'	=> 'edit_theme_options',
-		  'default'	=> '500',
+		  'default'	=> '500'
 	));
 	
 	$wp_customize->add_control('subarrum_image_slider_speed', array(
@@ -362,7 +347,6 @@ function subarrum_customize_register( $wp_customize ) {
 	
 	// add option to select image slider change mode
 	$wp_customize->add_setting('image_slider_mode', array(
-		  'capability'	=> 'edit_theme_options',
 		  'default'	=> 'fade'
 	));
 	
@@ -375,8 +359,8 @@ function subarrum_customize_register( $wp_customize ) {
 		  'choices'	=> array(
 			'fade'		=> __('Fade', 'subarrum'),
 			'horizontal'	=> __('Horizontal', 'subarrum'),
-			'vertical'	=> __('Vertical', 'subarrum'),
-		  ),
+			'vertical'	=> __('Vertical', 'subarrum')
+		  )
 	));
 	
 	// add option to select image slider change mode
@@ -399,7 +383,6 @@ function subarrum_customize_register( $wp_customize ) {
 	
 	// add option to select if the caption should be show
 	$wp_customize->add_setting('image_slider_caption', array(
-		  'capability'	=> 'edit_theme_options',
 		  'default'	=> 0
 	));
 	
@@ -408,12 +391,11 @@ function subarrum_customize_register( $wp_customize ) {
 		  'settings'	=> 'image_slider_caption',
 		  'label'	=> __('Show caption', 'subarrum'),
 		  'section'	=> 'subarrum_image_slider',
-		  'type'	=> 'checkbox',
+		  'type'	=> 'checkbox'
 	));
 	
 	// add option to select if the caption should be show
 	$wp_customize->add_setting('image_slider_excerpt', array(
-		  'capability'	=> 'edit_theme_options',
 		  'default'	=> 0
 	));
 	
@@ -422,12 +404,11 @@ function subarrum_customize_register( $wp_customize ) {
 		  'settings'	=> 'image_slider_excerpt',
 		  'label'	=> __('Show excerpt in caption, too (Bootstrap Carousel only)', 'subarrum'),
 		  'section'	=> 'subarrum_image_slider',
-		  'type'	=> 'checkbox',
+		  'type'	=> 'checkbox'
 	));
 	
 	// add option to select if the controls should be show
 	$wp_customize->add_setting('image_slider_controls', array(
-		  'capability'	=> 'edit_theme_options',
 		  'default'	=> 0
 	));
 	
@@ -436,12 +417,11 @@ function subarrum_customize_register( $wp_customize ) {
 		  'settings'	=> 'image_slider_controls',
 		  'label'	=> __('Show controls', 'subarrum'),
 		  'section'	=> 'subarrum_image_slider',
-		  'type'	=> 'checkbox',
+		  'type'	=> 'checkbox'
 	));
 	
 	// add option to select if the pager should be show
 	$wp_customize->add_setting('image_slider_pager', array(
-		  'capability'	=> 'edit_theme_options',
 		  'default'	=> 0
 	));
 	
@@ -450,7 +430,7 @@ function subarrum_customize_register( $wp_customize ) {
 		  'settings'	=> 'image_slider_pager',
 		  'label'	=> __('Show pager', 'subarrum'),
 		  'section'	=> 'subarrum_image_slider',
-		  'type'	=> 'checkbox',
+		  'type'	=> 'checkbox'
 	));
 	
 	// add option to select if the item should be linked to it parent page
@@ -464,12 +444,11 @@ function subarrum_customize_register( $wp_customize ) {
 		  'settings'	=> 'image_slider_linkit',
 		  'label'	=> __('Link items to posts/images', 'subarrum'),
 		  'section'	=> 'subarrum_image_slider',
-		  'type'	=> 'checkbox',
+		  'type'	=> 'checkbox'
 	));
 	
 	// add option to select if the slider should automatically start sliding
 	$wp_customize->add_setting('image_slider_auto', array(
-		  'capability'	=> 'edit_theme_options',
 		  'default'	=> 1
 	));
 	
@@ -478,7 +457,7 @@ function subarrum_customize_register( $wp_customize ) {
 		  'settings'	=> 'image_slider_auto',
 		  'label'	=> __('Transit slides automatically', 'subarrum'),
 		  'section'	=> 'subarrum_image_slider',
-		  'type'	=> 'checkbox',
+		  'type'	=> 'checkbox'
 	));
 	
 	// add section for configuring two columns layout
@@ -489,7 +468,6 @@ function subarrum_customize_register( $wp_customize ) {
 		
 	// add option to select if two columns layout should be used
 	$wp_customize->add_setting('two_columns_enable', array(
-		  'capability'	=> 'edit_theme_options',
 		  'default'	=> 0
 	));
 	
@@ -498,7 +476,7 @@ function subarrum_customize_register( $wp_customize ) {
 		  'settings'	=> 'two_columns_enable',
 		  'label'	=> __('Enable two content columns', 'subarrum'),
 		  'section'	=> 'subarrum_two_columns',
-		  'type'	=> 'checkbox',
+		  'type'	=> 'checkbox'
 	));
 	
 	// add selector for first box color
@@ -512,26 +490,24 @@ function subarrum_customize_register( $wp_customize ) {
 		   'priority'	=> '2',
 		   'label'	=> __('Box Color 1', 'subarrum'),
 		   'section'	=> 'subarrum_two_columns',
-		   'settings'	=> 'two_columns_color1',
+		   'settings'	=> 'two_columns_color1'
 	)));
 	
 	// add selector for second box color
 	$wp_customize->add_setting('two_columns_color2', array(
 		  'default'		=> 'ECECEC',
-		  'sanitize_callback'	=> 'sanitize_hex_color',
-		  'capability'		=> 'edit_theme_options',
+		  'sanitize_callback'	=> 'sanitize_hex_color'
 	));
  
 	$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'subarrum_two_columns_color2', array(
 		   'priority'	=> '3',
 		   'label'	=> __('Box Color 2', 'subarrum'),
 		   'section'	=> 'subarrum_two_columns',
-		   'settings'	=> 'two_columns_color2',
+		   'settings'	=> 'two_columns_color2'
 	)));
 	
 	// add option to select if boxes should be transparent
 	$wp_customize->add_setting('two_columns_transparent', array(
-		  'capability'	=> 'edit_theme_options',
 		  'default'	=> 1
 	));
 	
@@ -540,12 +516,11 @@ function subarrum_customize_register( $wp_customize ) {
 		  'settings'	=> 'two_columns_transparent',
 		  'label'	=> __('Transparent boxes', 'subarrum'),
 		  'section'	=> 'subarrum_two_columns',
-		  'type'	=> 'checkbox',
+		  'type'	=> 'checkbox'
 	));
 	
 	// add option to select if box should be rounded
 	$wp_customize->add_setting('two_columns_rounded', array(
-		  'capability'	=> 'edit_theme_options',
 		  'default'	=> 0
 	));
 	
@@ -554,12 +529,11 @@ function subarrum_customize_register( $wp_customize ) {
 		  'settings'	=> 'two_columns_rounded',
 		  'label'	=> __('Rounded box corners', 'subarrum'),
 		  'section'	=> 'subarrum_two_columns',
-		  'type'	=> 'checkbox',
+		  'type'	=> 'checkbox'
 	));
 	
 	// add option to select if box should have a shadow
 	$wp_customize->add_setting('two_columns_shadow', array(
-		  'capability'	=> 'edit_theme_options',
 		  'default'	=> 1
 	));
 	
@@ -568,7 +542,7 @@ function subarrum_customize_register( $wp_customize ) {
 		  'settings'	=> 'two_columns_shadow',
 		  'label'	=> __('Box shadow', 'subarrum'),
 		  'section'	=> 'subarrum_two_columns',
-		  'type'	=> 'checkbox',
+		  'type'	=> 'checkbox'
 	));
 	
 	
@@ -580,7 +554,6 @@ function subarrum_customize_register( $wp_customize ) {
 	
 	// add option to select if container corners should be rounded
 	$wp_customize->add_setting('container_rounded', array(
-		  'capability'	=> 'edit_theme_options',
 		  'default'	=> 1
 	));
 	
@@ -589,12 +562,11 @@ function subarrum_customize_register( $wp_customize ) {
 		  'settings'	=> 'container_rounded',
 		  'label'	=> __('Rounded corners', 'subarrum'),
 		  'section'	=> 'container',
-		  'type'	=> 'checkbox',
+		  'type'	=> 'checkbox'
 	));
 	
 	// add option to select if container should have a shadow
 	$wp_customize->add_setting('container_shadow', array(
-		  'capability'	=> 'edit_theme_options',
 		  'default'	=> 1
 	));
 	
@@ -603,12 +575,11 @@ function subarrum_customize_register( $wp_customize ) {
 		  'settings'	=> 'container_shadow',
 		  'label'	=> __('Shadow', 'subarrum'),
 		  'section'	=> 'container',
-		  'type'	=> 'checkbox',
+		  'type'	=> 'checkbox'
 	));
 	
 	// add option to select if container should have a border
 	$wp_customize->add_setting('container_border', array(
-		  'capability'	=> 'edit_theme_options',
 		  'default'	=> 1
 	));
 	
@@ -617,14 +588,13 @@ function subarrum_customize_register( $wp_customize ) {
 		  'settings'	=> 'container_border',
 		  'label'	=> __('Border', 'subarrum'),
 		  'section'	=> 'container',
-		  'type'	=> 'checkbox',
+		  'type'	=> 'checkbox'
 	));
 	
 	// add selector for container background color
 	$wp_customize->add_setting('container_bgcolor', array(
 		  'default'		=> 'FFFFFF',
-		  'sanitize_callback'	=> 'sanitize_hex_color',
-		  'capability'		=> 'edit_theme_options',
+		  'sanitize_callback'	=> 'sanitize_hex_color'
 	));
  
 	$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'subarrum_container_bgcolor', array(
@@ -636,8 +606,7 @@ function subarrum_customize_register( $wp_customize ) {
 	
 	// add option to choose background image for container
 	$wp_customize->add_setting('container_bgimg', array(
-		'default'	=> 0,
-		'capability'	=> 'edit_theme_options',
+		'default'	=> 0
 	));
 	
 	$wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'subarrum_container_bgimg', array(
@@ -649,8 +618,7 @@ function subarrum_customize_register( $wp_customize ) {
 	
 	// add option to choose container background image repeat
 	$wp_customize->add_setting('container_bgrepeat', array(
-		'default'	=> 'repeat',
-		'capability'	=> 'edit_theme_options',
+		'default'	=> 'repeat'
 		));
 	
 	$wp_customize->add_control('subarrum_container_bgrepeat', array(
@@ -663,14 +631,13 @@ function subarrum_customize_register( $wp_customize ) {
 			'no-repeat'	=> __('No Repeat', 'subarrum'),
 			'repeat'	=> __('Tile', 'subarrum'),
 			'repeat-x'	=> __('Tile Horizontally', 'subarrum'),
-			'repeat-y'	=> __('Tile Vertically', 'subarrum'),
-			),
+			'repeat-y'	=> __('Tile Vertically', 'subarrum')
+			)
 	));
 	
 	// add option to choose container background image position
 	$wp_customize->add_setting('container_bgposition', array(
-		'default'	=> 'left',
-		'capability'	=> 'edit_theme_options',
+		'default'	=> 'left'
 		));
 	
 	$wp_customize->add_control('subarrum_container_bgposition', array(
@@ -682,8 +649,8 @@ function subarrum_customize_register( $wp_customize ) {
 		'choices'	=> array(
 			'left'		=> __('Left', 'subarrum'),
 			'center'	=> __('Center', 'subarrum'),
-			'right'		=> __('Right', 'subarrum'),
-			),
+			'right'		=> __('Right', 'subarrum')
+			)
 	));
 	
 	
@@ -696,8 +663,7 @@ function subarrum_customize_register( $wp_customize ) {
 	
 	// add option to choose container background image position
 	$wp_customize->add_setting('header_type', array(
-		'default'	=> 'image',
-		'capability'	=> 'edit_theme_options',
+		'default'	=> 'image'
 		));
 	
 	$wp_customize->add_control('subarrum_header_type', array(
@@ -709,15 +675,14 @@ function subarrum_customize_register( $wp_customize ) {
 		'choices'	=> array(
 			'image'		=> __('Header Image', 'subarrum'),
 			'bxslider'	=> __('bxSlider', 'subarrum'),
-			'bscarousel'	=> __('Bootstrap Carousel', 'subarrum'),
-			),
+			'bscarousel'	=> __('Bootstrap Carousel', 'subarrum')
+			)
 	));
 	
 	
 	// add option to show header on blog frontpage
 	$wp_customize->add_setting('header_show_front', array(
-		  'capability'	=> 'edit_theme_options',
-		  'default'	=> 1,
+		  'default'	=> 1
 	));
 	
 	$wp_customize->add_control('subarrum_header_show_front', array(
@@ -725,13 +690,12 @@ function subarrum_customize_register( $wp_customize ) {
 		  'settings'	=> 'header_show_front',
 		  'label'	=> __('Show on blog frontpage', 'subarrum'),
 		  'section'	=> 'subarrum_header',
-		  'type'	=> 'checkbox',
+		  'type'	=> 'checkbox'
 	));
 	
 	// add option to show header on static front page
 	$wp_customize->add_setting('header_show_static', array(
-		  'capability'	=> 'edit_theme_options',
-		  'default'	=> 0,
+		  'default'	=> 0
 	));
 	
 	$wp_customize->add_control('subarrum_header_show_static', array(
@@ -739,13 +703,12 @@ function subarrum_customize_register( $wp_customize ) {
 		  'settings'	=> 'header_show_static',
 		  'label'	=> __('Show on static frontpage ', 'subarrum'),
 		  'section'	=> 'subarrum_header',
-		  'type'	=> 'checkbox',
+		  'type'	=> 'checkbox'
 	));
 	
 	// add option to show header on every other page
 	$wp_customize->add_setting('header_show_other', array(
-		  'capability'	=> 'edit_theme_options',
-		  'default'	=> 0,
+		  'default'	=> 0
 	));
 	
 	$wp_customize->add_control('subarrum_header_show_other', array(
@@ -755,31 +718,56 @@ function subarrum_customize_register( $wp_customize ) {
 		  'section'	=> 'subarrum_header',
 		  'type'	=> 'checkbox',
 	));
+	
+	
+	// add section for configuring gallery functions
+	$wp_customize->add_section('subarrum_gallery', array(
+                'title'         => __('Gallery', 'subarrum'),
+                'priority'      => 120
+	));
+	
+	
+	// add option to choose default gallery overview style
+	$wp_customize->add_setting('gallery_overview_style', array(
+                'default'       => 'grid'
+	));
+	
+	$wp_customize->add_control('gallery_overview_style', array(
+                'priority'      => 1,
+                'settings'      => 'gallery_overview_style',
+                'label'         => __('Default style', 'subarrum'),
+                'section'       => 'subarrum_gallery',
+                'type'		=> 'radio',
+		'choices'	=> array(
+			'grid'       => __('Grid', 'subarrum'),
+			'list'       => __('List', 'subarrum')
+			)
+	));
+	
 
 	// add section for configuring miscellaneous stuff
 	$wp_customize->add_section('subarrum_misc', array(
 		'title'		=> __( 'Miscellaneous', 'subarrum'),
-		'priority'	=> 130,
+		'priority'	=> 130
 	));
 	
 	// add option to show credits
 	$wp_customize->add_setting('footer_show_credits', array(
-		  'capability'	=> 'edit_theme_options',
-		  'default'	=> 1,
+		  'default'	=> 1
 	));
 	
 	$wp_customize->add_control('subarrum_footer_show_credits', array(
 		  'priority'	=> '1',
 		  'settings'	=> 'footer_show_credits',
-		  'label'	=> __('Show unobtrusive credits in the footer. Would be nice to keep them there.', 'subarrum'),
+		  'description'	=> __('Show unobtrusive credits in the footer. Would be nice to keep them there.', 'subarrum'),
+		  'label'       => __('Credits', 'subarrum'),
 		  'section'	=> 'subarrum_misc',
-		  'type'	=> 'checkbox',
+		  'type'	=> 'checkbox'
 	));
 	
 	// add option to show copyright
 	$wp_customize->add_setting('footer_show_copy', array(
-		  'capability'	=> 'edit_theme_options',
-		  'default'	=> 1,
+		  'default'	=> 1
 	));
 	
 	$wp_customize->add_control('subarrum_footer_show_copy', array(
@@ -787,12 +775,11 @@ function subarrum_customize_register( $wp_customize ) {
 		  'settings'	=> 'footer_show_copy',
 		  'label'	=> __('Show copyright info (your blog name)', 'subarrum'),
 		  'section'	=> 'subarrum_misc',
-		  'type'	=> 'checkbox',
+		  'type'	=> 'checkbox'
 	));
 	
 	// add option to link copyright to a page
 	$wp_customize->add_setting('footer_copy_link', array(
-		  'capability'	=> 'edit_theme_options',
 		  'sanitize_callback' => 'absint',
 	));
 	
@@ -801,20 +788,19 @@ function subarrum_customize_register( $wp_customize ) {
 		  'label'	=> __('Link copyright to', 'subarrum'),
 		  'section'	=> 'subarrum_misc',
 		  'settings'	=> 'footer_copy_link',
-		  'type'	=> 'dropdown-pages',
+		  'type'	=> 'dropdown-pages'
 	));
 	
 	// add option to choose favicon
 	$wp_customize->add_setting('set_favicon', array(
-		'default'	=> 0,
-		'capability'	=> 'edit_theme_options',
+		'default'	=> 0
 	));
 	
 	$wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'subarrum_set_favicon', array(
 		'priority'	=> '4',
 		'label'		=> __('Favicon (ICO, GIF or PNG)', 'subarrum'),
 		'section'	=> 'subarrum_misc',
-		'settings'	=> 'set_favicon',
+		'settings'	=> 'set_favicon'
 	)));
 	
 }
