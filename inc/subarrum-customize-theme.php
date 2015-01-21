@@ -911,6 +911,46 @@ function subarrum_customize_register( $wp_customize ) {
 	));
 	
 	
+	
+	
+	
+	// add section for configuring gallery overview placeholder images
+	$wp_customize->add_section('sr_gallery_placeholders', array(
+                'title'         => __('Placeholder images', 'subarrum'),
+                'priority'      => 2,
+                'description'   => __('Placeholder images for sub gallery pages without post thumbnail.', 'subarrum'),
+                'panel'         => 'sr_gallery_panel'
+	));
+	
+	
+	// add option to choose grid style placeholder image
+	$wp_customize->add_setting('gallery_overview_grid_placeholder', array(
+		'default'	=> get_template_directory_uri() . '/images/gallery_overview_big.jpg'
+	));
+	
+	$wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'gallery_overview_grid_placeholder', array(
+		'priority'	=> 1,
+		'label'		=> __('Placeholder for grids', 'subarrum'),
+		'description'   => __('Should be at least 960px width and in your preferred aspect ratio for gallery images.', 'subarrum'),
+		'section'	=> 'sr_gallery_placeholders',
+		'settings'	=> 'gallery_overview_grid_placeholder'
+	)));
+	
+	
+	// add option to choose list style placeholder image
+	$wp_customize->add_setting('gallery_overview_list_placeholder', array(
+		'default'	=> get_template_directory_uri() . '/images/gallery_overview_small.jpg'
+	));
+	
+	$wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'gallery_overview_list_placeholder', array(
+		'priority'	=> 1,
+		'label'		=> __('Placeholder for lists', 'subarrum'),
+		'description'   => __('Should be 150x150px.', 'subarrum'),
+		'section'	=> 'sr_gallery_placeholders',
+		'settings'	=> 'gallery_overview_list_placeholder'
+	)));
+	
+	
 // ==================== End Gallery panel ====================================
 	
 

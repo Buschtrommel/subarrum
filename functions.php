@@ -1932,6 +1932,11 @@ function subarrum_gallery_overview_private($ids = null, $page_id = null, $column
                 
                 foreach($_pages as $page) {
                         $_thumb_image_url = wp_get_attachment_image_src( get_post_thumbnail_id($page->ID), 'thumbnail');
+                        
+                        if (empty($_thumb_image_url)) {
+                            $_thumb_image_url[0] = get_theme_mod('gallery_overview_list_placeholder', get_template_directory_uri() . '/images/gallery_overview_small.jpg');
+                        }
+                        
                         $_page_link = get_permalink($page);
                 
                         $output .= "<div class='media'>\n";
@@ -2003,11 +2008,18 @@ function subarrum_gallery_overview_private($ids = null, $page_id = null, $column
                         $output .= "<div class='thumbnail'>\n";
                         
                         $thumb_image_url = wp_get_attachment_image_src( get_post_thumbnail_id($page->ID), $size);
+                        
+                        if (empty($thumb_image_url)) {
+                            $thumb_image_url[0] = get_theme_mod('gallery_overview_grid_placeholder', get_template_directory_uri() . '/images/gallery_overview_big.jpg');
+                            $thumb_image_url[1] = "";
+                            $thumb_image_url[2] = "";
+                        }
+                        
                         $page_link = get_permalink($page);
                         
                         $output .= "<a href='{$page_link}'>";
                         
-                        $output .= "<img src='". esc_url( $thumb_image_url[0] ) ."' width='". $thumb_image_url[1] ."' height='". $thumb_image_url[3] ."' alt='". $page->post_title ."' /></a>\n";
+                        $output .= "<img src='". esc_url( $thumb_image_url[0] ) ."' width='". $thumb_image_url[1] ."' height='". $thumb_image_url[2] ."' alt='". $page->post_title ."' /></a>\n";
                         
                         $output .= "<h4>{$page->post_title}</h4>\n";
                         
