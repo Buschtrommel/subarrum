@@ -356,6 +356,224 @@ class Subarrum_Random_Post_Widget extends WP_Widget {
 
 
 
+/**
+ * Subar Rum Gallery Images Widget Class
+ *
+ * Displays images from the gallery
+ *
+ * @since Subar Rum 1.4
+ */
+class Subarrum_Gallery_Widget extends WP_Widget {
+
+        function __construct() {
+                $widget_opts = array('description' => __( 'Displays images from the WordPress gallery.', 'subarrum') );
+                parent::__construct('subarrum_gallery_images', __('Subar Rum Gallery', 'subarrum'), $widget_opts);
+                
+                add_action( 'save_post', array($this, 'flush_widget_cache') );
+		add_action( 'deleted_post', array($this, 'flush_widget_cache') );
+		add_action( 'switch_theme', array($this, 'flush_widget_cache') );
+        }
+        
+        
+        function widget($args, $instance) {
+                $cache = wp_cache_get('subarrum_gallery_images', 'widget');
+                
+                if ( !is_array($cache) ) {
+                        $cache = array();
+                }
+                
+                if ( !isset($args['widget_id']) ) {
+                        $args['widget_id'] = $this->id;
+                }
+                
+                if ( isset($cache[$args['widget_id']]) ) {
+                        echo $cache[$args['widget_id']];
+                        return;
+                }
+                
+                
+                ob_start();
+                
+                extract($args);
+                $title = apply_filters('widget_title', empty($instance['title']) ? __('Gallery', 'subarrum') : $instance['title'], $instance, $this->id_base);
+                $type = empty($instance['type']) ? 'post' : $instance['type'];
+		if ( empty( $instance['rows'] ) || ! $rows = absint( $instance['rows'] ) ) { $rows = 3; }
+		if ( empty( $instance['columns'] ) || ! $columns = absint( $instance['columns'] ) ) { $columns = 3; }
+		$order = empty($instance['order']) ? 'random' : $instance['order'];
+		$linktarget = empty($instance['linktarget']) ? 0 : $instance['linktarget'];
+		$number = $rows * $columns;
+		
+		$_attachments = array();
+		$_mimetypes = array('image/jpeg', 'image/png');
+		
+		if ($order == 'random') {
+                        $_attachments = get_posts(array('orderby' => 'rand', 'post_type' => 'attachment', 'posts_per_page' => $number, 'post_mime_type' => $_mimetypes));
+		} elseif ($order == 'newest') {
+                        $_attachments = get_posts(array('orderby' => 'post_date', 'order' => 'DESC', 'post_type' => 'attachment', 'posts_per_page' => $number, 'post_mime_type' => $_mimetypes));
+		}
+		
+		
+		echo $before_widget;
+		if ( $title ) echo $before_title . $title . $after_title;
+		
+		if (empty($_attachments)) {
+                        $output = __('You have no images in your WordPress media gallery.');
+                } else {
+                
+                        $span = "span4";
+                        switch($columns) {
+                            case 0:
+                            case 1:
+                                $span = "span12";
+                                break;
+                            case 2:
+                                $span = "span6";
+                                break;
+                            case 3:
+                                $span = "span4";
+                                break;
+                            case 4:
+                                $span = "span3";
+                                break;
+                            case 5:
+                            case 6:
+                                $span = "span2";
+                                break;
+                            case 7:
+                            case 8:
+                            case 9:
+                            case 10:
+                            case 11:
+                            case 12:
+                                $span = "span1";
+                        }
+                
+                        $_pic_size = 'thumbnail';
+                        if ($columns == 1) {
+                                $_pic_size = 'post-image-full';
+                        }
+                        
+                        $output = "\n<ul class='thumbnails'>\n";
+                        
+                        $i = 0;
+                        foreach($_attachments as $_attachment) {
+
+                            $_thumb_image_url = wp_get_attachment_image_src( $_attachment->ID, $_pic_size);
+                            
+//                             if (empty($thumb_image_url)) {
+//                                 $thumb_image_url[0] = get_theme_mod('gallery_overview_grid_placeholder', get_template_directory_uri() . '/images/gallery_overview_big.jpg');
+//                                 $thumb_image_url[1] = "";
+//                                 $thumb_image_url[2] = "";
+//                             }
+                            
+                            $output .= "<li class='".$span."' style='margin-bottom:0px'>\n";
+                            
+                                          
+                            if ($linktarget == 0) {
+                                $page_link = get_permalink($_attachment);
+                                $output .= "<a href='{$page_link}' class='thumbnail'>";
+                            } else {
+                                $_image_full_url = wp_get_attachment_image_src( $_attachment->ID, 'full');
+                                $page_link = $_image_full_url[0];
+                                $output .= "<a href='{$page_link}' class='thumbnail' rel='lightbox'>";
+                            }
+                        
+                            $output .= "<img src='". esc_url( $_thumb_image_url[0] ) ."' width='". $_thumb_image_url[1] ."' height='". $_thumb_image_url[2] ."' alt='". $_attachment->post_title ."' title='". $_attachment->post_title ."' /></a>\n";                        
+                        
+
+                            $output .= "</li>\n";
+                
+                
+                            if ( $columns > 0 && ++$i % $columns == 0 )
+                                $output .= "</ul>\n<ul class='thumbnails'>";
+                            }
+                        
+                        $output .= "</ul>\n";
+                }
+                
+                echo $output;
+
+                echo $after_widget;
+		
+		$cache[$args['widget_id']] = ob_get_flush();
+		wp_cache_set('subarrum_recommended', $cache, 'widget');
+        }
+        
+        
+        
+        function update( $new_instance, $old_instance ) {
+		$instance = $old_instance;
+		$instance['title'] = strip_tags($new_instance['title']);
+		$instance['rows'] = absint( $new_instance['rows'] );
+		$instance['columns'] = absint( $new_instance['columns'] );
+
+		if ( in_array( $new_instance['linktarget'], array( 0, 1 ) ) ) {
+			$instance['linktarget'] = $new_instance['linktarget'];
+		} else {
+			$instance['linktarget'] = 0;
+		}
+		if ( in_array( $new_instance['order'], array( 'random', 'newest' ) ) ) {
+			$instance['order'] = $new_instance['order'];
+		} else {
+			$instance['order'] = 'random';
+		}
+		
+		$this->flush_widget_cache();
+
+		$alloptions = wp_cache_get( 'alloptions', 'options' );
+		if ( isset($alloptions['subarrum_gallery_images']) )
+			delete_option('subarrum_gallery_images');
+
+		return $instance;
+	}
+	
+	function flush_widget_cache() {
+		wp_cache_delete('subarrum_gallery_images', 'widget');
+	}
+        
+        
+        
+        
+        function form( $instance ) {
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'rows' => 3, 'columns' => 3, 'order' => 'random', 'linktarget' => 0 ) );
+		$title = strip_tags($instance['title']);
+		$rows = isset($instance['rows']) ? absint($instance['rows']) : 3;
+		$columns = isset($instance['columns']) ? absint($instance['columns']) : 3;
+		$order = isset($instance['order']) ? $instance['order'] : 'random';
+		$linktarget = isset($instace['linktarget']) ? $instance['linktarget'] : 0;
+?>
+			<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'subarrum'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
+			
+			<p>
+			<label for="<?php echo $this->get_field_id('order'); ?>"><?php _e( 'Order:', 'subarrum' ); ?></label>
+			<select name="<?php echo $this->get_field_name('order'); ?>" id="<?php echo $this->get_field_id('order'); ?>" class="widefat">
+				<option value="random"<?php selected( $instance['order'], 'random' ); ?>><?php _e('Random', 'subarrum'); ?></option>
+				<option value="newest"<?php selected( $instance['order'], 'newest' ); ?>><?php _e('Newest', 'subarrum'); ?></option>
+			</select>
+			</p>
+			
+			
+			<p>
+			<label for="<?php echo $this->get_field_id('linktarget'); ?>"><?php _e( 'Order:', 'subarrum' ); ?></label>
+			<select name="<?php echo $this->get_field_name('linktarget'); ?>" id="<?php echo $this->get_field_id('linktarget'); ?>" class="widefat">
+				<option value="0"<?php selected( $instance['linktarget'], 0 ); ?>><?php _e('Image page', 'subarrum'); ?></option>
+				<option value="1"<?php selected( $instance['linktarget'], 1 ); ?>><?php _e('Lightbox (not included)', 'subarrum'); ?></option>
+			</select>
+			</p>
+			
+			
+			<p><label for="<?php echo $this->get_field_id('rows'); ?>"><?php _e('Rows:', 'subarrum'); ?></label>
+			<input id="<?php echo $this->get_field_id('rows'); ?>" name="<?php echo $this->get_field_name('rows'); ?>" type="number" value="<?php echo $rows; ?>" min="1" max="100" step="1" /></p>
+			
+			<p><label for="<?php echo $this->get_field_id('columns'); ?>"><?php _e('Columns:', 'subarrum'); ?></label>
+			<input id="<?php echo $this->get_field_id('columns'); ?>" name="<?php echo $this->get_field_name('columns'); ?>" type="number" value="<?php echo $columns; ?>" min="1" max="12" step="1" size="3" /></p>
+<?php
+	}
+
+}
+
+
+
 
 /**
  * Subar Rum Recommended Posts/Images Widget Class

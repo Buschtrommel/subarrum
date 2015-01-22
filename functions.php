@@ -430,6 +430,7 @@ function subarrum_widgets_init() {
 	register_widget( 'Subarrum_Recent_Posts' );
 	register_widget( 'Subarrum_Recent_Comments' );
 	register_widget( 'Subarrum_Recommended_Widget' );
+	register_widget( 'Subarrum_Gallery_Widget' );
 	
 	register_sidebar( array(
 		'name' => __( 'Main Sidebar', 'subarrum' ),

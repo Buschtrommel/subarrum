@@ -1,3 +1,5 @@
++ implement gallery widget to show media gallery pictures
+
 ##### Wed Jan 21 18:29:00 CET 2014 - Subar Rum - 1.3.0
 + implement gallery overview shortcode and display subpages on gallery page templates
 + reorganized theme customizer options
