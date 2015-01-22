@@ -1901,7 +1901,7 @@ function subarrum_gallery_overview_private($ids = null, $page_id = null, $column
             
         } elseif (is_null($ids) || empty($ids)) {
             
-            $_pages = get_pages( array('hierarchical' => 'false', 'parent' => $page_id) );
+            $_pages = get_pages( array('hierarchical' => 'false', 'parent' => $page_id, 'sort_column' => 'menu_order') );
             
         } else {
     
@@ -1909,7 +1909,7 @@ function subarrum_gallery_overview_private($ids = null, $page_id = null, $column
             
         }
         
-        if (is_null($_pages)) {
+        if (empty($_pages)) {
                 return "";
         }
         
