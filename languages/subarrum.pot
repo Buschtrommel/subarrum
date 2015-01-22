@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Subar Rum 1.3.0\n"
-"POT-Creation-Date: 2015-01-21 18:25+0100\n"
-"PO-Revision-Date: 2015-01-21 18:25+0100\n"
+"POT-Creation-Date: 2015-01-22 20:03+0100\n"
+"PO-Revision-Date: 2015-01-22 20:03+0100\n"
 "Last-Translator: Buschmann <kontakt@buschmann23.de>\n"
 "Language-Team: Buschtrommel <info@buschmann23.de>\n"
 "MIME-Version: 1.0\n"
@@ -156,228 +156,228 @@ msgstr ""
 msgid "on"
 msgstr ""
 
-#: ../functions.php:435
+#: ../functions.php:436
 msgid "Main Sidebar"
 msgstr ""
 
-#: ../functions.php:437
+#: ../functions.php:438
 msgid ""
 "The standard widgets area appears by default everywhere, when no widgets are "
 "in the entry widgets or the pages area, except the static start page which "
 "has its own area."
 msgstr ""
 
-#: ../functions.php:445
+#: ../functions.php:446
 msgid "Entries Area"
 msgstr ""
 
-#: ../functions.php:447
+#: ../functions.php:448
 msgid ""
 "Appears on single entries when widgets are set, and also on pages when no "
 "widget is set in Pages Area."
 msgstr ""
 
-#: ../functions.php:455
+#: ../functions.php:456
 msgid "Pages Area"
 msgstr ""
 
-#: ../functions.php:457
+#: ../functions.php:458
 msgid "Appears on pages when widgets are set."
 msgstr ""
 
-#: ../functions.php:465
+#: ../functions.php:466
 msgid "Footer Area 1"
 msgstr ""
 
-#: ../functions.php:467 ../functions.php:477
+#: ../functions.php:468 ../functions.php:478
 msgid "Appears on the footer and has space for a maximum of four widgets."
 msgstr ""
 
-#: ../functions.php:475
+#: ../functions.php:476
 msgid "Footer Area 2"
 msgstr ""
 
-#: ../functions.php:485
+#: ../functions.php:486
 msgid "Front Page Area 1"
 msgstr ""
 
-#: ../functions.php:487 ../functions.php:497
+#: ../functions.php:488 ../functions.php:498
 msgid ""
 "Appears when using the optional Front Page template with a page set as "
 "Static Front Page."
 msgstr ""
 
-#: ../functions.php:495
+#: ../functions.php:496
 msgid "Front Page Area 2"
 msgstr ""
 
-#: ../functions.php:505
+#: ../functions.php:506 ../inc/subarrum-widgets.php:398
 msgid "Gallery"
 msgstr ""
 
-#: ../functions.php:507
+#: ../functions.php:508
 msgid "Appears when using the optional Gallery template with a page."
 msgstr ""
 
-#: ../functions.php:534
+#: ../functions.php:535
 #, php-format
 msgid ""
 "Apologies. But your browser does not support the HTML5 audio tag, you can <a "
 "href=\"%1$s\">download the file</a> instead."
 msgstr ""
 
-#: ../functions.php:650
+#: ../functions.php:651
 #, php-format
 msgid "Last page: %1$d"
 msgstr ""
 
-#: ../functions.php:660
+#: ../functions.php:661
 msgid "Newer"
 msgstr ""
 
-#: ../functions.php:663
+#: ../functions.php:664
 msgid "Older"
 msgstr ""
 
-#: ../functions.php:688 ../functions.php:691
+#: ../functions.php:689 ../functions.php:692
 msgid ", "
 msgstr ""
 
-#: ../functions.php:704
+#: ../functions.php:705
 msgid "Posted in"
 msgstr ""
 
-#: ../functions.php:707
+#: ../functions.php:708
 msgid "Categories"
 msgstr ""
 
-#: ../functions.php:717
+#: ../functions.php:718
 msgid "Tagged as"
 msgstr ""
 
-#: ../functions.php:720
+#: ../functions.php:721
 msgid "Tags"
 msgstr ""
 
-#: ../functions.php:734 ../info-author.php:37
+#: ../functions.php:735 ../info-author.php:37
 #, php-format
 msgid "View all posts by %s"
 msgstr ""
 
-#: ../functions.php:741
+#: ../functions.php:742
 #, php-format
 msgid ""
 "<small class=\"grey\">Posted in %1$s and tagged %2$s on %3$s<span class=\"by-"
 "author\"> by %4$s</span>.</small>"
 msgstr ""
 
-#: ../functions.php:743
+#: ../functions.php:744
 #, php-format
 msgid ""
 "<small class=\"grey\">Posted in %1$s on %3$s<span class=\"by-author\"> by "
 "%4$s</span>.</small>"
 msgstr ""
 
-#: ../functions.php:745
+#: ../functions.php:746
 #, php-format
 msgid ""
 "<small class=\"grey\">Posted on %3$s<span class=\"by-author\"> by %4$s</"
 "span>.</small>"
 msgstr ""
 
-#: ../functions.php:769 ../inc/subarrum-customize-theme.php:665
+#: ../functions.php:770 ../inc/subarrum-customize-theme.php:665
 msgid "Meta Data"
 msgstr ""
 
-#: ../functions.php:900
+#: ../functions.php:901
 msgid "Pingback:"
 msgstr ""
 
-#: ../functions.php:902
+#: ../functions.php:903
 msgid "(Edit)"
 msgstr ""
 
-#: ../functions.php:920
+#: ../functions.php:921
 msgid "Post author"
 msgstr ""
 
-#: ../functions.php:926
+#: ../functions.php:927
 #, php-format
 msgid "%1$s at %2$s"
 msgstr ""
 
-#: ../functions.php:936
+#: ../functions.php:937
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: ../functions.php:942
+#: ../functions.php:943
 msgid "Edit"
 msgstr ""
 
-#: ../functions.php:946
+#: ../functions.php:947
 msgid "Reply"
 msgstr ""
 
-#: ../functions.php:1055
+#: ../functions.php:1056
 msgid "Page"
 msgstr ""
 
-#: ../functions.php:1060
+#: ../functions.php:1061
 msgid "Next page"
 msgstr ""
 
-#: ../functions.php:1061
+#: ../functions.php:1062
 msgid "Previous page"
 msgstr ""
 
-#: ../functions.php:1129
+#: ../functions.php:1130
 msgid "Continue reading"
 msgstr ""
 
-#: ../functions.php:1146
+#: ../functions.php:1147
 msgid "There is no excerpt because this is a protected post."
 msgstr ""
 
-#: ../functions.php:1179 ../functions.php:1198 ../functions.php:1216
-#: ../inc/subarrum-widgets.php:396
+#: ../functions.php:1180 ../functions.php:1199 ../functions.php:1217
+#: ../inc/subarrum-widgets.php:614
 msgid "Recommended"
 msgstr ""
 
-#: ../functions.php:1198 ../functions.php:1216
+#: ../functions.php:1199 ../functions.php:1217
 msgid "Not recommended"
 msgstr ""
 
-#: ../functions.php:1239
+#: ../functions.php:1240
 msgid "Recommend this"
 msgstr ""
 
-#: ../functions.php:1461
+#: ../functions.php:1462
 msgid "Post"
 msgstr ""
 
-#: ../functions.php:1461
+#: ../functions.php:1462
 msgid "Date"
 msgstr ""
 
-#: ../functions.php:1484 ../inc/subarrum-widgets.php:124
-#: ../inc/subarrum-widgets.php:422
+#: ../functions.php:1485 ../inc/subarrum-widgets.php:124
+#: ../inc/subarrum-widgets.php:640
 msgid "Placeholder"
 msgstr ""
 
-#: ../functions.php:1549
+#: ../functions.php:1550
 msgid ""
 "This post is password protected. To view it please enter your password below:"
 msgstr ""
 
-#: ../functions.php:1549
+#: ../functions.php:1550
 msgid "Password"
 msgstr ""
 
-#: ../functions.php:1564 ../inc/subarrum-widgets.php:326
+#: ../functions.php:1565 ../inc/subarrum-widgets.php:326
 msgid "Try your luck and hit or miss"
 msgstr ""
 
-#: ../functions.php:1926
+#: ../functions.php:1927
 msgid "Sub albums"
 msgstr ""
 
@@ -591,15 +591,16 @@ msgstr ""
 msgid "Item Order"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:377 ../inc/subarrum-widgets.php:529
+#: ../inc/subarrum-customize-theme.php:377 ../inc/subarrum-widgets.php:550
+#: ../inc/subarrum-widgets.php:747
 msgid "Random"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:378 ../inc/subarrum-widgets.php:527
+#: ../inc/subarrum-customize-theme.php:378 ../inc/subarrum-widgets.php:745
 msgid "ID ascending"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:379 ../inc/subarrum-widgets.php:528
+#: ../inc/subarrum-customize-theme.php:379 ../inc/subarrum-widgets.php:746
 msgid "ID descending"
 msgstr ""
 
@@ -767,7 +768,7 @@ msgstr ""
 msgid "Menus"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:636 ../inc/subarrum-widgets.php:519
+#: ../inc/subarrum-customize-theme.php:636 ../inc/subarrum-widgets.php:737
 #: ../info-author.php:38
 msgid "Posts"
 msgstr ""
@@ -848,11 +849,11 @@ msgstr ""
 msgid "Link Target on Post Page"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:817
+#: ../inc/subarrum-customize-theme.php:817 ../inc/subarrum-widgets.php:559
 msgid "Image page"
 msgstr ""
 
-#: ../inc/subarrum-customize-theme.php:818
+#: ../inc/subarrum-customize-theme.php:818 ../inc/subarrum-widgets.php:560
 msgid "Lightbox (not included)"
 msgstr ""
 
@@ -997,7 +998,7 @@ msgstr ""
 
 #: ../inc/subarrum-widgets.php:65 ../inc/subarrum-widgets.php:176
 #: ../inc/subarrum-widgets.php:296 ../inc/subarrum-widgets.php:350
-#: ../inc/subarrum-widgets.php:514
+#: ../inc/subarrum-widgets.php:545 ../inc/subarrum-widgets.php:732
 msgid "Title:"
 msgstr ""
 
@@ -1017,11 +1018,11 @@ msgstr ""
 msgid "Number of posts to show:"
 msgstr ""
 
-#: ../inc/subarrum-widgets.php:183 ../inc/subarrum-widgets.php:537
+#: ../inc/subarrum-widgets.php:183 ../inc/subarrum-widgets.php:755
 msgid "Display post date?"
 msgstr ""
 
-#: ../inc/subarrum-widgets.php:186 ../inc/subarrum-widgets.php:540
+#: ../inc/subarrum-widgets.php:186 ../inc/subarrum-widgets.php:758
 msgid "Display post thumbnail?"
 msgstr ""
 
@@ -1071,27 +1072,55 @@ msgstr ""
 msgid "Button-Text:"
 msgstr ""
 
+#: ../inc/subarrum-widgets.php:369
+msgid "Displays images from the WordPress gallery."
+msgstr ""
+
 #: ../inc/subarrum-widgets.php:370
+msgid "Subar Rum Gallery"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:420
+msgid "You have no images in your WordPress media gallery."
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:548 ../inc/subarrum-widgets.php:557
+msgid "Order:"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:551
+msgid "Newest"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:565
+msgid "Rows:"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:568
+msgid "Columns:"
+msgstr ""
+
+#: ../inc/subarrum-widgets.php:588
 msgid "Display as recommended marked posts or images"
 msgstr ""
 
-#: ../inc/subarrum-widgets.php:371
+#: ../inc/subarrum-widgets.php:589
 msgid "Subar Rum Recommended"
 msgstr ""
 
-#: ../inc/subarrum-widgets.php:517
+#: ../inc/subarrum-widgets.php:735
 msgid "Type:"
 msgstr ""
 
-#: ../inc/subarrum-widgets.php:520
+#: ../inc/subarrum-widgets.php:738
 msgid "Images"
 msgstr ""
 
-#: ../inc/subarrum-widgets.php:525
+#: ../inc/subarrum-widgets.php:743
 msgid "Sort by:"
 msgstr ""
 
-#: ../inc/subarrum-widgets.php:533
+#: ../inc/subarrum-widgets.php:751
 msgid "Number of items to show:"
 msgstr ""
 
