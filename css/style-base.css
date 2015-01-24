@@ -207,12 +207,24 @@ a.no-deco:hover {
 
 .alignleft {
   text-align: left;
+  float: left;
+  margin-right: 7px;
 }
 .alignright {
   text-align: right;
+  float: right;
+  margin-left: 7px;
 }
 .aligncenter {
   text-align: center;
+}
+
+img .alignleft {
+    margin-right: 7px;
+}
+
+img .alignright {
+    margin-left: 7px;
 }
 
 .two-col-row {
