@@ -2245,6 +2245,78 @@ function subarrum_gallery_shortcode($attr) {
 		
 		$output .= "</script>\n";
 		
+        } else if ($type == 'slideshow') {
+        
+                $output = "\n<div id='".$selector."' class='carousel slide'>\n";
+                
+                $output .= "<ol class='carousel-indicators'>\n";
+                
+                $iii = 0;
+                foreach ( $attachments as $id => $attachment ) {
+                    if ($iii == 0) {
+                        $output .= "<li data-target='#".$selector."' data-slide-to='".$iii."' class='active'></li>\n";
+                    } else {
+                        $output .= "<li data-target='#".$selector."' data-slide-to='".$iii."'></li>\n";
+                    }
+                    $iii++;
+                }
+                
+                $output .= "</ol>\n";
+                
+                
+                $output .= "<div class='carousel-inner'>\n";
+                
+                $iii = 0;
+                foreach ( $attachments as $id => $attachment ) {
+                
+                    $thumb_image_url = wp_get_attachment_image_src( $id, 'post-image-full');
+                
+                    if ($iii == 0) {
+                        $output .= "<div class='active item'>\n";
+                    } else {
+                        $output .= "<div class='item'>\n";
+                    }
+                    
+                    if ($link != 'none') {
+                        if ($link == 'file') {
+                            $full_image_url = wp_get_attachment_image_src( $id, 'full');
+                            $output .= "<a href='". esc_url($full_image_url[0]) ."'>\n";
+                        } else {
+                            $output .= "<a href='". esc_url( get_permalink(get_post($id))) ."'>\n";
+                        }
+                    }
+                    
+                    $output .= "<img src='". esc_url( $thumb_image_url[0] ) ."' alt='". wptexturize($attachment->post_title) ."' />\n";
+                    
+                    if ($link != 'none') {
+                        $output .= "</a>\n";
+                    }
+                    
+                    if ($captions == "true") {
+                        $output .= "<div class='carousel-caption'>\n";
+                        $output .= "<h4>". wptexturize($attachment->post_title) ."</h4>\n";
+                        if ( ! empty($attachment->post_excerpt) ) {
+                            $output .= "<p>". wptexturize($attachment->post_excerpt) ."</p>\n";
+                        }
+                        $output .= "</div>\n";
+                    }
+                    
+                    $output .= "</div>\n";
+                    $iii++;
+                }
+                
+                $output .= "</div>\n";
+                
+                $output .= "<a class='carousel-control left' href='#".$selector."' data-slide='prev'>&lsaquo;</a>\n";
+                $output .= "<a class='carousel-control right' href='#".$selector."' data-slide='next'>&rsaquo;</a>\n";
+                
+                $output .= "</div>\n";
+                
+                $output .= "<script type='text/javascript'>\n";
+                $output .= "jQuery(#".$selector.").carousel({interval:0});\n";
+                $output .= "</script>\n";
+                
+		
 	} else {
 	
 		$span = "span4";
