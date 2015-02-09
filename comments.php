@@ -73,8 +73,8 @@ if ( post_password_required() )
 	  
 	  $commentformargs = array(
 		'comment_notes_before' => '<div class="alert alert-info"><button type="button" class="close" data-dismiss="alert">&times;</button>' . __( 'Your email address will not be published.', 'subarrum' ) . ( $req ? $required_text : '' ) . '</div>',
-		'comment_notes_after' => '<p class="form-allowed-tags">' . sprintf( __( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes: %s' ), ' <pre>' . allowed_tags() . '</pre>' ) . '</p>',
-		'comment_field' => '<p class="comment-form-comment"><label for="comment">' . _x( 'Comment', 'noun', 'subarrum' ) . '</label><textarea id="comment" name="comment" class="span12" rows="8" aria-required="true"></textarea></p>'
+		'comment_notes_after' => '<p class="form-allowed-tags" id="form-allowed-tags">' . sprintf( __( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes: %s' ), ' <pre>' . allowed_tags() . '</pre>' ) . '</p>',
+		'comment_field' => '<p class="comment-form-comment"><label for="comment">' . _x( 'Comment', 'noun' ) . '</label><textarea id="comment" name="comment" class="span12" rows="8" aria-describedby="form-allowed-tags" aria-required="true"></textarea></p>'
 	  );
 	
 	  comment_form($commentformargs);
