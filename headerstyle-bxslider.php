@@ -40,7 +40,8 @@
 				pause: <?php echo get_theme_mod('image_slider_pause', '5000'); ?>,
 				easing: 'ease-in-out',
 				pager: <?php echo $slpager; ?>,
-				autoHover: true
+				autoHover: true,
+				slideSelector: 'div.slide'
 			});
 		});
 	</script>
@@ -49,7 +50,7 @@
 		$headerimages = subarrum_get_featured($type, $limit, $order );
 		?>
 		
-		<div class="bxslider" style="padding:0px !important;overflow:hidden;height:320px;">
+		<div class="bxslider" style="padding:0px !important;height:320px;">
 		  <?php foreach ($headerimages as $key => $value) : ?>
 		    <?php
 			  if ($type == 'attachment') {
@@ -60,7 +61,7 @@
 			  }
 			  if ($linkit) $permalink = get_permalink( $value );
 		    ?>
-		    <div>
+		    <div class="slide">
 		      <?php if ($linkit) : ?>
 		      <a href="<?php echo $permalink; ?>">
 		      <?php endif; ?>
