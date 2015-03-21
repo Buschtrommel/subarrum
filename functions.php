@@ -1946,7 +1946,7 @@ function subarrum_gallery_overview_private($ids = null, $page_id = null, $column
                 
                         $output .= "<a class='pull-left' href='{$_page_link}'>";
 //                         $output .= "<img class='media-object' src='". esc_url( $_thumb_image_url[0] ) ."' width='". $_thumb_image_url[1] ."' height='". $_thumb_image_url[3] ."' alt='". $page->post_title ."' /></a>\n";
-                        $output .= "<img class='media-object' src='". esc_url( $_thumb_image_url[0] ) ."' width='96' height='96' alt='". $page->post_title ."' /></a>\n";
+                        $output .= "<img class='media-object img-polaroid no-deco' src='". esc_url( $_thumb_image_url[0] ) ."' width='96' height='96' alt='". $page->post_title ."' /></a>\n";
                         
                         $output .= "<div class='media-body'>\n";
                         $output .= "<h4 class='media-heading'>{$page->post_title}</h4>\n";
