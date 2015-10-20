@@ -216,10 +216,10 @@ function subarrum_scripts_styles()
 	wp_enqueue_style( 'body-style', get_template_directory_uri(). '/css/style-body-'. get_theme_mod('navbar_position', 'navbar-fixed-top') .'.css', array('bootstrap-style'), '1.0', 'all');
 	
 	// register bxslider script, but load it when needed in template fancy-header.php
-	wp_register_script( 'bxslider', get_template_directory_uri() . '/bxslider/jquery.bxslider.min.js', array('jquery'), '4.2.3', false );
+	wp_register_script( 'bxslider', get_template_directory_uri() . '/bxslider/jquery.bxslider.min.js', array('jquery'), '4.2.5', false );
 	
 	// register bxslider styles, but load it when needed in template fancy-header.php
-	wp_register_style( 'bxslider-css', get_template_directory_uri() . '/bxslider/jquery.bxslider.css', array(), '4.2.3', 'all');
+	wp_register_style( 'bxslider-css', get_template_directory_uri() . '/bxslider/jquery.bxslider.min.css', array(), '4.2.5', 'all');
 	wp_register_style( 'bxslider-css-subarrum', get_template_directory_uri() . '/css/jquery.bxslider-subarrum.css', array(), '1.0', 'all');
 	
 	// register justified gallery script and css, but load it when needed by gallery shortcode
