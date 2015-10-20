@@ -1,6 +1,7 @@
 + implement gallery widget to show media gallery pictures
-+ updated bxSlider to version 4.2.3
-+ updated Justified Gallery to version 3.5.4
++ updated bxSlider to version 4.2.5
++ updated Justified Gallery to version 3.6.0
++ updated HTML5 Shiv to version 3.7.3
 
 ##### Wed Jan 21 18:29:00 CET 2014 - Subar Rum - 1.3.0
 + implement gallery overview shortcode and display subpages on gallery page templates
