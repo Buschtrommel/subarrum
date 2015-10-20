@@ -223,8 +223,8 @@ function subarrum_scripts_styles()
 	wp_register_style( 'bxslider-css-subarrum', get_template_directory_uri() . '/css/jquery.bxslider-subarrum.css', array(), '1.0', 'all');
 	
 	// register justified gallery script and css, but load it when needed by gallery shortcode
-	wp_enqueue_script( 'justified-gallery', get_template_directory_uri() . '/justified-gallery/jquery.justifiedGallery.min.js', array('jquery'), '3.5.4', false);
-	wp_enqueue_style( 'justified-gallery-css', get_template_directory_uri() . '/justified-gallery/justifiedGallery.min.css', array(), '3.5.4', 'all');
+	wp_enqueue_script( 'justified-gallery', get_template_directory_uri() . '/justified-gallery/jquery.justifiedGallery.min.js', array('jquery'), '3.6.0', false);
+	wp_enqueue_style( 'justified-gallery-css', get_template_directory_uri() . '/justified-gallery/justifiedGallery.min.css', array(), '3.6.0', 'all');
 	
 	// load font awesome css styles
 	wp_enqueue_style( 'font-awesome', get_template_directory_uri(). '/fontawesome/font-awesome.min.css', array('bootstrap-style'), '3.2.1', 'all' );
