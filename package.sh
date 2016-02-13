@@ -53,5 +53,5 @@ done
 VERSION=`grep "Version:" $INFOFILE | sed 's/Version: //' | sed 's/^[ \t]*//;s/[ \t]*$//'`
 
 # Create archives
-tar -c -z -f ../${PKGNAME}-${VERSION}.tar.gz --exclude-vcs --exclude=*.kdev4 --exclude=.kdev4 --exclude=package.sh *
+tar -c -j -f ../${PKGNAME}-${VERSION}.tar.bz2 --exclude-vcs --exclude=*.kdev4 --exclude=.kdev4 --exclude=package.sh *
 zip -q -r ../${PKGNAME}-${VERSION}.zip * -x \*.sh -x \*.kdev4
