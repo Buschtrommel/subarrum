@@ -15,11 +15,11 @@ page with own widgets. Furthermore it is possible to display the blog
 layout in two columns.
 Developed with westphalian stubbornness in Munich.
 
-License: GPLv3 - http://www.gnu.org/licenses/gpl-3.0.en.html  
+License: GPLv3 - http://www.gnu.org/licenses/gpl-3.0.en.html
 Author: Buschmann  
 Author Site: http://www.buschmann23.de  
-Theme Site: http://www.buschmann23.de/entwicklung/wordpress/themes/subar-rum/  
-Theme Demo: http://subarrum-demo.buschmann23.de  
+Theme Site: http://www.buschmann23.de/entwicklung/wordpress/themes/subar-rum/
+Theme Demo: http://subarrum-demo.buschmann23.de
 
 
 
@@ -27,7 +27,7 @@ Theme Demo: http://subarrum-demo.buschmann23.de
 * base colors: black, blue, gray and white
 * two columns: content and widget area on the right
 * two blog columns: optionally you can present your blog entries in two columns
-* fixed width: 960px, content are 630px (but without widgets also 960px)
+* fixed width: 960px, content area 630px (but without widgets also 960px)
 * custom background: set your own image or pattern
 * custom headers: choose out of three headers, bxSlider, Bootstrap Corousel
   or WP custom header, or disable it completely
@@ -56,7 +56,7 @@ Theme Demo: http://subarrum-demo.buschmann23.de
 * navigation bar: flexible navigation bar on the top, you can disable it or show
   a menu in it, otherwise it shows a search field
 * built in widgets: there are some built in widgets to present your content in a
-  nicer way (recent posts/comments, recommended posts/images)
+  nicer way (recent posts/comments, recommended posts/images, gallery images)
 
 
 
