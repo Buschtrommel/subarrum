@@ -198,11 +198,11 @@ function subarrum_scripts_styles()
 	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/bootstrap/js/bootstrap.min.js', array('jquery'), '2.3.2', false );
 	
 	// enqueue enbale bootstrap tooltips through java script
-	wp_enqueue_script( 'bootstrap-tooltip', get_template_directory_uri() . '/js/enableTooltips.js', array('bootstrap'), '1.0', false );
+	wp_enqueue_script( 'bootstrap-tooltip', get_template_directory_uri() . '/js/enableTooltips.min.js', array('bootstrap'), '1.0', false );
 	
 	// enqueue enable bootstrap popovers when needed for iconified meta data
 // 	if (!(get_theme_mod('meta_data_style', 'icons') == 'text')) {
-	wp_enqueue_script( 'bootstrap-popover', get_template_directory_uri() . '/js/enablePopovers.js', array('bootstrap-tooltip'), '1.0', false );
+	wp_enqueue_script( 'bootstrap-popover', get_template_directory_uri() . '/js/enablePopovers.min.js', array('bootstrap-tooltip'), '1.0', false );
 // 	}
 	
 	// enqueue main bootstrap css style
@@ -213,7 +213,7 @@ function subarrum_scripts_styles()
 	
 	// enqueue body style between bootstrap main and responsinve because of navbar fixed to top, load
 	// appropriate body css style
-	wp_enqueue_style( 'body-style', get_template_directory_uri(). '/css/style-body-'. get_theme_mod('navbar_position', 'navbar-fixed-top') .'.css', array('bootstrap-style'), '1.0', 'all');
+	wp_enqueue_style( 'body-style', get_template_directory_uri(). '/css/style-body-'. get_theme_mod('navbar_position', 'navbar-fixed-top') .'.min.css', array('bootstrap-style'), '1.0', 'all');
 	
 	// register bxslider script, but load it when needed in template fancy-header.php
 	wp_register_script( 'bxslider', get_template_directory_uri() . '/bxslider/jquery.bxslider.min.js', array('jquery'), '4.2.5', false );
@@ -223,14 +223,14 @@ function subarrum_scripts_styles()
 	wp_register_style( 'bxslider-css-subarrum', get_template_directory_uri() . '/css/jquery.bxslider-subarrum.css', array(), '1.0', 'all');
 	
 	// register justified gallery script and css, but load it when needed by gallery shortcode
-	wp_enqueue_script( 'justified-gallery', get_template_directory_uri() . '/justified-gallery/jquery.justifiedGallery.min.js', array('jquery'), '3.6.0', false);
-	wp_enqueue_style( 'justified-gallery-css', get_template_directory_uri() . '/justified-gallery/justifiedGallery.min.css', array(), '3.6.0', 'all');
+	wp_enqueue_script( 'justified-gallery', get_template_directory_uri() . '/justified-gallery/jquery.justifiedGallery.min.js', array('jquery'), '3.6.1', false);
+	wp_enqueue_style( 'justified-gallery-css', get_template_directory_uri() . '/justified-gallery/justifiedGallery.min.css', array(), '3.6.1', 'all');
 	
 	// load font awesome css styles
 	wp_enqueue_style( 'font-awesome', get_template_directory_uri(). '/fontawesome/font-awesome.min.css', array('bootstrap-style'), '3.2.1', 'all' );
 	
 	// load base style sheet
-	wp_enqueue_style( 'subarrum-base-style', get_template_directory_uri(). '/css/style-base.css', array('bootstrap-responsive'), '1.0', 'all' );
+	wp_enqueue_style( 'subarrum-base-style', get_template_directory_uri(). '/css/style-base.min.css', array('bootstrap-responsive'), '1.0', 'all' );
 	
 	// load the main style sheet
 	wp_enqueue_style( 'subarrum-style', get_stylesheet_uri(), array('subarrum-base-style'), '1.0', 'all' );
@@ -256,14 +256,14 @@ function subarrum_add_ie_html5_shiv() {
 	
 	$browser = wp_check_browser_version();
 	if ( 0 == version_compare( intval($browser['version']), 7))
-		wp_enqueue_style( 'bs-ie7-buttonfix', get_template_directory_uri(). '/css/bootstrap-ie7buttonfix.css', array('bootstrap-style'), '1.0', 'all' );
+		wp_enqueue_style( 'bs-ie7-buttonfix', get_template_directory_uri(). '/css/bootstrap-ie7buttonfix.min.css', array('bootstrap-style'), '1.0', 'all' );
 	if ( 0 == version_compare( intval($browser['version']), 8))
-		wp_enqueue_style( 'bs-ie8-buttonfix', get_template_directory_uri(). '/css/bootstrap-ie8buttonfix.css', array('bootstrap-style'), '1.0', 'all' );
+		wp_enqueue_style( 'bs-ie8-buttonfix', get_template_directory_uri(). '/css/bootstrap-ie8buttonfix.min.css', array('bootstrap-style'), '1.0', 'all' );
 	if ( 0 == version_compare( intval($browser['version']), 7))
-		wp_enqueue_style( 'font-awesome-ie7', get_template_directory_uri(). '/fontawesome/font-awesome-ie7.min.css', array('font-awesome'), '3.0.2', 'all' );
+		wp_enqueue_style( 'font-awesome-ie7', get_template_directory_uri(). '/fontawesome/font-awesome-ie7.min.css', array('font-awesome'), '3.2.1', 'all' );
 	// enqueue html5 shiv if IE version is lower 9
 	if ( 0 > version_compare( intval($browser['version']), 9))
-		wp_enqueue_script( 'ie-html5', get_template_directory_uri() . '/js/html5shiv.min.js', array(), '3.7.2', false );
+		wp_enqueue_script( 'ie-html5', get_template_directory_uri() . '/js/html5shiv.min.js', array(), '3.7.3', false );
 }
 
 
