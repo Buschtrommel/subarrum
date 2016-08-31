@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Functions
  *
@@ -12,11 +12,11 @@
  * @since Subar Rum 1.0
  */
 
- 
+
 
 /**
  * Sets up the content width value based on the theme's design and stylesheet.
- * 
+ *
  * @since Subar Rum 1.0
  */
 if ( ! isset( $content_width ) ) {
@@ -36,11 +36,11 @@ require (get_template_directory() . '/inc/subarrum-widgets.php');
 
 /**
  * Hook in the different filters, actions and shortcodes
- * 
+ *
  * @since Subar Rum 1.0
  */
 function subarrum_register_hooks() {
-	
+
 	// general hooks
 	add_action( 'after_setup_theme', 	'subarrum_setup' );
 	add_action( 'widgets_init', 		'subarrum_widgets_init' );
@@ -48,7 +48,7 @@ function subarrum_register_hooks() {
 	add_action( 'wp_enqueue_scripts',	'subarrum_fonts' );
 	add_action( 'init',                     'subarrum_add_excerpt_to_ages' );
 	add_action( 'customize_register',			'subarrum_customize_register', 11 );
-	
+
 	// admin only hooks
       if(is_admin()) {
 	add_filter( 'image_size_names_choose',			'subarrum_insert_custom_image_sizes' );
@@ -61,7 +61,7 @@ function subarrum_register_hooks() {
 	global $pagenow; if ( $pagenow == 'post.php') // only loads on single edit page
 	add_action( 'save_post',				'subarrum_save_featured_post' );
 	add_filter( 'attachment_fields_to_save',		'subarrum_save_featured_image' );
-	
+
 	// frontend only hooks
       } else {
 	add_action( 'wp_enqueue_scripts',	'subarrum_scripts_styles' );
@@ -117,28 +117,28 @@ function subarrum_content_width() {
 
 /**
  * Setup the basic theme functions and options
- * 
+ *
  * @since Subar Rum 1.0
  */
 function subarrum_setup()
 {
 	// Adds RSS feed links to <head> for posts and comments.
 	add_theme_support( 'automatic-feed-links' );
-	
+
 	load_theme_textdomain( 'subarrum', get_template_directory() . '/languages' );
-	
+
 	// This theme styles the visual editor with editor-style.css to match the theme style.
 	add_editor_style();
-	
+
 	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menu( 'navbar', __( 'Navigation Bar Menu', 'subarrum' ) );
 	register_nav_menu( 'primary', __( 'Primary Menu', 'subarrum' ) );
-	
+
 	// support for custom background color, sets also up a default color
 	add_theme_support( 'custom-background', array(
 		'default-color' => 'e6e6e6',
 	) );
-	
+
 	// support for custom header
 	$custom_header_defaults = array(
 					'width'			=> 960,
@@ -147,16 +147,16 @@ function subarrum_setup()
 					'default-text-color'	=> '000000',
 					);
 	add_theme_support( 'custom-header', $custom_header_defaults );
-	
+
 	// This theme supports a variety of post formats.
 	add_theme_support( 'post-formats', array( 'aside', 'image', 'link', 'quote', 'status', 'video', 'audio' ) );
-	
+
 	// Adds image size for full view of post images in single post view
 	add_image_size('post-image-full', 630, 9999);
 	add_image_size('post-image-wide', 960, 420, true);
 	add_image_size('post-thumbnails-wide', 960, 320, true);
 	add_image_size('post-image-full-width', 960, 9999);
-	
+
 	// This theme uses a custom image size for featured images, displayed on "standard" posts.
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 630, 200, true ); // Unlimited height, soft crop
@@ -167,7 +167,7 @@ function subarrum_setup()
 
 /**
  * Add the additional image sizes to the media chooser
- * 
+ *
  * @since Subar Rum 1.0
  */
 function subarrum_insert_custom_image_sizes( $sizes ) {
@@ -187,51 +187,60 @@ function subarrum_insert_custom_image_sizes( $sizes ) {
 
 /**
  * Register and enqueue scripts and styles
- * 
+ *
  * @since Subar Rum 1.0
  */
 function subarrum_scripts_styles()
 {
 	global $wp_styles;
-	
+
+	if (!is_admin()) {
+		wp_deregister_script('jquery');
+		wp_register_script('jquery', 'https://cdn.jsdelivr.net/g/jquery@1.12.4,jquery.migrate@1.4.1,bootstrap@2.3.2', array(), null, false);
+		wp_enqueue_script('jquery');
+	}
+
 	// enqueue main bootstrap java script
-	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/bootstrap/js/bootstrap.min.js', array('jquery'), '2.3.2', false );
-	
+// 	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/bootstrap/js/bootstrap.min.js', array('jquery'), '2.3.2', false );
+
 	// enqueue enbale bootstrap tooltips through java script
 	wp_enqueue_script( 'bootstrap-tooltip', get_template_directory_uri() . '/js/enableTooltips.min.js', array('bootstrap'), '1.0', false );
-	
+
 	// enqueue enable bootstrap popovers when needed for iconified meta data
 // 	if (!(get_theme_mod('meta_data_style', 'icons') == 'text')) {
 	wp_enqueue_script( 'bootstrap-popover', get_template_directory_uri() . '/js/enablePopovers.min.js', array('bootstrap-tooltip'), '1.0', false );
 // 	}
-	
+
 	// enqueue main bootstrap css style
-	wp_enqueue_style( 'bootstrap-style', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css', array(), '2.3.2', 'all' );
-	
+// 	wp_enqueue_style( 'bootstrap-style', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css', array(), '2.3.2', 'all' );
+	wp_enqueue_style( 'bootstrap-style', 'https://cdn.jsdelivr.net/bootstrap/2.3.2/css/bootstrap.min.css', array(), null, 'all');
+
 	// enqueue responsive bootstrap css stlye
-	wp_enqueue_style( 'bootstrap-responsive', get_template_directory_uri() . '/bootstrap/css/bootstrap-responsive.min.css', array('body-style'), '2.3.2', 'all' );
-	
+// 	wp_enqueue_style( 'bootstrap-responsive', get_template_directory_uri() . '/bootstrap/css/bootstrap-responsive.min.css', array('body-style'), '2.3.2', 'all' );
+	wp_enqueue_style( 'bootstrap-responsive', 'https://cdn.jsdelivr.net/bootstrap/2.3.2/css/bootstrap-responsive.min.css', array('body-style'), null, 'all');
+
 	// enqueue body style between bootstrap main and responsinve because of navbar fixed to top, load
 	// appropriate body css style
 	wp_enqueue_style( 'body-style', get_template_directory_uri(). '/css/style-body-'. get_theme_mod('navbar_position', 'navbar-fixed-top') .'.min.css', array('bootstrap-style'), '1.0', 'all');
-	
+
 	// register bxslider script, but load it when needed in template fancy-header.php
 	wp_register_script( 'bxslider', get_template_directory_uri() . '/bxslider/jquery.bxslider.min.js', array('jquery'), '4.2.5', false );
-	
+
 	// register bxslider styles, but load it when needed in template fancy-header.php
 	wp_register_style( 'bxslider-css', get_template_directory_uri() . '/bxslider/jquery.bxslider.min.css', array(), '4.2.5', 'all');
 	wp_register_style( 'bxslider-css-subarrum', get_template_directory_uri() . '/css/jquery.bxslider-subarrum.css', array(), '1.0', 'all');
-	
+
 	// register justified gallery script and css, but load it when needed by gallery shortcode
 	wp_enqueue_script( 'justified-gallery', get_template_directory_uri() . '/justified-gallery/jquery.justifiedGallery.min.js', array('jquery'), '3.6.1', false);
 	wp_enqueue_style( 'justified-gallery-css', get_template_directory_uri() . '/justified-gallery/justifiedGallery.min.css', array(), '3.6.1', 'all');
-	
+
 	// load font awesome css styles
-	wp_enqueue_style( 'font-awesome', get_template_directory_uri(). '/fontawesome/font-awesome.min.css', array('bootstrap-style'), '3.2.1', 'all' );
-	
+// 	wp_enqueue_style( 'font-awesome', get_template_directory_uri(). '/fontawesome/font-awesome.min.css', array('bootstrap-style'), '3.2.1', 'all' );
+	wp_enqueue_style( 'font-awesome', 'https://cdn.jsdelivr.net/fontawesome/3.2.1/css/font-awesome.min.css', array('bootstrap-style'), null, 'all');
+
 	// load base style sheet
 	wp_enqueue_style( 'subarrum-base-style', get_template_directory_uri(). '/css/style-base.min.css', array('bootstrap-responsive'), '1.0', 'all' );
-	
+
 	// load the main style sheet
 	wp_enqueue_style( 'subarrum-style', get_stylesheet_uri(), array('subarrum-base-style'), '1.0', 'all' );
 }
@@ -240,37 +249,39 @@ function subarrum_scripts_styles()
 
 /**
  * Add Internet Explorer conditional html5 shiv and css hacks to the header
- * 
+ *
  * @since Subar Rum 1.0
  * @uses wp_check_browser_version()
  */
 function subarrum_add_ie_html5_shiv() {
 	global $is_IE;
-	
+
 	// return if browser is not IE
 	if (!$is_IE) return;
-	
+
 	// include the needed file for wp_check_browser_version
 	if (! function_exists('wp_check_browser_version') )
 		include_once(ABSPATH . 'wp-admin/includes/dashboard.php');
-	
+
 	$browser = wp_check_browser_version();
 	if ( 0 == version_compare( intval($browser['version']), 7))
 		wp_enqueue_style( 'bs-ie7-buttonfix', get_template_directory_uri(). '/css/bootstrap-ie7buttonfix.min.css', array('bootstrap-style'), '1.0', 'all' );
 	if ( 0 == version_compare( intval($browser['version']), 8))
 		wp_enqueue_style( 'bs-ie8-buttonfix', get_template_directory_uri(). '/css/bootstrap-ie8buttonfix.min.css', array('bootstrap-style'), '1.0', 'all' );
 	if ( 0 == version_compare( intval($browser['version']), 7))
-		wp_enqueue_style( 'font-awesome-ie7', get_template_directory_uri(). '/fontawesome/font-awesome-ie7.min.css', array('font-awesome'), '3.2.1', 'all' );
+// 		wp_enqueue_style( 'font-awesome-ie7', get_template_directory_uri(). '/fontawesome/font-awesome-ie7.min.css', array('font-awesome'), '3.2.1', 'all' );
+		wp_enqueue_style( 'font-awesome-ie7', 'https://cdn.jsdelivr.net/fontawesome/3.2.1/css/font-awesome-ie7.min.css', array('font-awesome'), null, 'all');
 	// enqueue html5 shiv if IE version is lower 9
 	if ( 0 > version_compare( intval($browser['version']), 9))
-		wp_enqueue_script( 'ie-html5', get_template_directory_uri() . '/js/html5shiv.min.js', array(), '3.7.3', false );
+// 		wp_enqueue_script( 'ie-html5', get_template_directory_uri() . '/js/html5shiv.min.js', array(), '3.7.3', false );
+		wp_enqueue_script( 'ie-html5', 'https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js', array(), null, false);
 }
 
 
 
 /**
  * add custom css code for different template options
- * 
+ *
  * @since Subar Rum 1.0
  */
 function subarrum_customize_css() {
@@ -298,7 +309,7 @@ function subarrum_customize_css() {
 	  background-position: <?php echo get_theme_mod('container_bgposition', 'left'); ?>;
 	  <?php endif; ?>
 	}
-	
+
 <?php if (is_admin_bar_showing()) : ?>
       @media (min-width: 980px) {
 	#navbar {
@@ -315,11 +326,11 @@ function subarrum_customize_css() {
 <?php endif; ?>
 
 <?php if ( get_theme_mod('two_columns_enable', 0) ) : ;?>
-	
+
 	.blog article {
 	  margin-bottom: 6px;
 	}
-	
+
 	div.two-col-box {
 	  padding: 4px;
 	  <?php if (get_theme_mod('two_columns_rounded', 0)) : ?>
@@ -331,8 +342,8 @@ function subarrum_customize_css() {
 	  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 	  <?php endif; ?>
 	}
-	
-	
+
+
 	<?php if (!(get_theme_mod('two_columns_transparent', 1))) : ?>
 	div.light-back {
 	  background-color: <?php echo get_theme_mod('two_columns_color1', 'F5F5F5'); ?>;
@@ -343,7 +354,7 @@ function subarrum_customize_css() {
 	  background-color: <?php echo get_theme_mod('two_columns_color2', 'ECECEC'); ?>;
 	}
 	<?php endif; ?>
-	
+
 <?php endif; ?>
 
 </style>
@@ -421,7 +432,7 @@ function subarrum_fonts() {
 
 /**
  * Registers the widget areas and the built-in widgets
- * 
+ *
  * @since Subar Rum 1.0
  */
 function subarrum_widgets_init() {
@@ -431,7 +442,7 @@ function subarrum_widgets_init() {
 	register_widget( 'Subarrum_Recent_Comments' );
 	register_widget( 'Subarrum_Recommended_Widget' );
 	register_widget( 'Subarrum_Gallery_Widget' );
-	
+
 	register_sidebar( array(
 		'name' => __( 'Main Sidebar', 'subarrum' ),
 		'id' => 'sidebar-1',
@@ -441,7 +452,7 @@ function subarrum_widgets_init() {
 		'before_title' => '<h6 class="widget-head">',
 		'after_title' => '</h6>',
 	) );
-	
+
 	register_sidebar( array(
 		'name' => __( 'Entries Area', 'subarrum' ),
 		'id' => 'entries-1',
@@ -451,7 +462,7 @@ function subarrum_widgets_init() {
 		'before_title' => '<h6 class="widget-head">',
 		'after_title' => '</h6>',
 	) );
-	
+
 	register_sidebar( array(
 		'name' => __( 'Pages Area', 'subarrum' ),
 		'id' => 'pages-1',
@@ -461,7 +472,7 @@ function subarrum_widgets_init() {
 		'before_title' => '<h6 class="widget-head">',
 		'after_title' => '</h6>',
 	) );
-	
+
 	register_sidebar( array(
 		'name' => __( 'Footer Area 1', 'subarrum' ),
 		'id' => 'footer-1',
@@ -471,7 +482,7 @@ function subarrum_widgets_init() {
 		'before_title' => '<h6 class="widget-head">',
 		'after_title' => '</h6>',
 	) );
-	
+
 	register_sidebar( array(
 		'name' => __( 'Footer Area 2', 'subarrum' ),
 		'id' => 'footer-2',
@@ -481,7 +492,7 @@ function subarrum_widgets_init() {
 		'before_title' => '<h6 class="widget-head">',
 		'after_title' => '</h6>',
 	) );
-	
+
 	register_sidebar( array(
 		'name' => __( 'Front Page Area 1', 'subarrum' ),
 		'id' => 'front-1',
@@ -491,7 +502,7 @@ function subarrum_widgets_init() {
 		'before_title' => '<h6 class="widget-head">',
 		'after_title' => '</h6>',
 	) );
-	
+
 	register_sidebar( array(
 		'name' => __( 'Front Page Area 2', 'subarrum' ),
 		'id' => 'front-2',
@@ -501,7 +512,7 @@ function subarrum_widgets_init() {
 		'before_title' => '<h6 class="widget-head">',
 		'after_title' => '</h6>',
 	) );
-	
+
 	register_sidebar( array(
 		'name' => __( 'Gallery', 'subarrum' ),
 		'id' => 'gallery',
@@ -517,14 +528,14 @@ function subarrum_widgets_init() {
 
 /**
  * custom audio caption shortcode
- * 
+ *
  * @since Subar Rum 1.0
  */
 function subarrum_audio_shortcode($url) {
 	$reg_exOGG = "/\.(ogg|OGG)\z/";
 	$reg_exMP3 = "/\.(mp3|MP3)\z/";
 	$reg_exWAV = "/\.(wav|WAV)\z/";
-	
+
 	$html = '<audio controls="controls">';
 	foreach ($url as $file) {
 		if (preg_match($reg_exOGG, $file)) $type = 'audio/ogg';
@@ -534,7 +545,7 @@ function subarrum_audio_shortcode($url) {
 	}
 	$html .= sprintf( __('Apologies. But your browser does not support the HTML5 audio tag, you can <a href="%1$s">download the file</a> instead.', 'subarrum'), $url[0]);
 	$html .= '</audio>';
-	
+
 	return $html;
 }
 
@@ -542,7 +553,7 @@ function subarrum_audio_shortcode($url) {
 
 /**
  * custom image caption shortcode
- * 
+ *
  * @since Subar Rum 1.0
  */
 function subarrum_img_caption_shortcode($attr, $content = null) {
@@ -566,14 +577,14 @@ function subarrum_img_caption_shortcode($attr, $content = null) {
 		'width'	=> '',
 		'caption' => ''
 	), $attr));
-	
+
 	$capalign = '';
 
 	if ( 1 > (int) $width || empty($caption) )
 		return $content;
 
 	if ( $id ) $id = 'id="' . esc_attr($id) . '" ';
-	
+
 	switch($align) {
 		case 'alignleft':
 		  $align = 'pull-left'; $capalign = ' text-left'; $margin = 'style="margin-right:7px;"';
@@ -607,24 +618,24 @@ function subarrum_paginate_links( $html_id ) {
 	$html_id = esc_attr( $html_id );
 	$showmaxpage = 4; //set maximum pages to show +/- current page
 	$avalmaxpage = $wp_query->max_num_pages; //the available pages to display
-	
+
 	if ( $avalmaxpage > 1 ) : ?>
 		<nav id="<?php echo $html_id; ?>" class="pagination pagination-centered hidden-phone" role="navigation">
 		  <ul>
-		    
+
 		    <?php // show back to start when more pages are available then maximum to show ?>
 		    <?php if ( $avalmaxpage > ($showmaxpage * 2 + 1) && $paged > ($showmaxpage + 1) ) : ?>
 			<li <?php if ($paged == 0) {echo 'class="disabled"';} ?>><a href="<?php echo get_pagenum_link($pagenum = 0); ?>"><i class="icon-step-backward"></i></a></li>
 		    <?php endif; ?>
-		    
+
 		    <?php if ($paged > 1) : ?>
 			<li <?php if ($paged == 0) {echo 'class="disabled"';} ?>><a href="<?php previous_posts(); ?>"><i class="icon-backward"></i></a></li>
 		    <?php endif; ?>
-		    
+
 		    <?php if ($paged <= ($showmaxpage + 1)) : ?>
 			<li <?php if ($paged == 0) {echo 'class="active"';} ?>><a href="<?php echo get_pagenum_link($pagenum = 0); ?>">1</a></li>
 		    <?php endif; ?>
-		    
+
 		    <?php $page = ($paged - $showmaxpage); while ($page <= $avalmaxpage && $page < $paged) : ?>
 		      <?php if ($page > 1) : ?>
 			<li <?php if ($paged == $page) {echo 'class="active"';} ?>>
@@ -633,7 +644,7 @@ function subarrum_paginate_links( $html_id ) {
 		      <?php endif; ?>
 		    <?php $page++; ?>
 		    <?php endwhile; ?>
-		    
+
 		    <?php $page = $paged; while ($page <= $avalmaxpage && $page <= ($paged + $showmaxpage )) : ?>
 		      <?php if ($page > 1) : ?>
 			<li <?php if ($paged == $page) {echo 'class="active"';} ?>>
@@ -642,18 +653,18 @@ function subarrum_paginate_links( $html_id ) {
 		      <?php endif; ?>
 		    <?php $page++; ?>
 		    <?php endwhile; ?>
-		    
+
 		    <?php if ( $paged < $avalmaxpage ) : ?>
 			<li <?php if ($paged == $avalmaxpage) {echo 'class="disabled"';} ?>><a href="<?php next_posts(); ?>"><i class="icon-forward"></i></a></li>
 		    <?php endif; ?>
-		    
+
 		    <?php if ( $avalmaxpage > ($showmaxpage * 2 + 1) && $paged < ($avalmaxpage - $showmaxpage) ) : ?>
 			<li <?php if ($paged == $avalmaxpage) {echo 'class="disabled"';} ?>><a href="<?php echo get_pagenum_link($pagenum = $avalmaxpage); ?>" class="hasTip" title="<?php printf(__('Last page: %1$d', 'subarrum'), $avalmaxpage); ?>"><i class="icon-step-forward"></i></a></li>
 		    <?php endif; ?>
-		    
+
 		  </ul>
 		</nav>
-		
+
 		<?php // show these on mobile devices ?>
 		<nav id="<?php echo $html_id; ?>" class="visible-phone" role="navigation">
 		  <ul class="pager">
@@ -680,27 +691,27 @@ if ( ! function_exists( 'subarrum_entry_meta' ) ) :
  * @since Subar Rum 1.0
  */
 function subarrum_entry_meta($style = null) {
-	
+
 	if (empty($style))
 		$style = get_theme_mod('meta_data_style', 'icons');
 	$two_columns_enable = get_theme_mod('two_columns_enable', 0);
-	
+
 	// Translators: used between list items, there is a space after the comma.
 	$categories_list = get_the_category_list( __( ', ', 'subarrum' ) );
-	
+
 	// Translators: used between list items, there is a space after the comma.
 	$tag_list = get_the_tag_list( '', __( ', ', 'subarrum' ) );
-	
+
 	if ($style == 'popover') {
 		$comments  = '<a href="'. esc_url(get_permalink()) .'#comments">'. get_comments_number() .'</a>';
 	}
-	
+
 	if ($style == 'icons') {
 		$categories_count = substr_count($categories_list, '<a');
 		if ($categories_count > 1) {
 			// save the original categories list
 			$categories_list_orig = $categories_list;
-		
+
 			$categories_list  = "<a href='#' data-toggle='popover' data-placement='bottom' title='";
 			$categories_list .= __('Posted in', 'subarrum') ."'";
 			$categories_list .= " data-content='". $categories_list_orig ."'";
@@ -708,12 +719,12 @@ function subarrum_entry_meta($style = null) {
 			$categories_list .= $categories_count ." ". __('Categories', 'subarrum');
 			$categories_list .= "</a>";
 		}
-		
+
 		$tag_count = substr_count($tag_list, '<a');
 		if ($tag_count > 1) {
 			// save the original tag list
 			$tag_list_orig = $tag_list;
-			
+
 			$tag_list  = "<a href='#' data-toggle='popover' data-placement='bottom' title='";
 			$tag_list .= __('Tagged as', 'subarrum') ."'";
 			$tag_list .= " data-content='". $tag_list_orig ."'";
@@ -802,7 +813,7 @@ function subarrum_entry_meta($style = null) {
 		$utility_text .= "<i class=\"icon-barcode pull-right\"></i>";
 		$utility_text .= "</a>";
 	}
-	
+
 	printf(
 		$utility_text,
 		$categories_list,
@@ -823,17 +834,17 @@ if ( ! function_exists( 'subarrum_post_thumbnail' ) ) :
  */
 function subarrum_post_thumbnail($thumbsize = 'post-thumbnail', $caption = '1') {
 	global $content_width;
-	
+
 	$thumb_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), $thumbsize);
 	$thumb_image_alt = get_post_meta(get_post_thumbnail_id(),'_wp_attachment_image_alt', true);
 	$full_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full');
 	$attachment = get_post(get_post_thumbnail_id());
-	
+
 	// load theme option if image on single page should link to lightbox (1) or image page (0)
 	$linktarget = get_theme_mod('post_thumbnail_link');
-	
+
 	$out = ($caption) ? '<div class="wp-caption">' : '<p>';
-	
+
 	if (is_singular()) {
 	  $out .= '<a href="';
 	  $out .= $linktarget ? esc_url( $full_image_url[0] ) . '" ' : esc_url( get_permalink(get_post(get_post_thumbnail_id()))) . '" '; // link to image url or to image page
@@ -842,19 +853,19 @@ function subarrum_post_thumbnail($thumbsize = 'post-thumbnail', $caption = '1') 
 	} else {
 	  $out .= '<a href="'. esc_url( get_permalink()) .'" title="'. get_the_title() .'">';
 	}
-	
+
 	if ($thumb_image_url[1] < ($content_width / 2)) {
 	  $out .= '<img src="'. esc_url( $thumb_image_url[0] ) .'" width="'. $thumb_image_url[1] .'" height="'. $thumb_image_url[3] .'" alt="'. esc_attr($thumb_image_alt) .'" class="pull-left featured-vertical" /></a>';
 	} else {
 	  $out .= '<img src="'. esc_url( $thumb_image_url[0] ) .'" width="'. $thumb_image_url[1] .'" height="'. $thumb_image_url[3] .'" alt="'. esc_attr($thumb_image_alt) .'" /></a>';
 	}
-	
+
 	if ($attachment->post_excerpt && $caption) {
 		$out .= '<p class="wp-caption-text" style="width:'. $thumb_image_url[1] .'">'. $attachment->post_excerpt .'</p>';
 	}
-			
+
 	$out .= ($caption) ? '</div>' : '</p>';
-	
+
 	echo $out;
 }
 endif;
@@ -873,7 +884,7 @@ if ( ! function_exists( 'subarrum_comment' ) ) :
 function subarrum_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
 	global $comment_depth;
-	
+
 	// set extra comment class, based on comment style and depth
 	$commextraclass = 'well well-small';
 	switch ($comment_depth) {
@@ -889,7 +900,7 @@ function subarrum_comment( $comment, $args, $depth ) {
 			  break;
 		default: $commextraclass .= ' span7 offset5';
 	}
-	
+
 	switch ( $comment->comment_type ) :
 		case 'pingback' :
 		case 'trackback' :
@@ -969,7 +980,7 @@ endif;
 
 /**
  * use own markup for walker nav menu
- * 
+ *
  * @since Subar Rum 1.0
  */
 class subarrum_walker_nav_menu extends Walker_Nav_Menu {
@@ -979,38 +990,38 @@ class subarrum_walker_nav_menu extends Walker_Nav_Menu {
 		// depth dependent classes
 		$indent = ( $depth > 0  ? str_repeat( "\t", $depth ) : '' ); // code indent
 		$display_depth = ( $depth + 1); // because it counts the first submenu as 0
- 
+
 		// build html
 		$output .= "\n" . $indent . '<ul class="dropdown-menu">' . "\n";
 	}
-	
+
 	function display_element ($element, &$children_elements, $max_depth, $depth, $args, &$output) {
 		// check, whether there are children for the given ID and append it to the element with a (new) ID
 		$element->hasChildren = isset($children_elements[$element->ID]) && !empty($children_elements[$element->ID]);
 
 		return parent::display_element($element, $children_elements, $max_depth, $depth, $args, $output);
 	}
-	
+
 	// add main/sub classes to li's and links
 	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		global $wp_query;
 		$indent = ( $depth > 0 ? str_repeat( "\t", $depth ) : '' ); // code indent
-  
+
 		// depth dependent classes
 		$depth_classes = array(
 			( ( $item->hasChildren && $depth > 0 ) ? ' dropdown-submenu pull-left' : ''),
 			( ( $item->hasChildren && $depth == 0 ) ? 'dropdown' : '')
 			);
-    
+
 		$depth_class_names = esc_attr( implode( ' ', $depth_classes ) );
-  
+
 		// passed classes
 		$classes = empty( $item->classes ) ? array() : (array) $item->classes;
 		$class_names = esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) ) );
-  
+
 		// build html
 		$output .= $indent . '<li class="' . $class_names . $depth_class_names . '">';
-  
+
 		// link attributes
 		$attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
 		$attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
@@ -1018,10 +1029,10 @@ class subarrum_walker_nav_menu extends Walker_Nav_Menu {
 		$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
 		$attributes .= ' class="menu-link' . ( ( $item->hasChildren && $depth == 0 ) ? ' dropdown-toggle ' : '') . '"';
 		$attributes .= ( ( $item->hasChildren && $depth == 0 ) ? ' data-toggle="dropdown"' : '');
-		
+
 		$dropcaret = ( ( $item->hasChildren && $depth == 0 ) ? ' <b class="caret"></b>' : '');
-		
-  
+
+
 		$item_output = sprintf( '%1$s<a%2$s>%3$s%4$s%5$s%7$s</a>%6$s',
 			$args->before,
 			$attributes,
@@ -1035,7 +1046,7 @@ class subarrum_walker_nav_menu extends Walker_Nav_Menu {
 		// build html
 		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 	}
-	
+
 	function end_el ( &$output, $item, $depth = 0, $args = array() ) {
 		$output .= "</li>\n";
 	}
@@ -1063,13 +1074,13 @@ function subarrum_wp_link_pages($args = '') {
 	                'pagelink' => '%',
 	                'echo' => 1
 	        );
-	
+
 	        $r = wp_parse_args( $args, $defaults );
 	        $r = apply_filters( 'wp_link_pages_args', $r );
 	        extract( $r, EXTR_SKIP );
-	
+
 	        global $page, $numpages, $multipage, $more, $pagenow;
-	
+
 	        $output = '';
 	        if ( $multipage ) {
 	                if ( 'number' == $next_or_number ) {
@@ -1106,10 +1117,10 @@ function subarrum_wp_link_pages($args = '') {
 	                        }
 	                }
 	        }
-	
+
 	        if ( $echo )
 	                echo $output;
-	
+
 	        return $output;
 }
 endif;
@@ -1119,16 +1130,16 @@ endif;
 
 /**
  * Add filter to excerpt generation to add a read more link
- * 
+ *
  * @since Subar Rum 1.0
- * 
+ *
  * @param string $output Holds original output and returns modified output
  */
 function subarrum_excerpt_read_more_link($output) {
 
 	if (!is_singular())
 		$output .= ' <a class="more-link" href="' . get_permalink( get_the_ID() ) . '">' . __( 'Continue reading', 'subarrum' ) . ' &rarr;</a>';
-	
+
 	return $output;
 }
 
@@ -1136,13 +1147,13 @@ function subarrum_excerpt_read_more_link($output) {
 
 /**
  * Add filter to excerpt generation when post is protected by password
- * 
+ *
  * @since Subar Rum 1.0
- * 
+ *
  * @param string $excerpt Holds original output and returns modified output
  */
 function subarrum_excerpt_protected( $excerpt ) {
-	
+
 	if ( post_password_required() )
 	$excerpt = '<div class="alert">'. __('There is no excerpt because this is a protected post.', 'subarrum') .'</div>';
 	return $excerpt;
@@ -1152,9 +1163,9 @@ function subarrum_excerpt_protected( $excerpt ) {
 
 /**
  * Add filter to calendar plugin to get more bootstrap in it
- * 
+ *
  * @since Subar Rum 1.0
- * 
+ *
  * @param string $calendar_output Holds the original calendar html
  * @param string $output Holds the modified calendar html
  */
@@ -1213,7 +1224,7 @@ function subarrum_posts_column_content($column_name, $id){
 function subarrum_media_column_content($column_name, $id){
   // not our column / current item not an image
   if($column_name !== 'featured' || strpos(get_post_mime_type($id), 'image/') === false) return;
-  
+
   echo get_post_meta( $id, 'subarrum_featured', true ) ? '<img src="'. get_template_directory_uri() .'/images/featured.png" alt="'. __('Recommended', 'subarrum') .'" title="'. __('Recommended', 'subarrum') .'" />' : '<img src="'. get_template_directory_uri() .'/images/unfeatured.png" alt="'. __('Not recommended', 'subarrum') .'" title="'. __('Not recommended', 'subarrum') .'" />';
 }
 
@@ -1230,7 +1241,7 @@ function subarrum_publish_action_featured(){
   //show only on standard post pages and image attachment pages
   if(get_post_type() == 'post' || ( get_post_type() == 'attachment' && strpos(get_post_mime_type(get_the_ID()), 'image/') !== false ) ) :
 
-  // check if the item is already marked as featured  
+  // check if the item is already marked as featured
   $check = get_post_meta( get_the_ID(), 'subarrum_featured', true );
 
   ?>
@@ -1248,50 +1259,50 @@ function subarrum_publish_action_featured(){
 
 /**
  * save recommended posts to wp_postmeta to meta_key subarrum_featured
- * 
+ *
  * @since Subar Rum 1.0
- * 
+ *
  * @param string $post_id Post ID
  */
 function subarrum_save_featured_post($post_id) {
 	global $flag; // set a global flag to prevent double run
-	
+
 	if (!isset($_POST['post_type']) )
 		return $post_id;
-	
+
 	if ($_POST['post_type'] != 'post')
 		return $post_id;
-	
+
 	// check if the user has permission to edit posts
 	if ( !current_user_can( 'edit_post', $post_id ) )
 		return $post_id;
-	
+
 	// check if security nonce is valid
 	if ( !wp_verify_nonce( $_POST['subarrum_publish_featured_nonce'], 'subarrum_save_featured' ) ) {
 		print 'Nonce verification failed.';
 		exit;
 	}
-	
+
 	// save only when it is kicked off by user
-	if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) 
+	if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE )
 		return $post_id;
-	
+
 	// unhook this function so it doesn't loop infinitely
 	remove_action('save_post', 'subarrum_save_featured');
-	
+
 	//check if this is the first run
 	if ( $flag == 0) {
-	
+
 		//check if the given id is from another revision of the post
 		if ($parent_id = wp_is_post_revision($post_id)) {
 			$post_id = $parent_id;
 		}
-	
+
 		$isfeatured = isset($_POST['subarrum_featured']) ? 1 : 0; // get information from request
-	
+
 		// get current featured array
 		$featured = get_post_meta($post_id, 'subarrum_featured', true);
-	
+
 		// add / or remove requested item from metadata table, depending on current selection
 		// "isfeatured" means that the item was selected and is now being checked, so we're adding it to
 		// the table, otherwise we will remove the entry
@@ -1314,41 +1325,41 @@ function subarrum_save_featured_post($post_id) {
  * save recommended images to wp_postmeta key subarrum_featured
  *
  * @since Subar Rum 1.0
- * 
+ *
  * @param object $post Post Data Object
  */
 function subarrum_save_featured_image($post) {
 
 	if (!isset($_POST['post_type']) )
 		return $post;
-	
+
 	if ($_POST['post_type'] != 'attachment')
 		return $post;
-	
+
 	// check if user has the permission to modify attachments
 	if ( !current_user_can( 'upload_files', (int)$post['post_ID'] ) )
 		return $post;
-		
+
 	// check if security nonce is valid
 	if ( !wp_verify_nonce( $_POST['subarrum_publish_featured_nonce'], 'subarrum_save_featured' ) ) {
 		print 'Nonce verification failed.';
 		exit;
 	}
-	
+
 	// save only when it is kicked off by user
-	if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) 
+	if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE )
 		return $post;
-	
+
 	// first check if the media attachment is an image
 	if ( substr($post['post_mime_type'], 0 ,5) == 'image' ) {
-	
+
 		$isfeatured = isset($post['subarrum_featured']) ? 1 : 0; // get information from post data
-	
+
 		$id = (int)$post['post_ID'];
-	
+
 		// get current featured array
 		$featured = get_post_meta($id, 'subarrum_featured', true);
-	
+
 		// add / or remove requested item from metadata table, depending on current selection
 		// "isfeatured" means that the item was selected and is now being checked, so we're adding it to
 		// the table, otherwise we will remove the entry
@@ -1357,9 +1368,9 @@ function subarrum_save_featured_image($post) {
 		} elseif(!$isfeatured && $featured) {
 			delete_post_meta($id, 'subarrum_featured');
 		}
-	
+
 	}
-	
+
 	return $post;
 }
 
@@ -1370,7 +1381,7 @@ function subarrum_save_featured_image($post) {
  * function to get recommended items in an array
  *
  * @since Subar Rum 1.0
- * 
+ *
  * @param string $type Post type, attachment or post
  * @param integer $limit Set a limit to shown posts or attachments
  * @param string $order Order the results
@@ -1379,7 +1390,7 @@ function subarrum_save_featured_image($post) {
 function subarrum_get_featured($type = 'attachment', $limit = 100, $order = 'descending') {
 	// get wordpress database class
 	global $wpdb;
-	
+
 	switch($order) {
 		case "ascending": $ordering = 'po.ID ASC';
 				  break;
@@ -1387,7 +1398,7 @@ function subarrum_get_featured($type = 'attachment', $limit = 100, $order = 'des
 				  break;
 		default		: $ordering = 'po.ID DESC';
 	}
-	
+
 	// set post status for database query to show only published posts, but status of attachments
 	// is inherit by default
 	switch($type) {
@@ -1409,9 +1420,9 @@ function subarrum_get_featured($type = 'attachment', $limit = 100, $order = 'des
 			 AND po.post_status = %s
 			 ORDER BY $ordering
 			 LIMIT %d", 'subarrum_featured', $type, $status, $limit), ARRAY_A);
-	
+
 	$featured = array();
-	
+
 	// convert the multi dimensional array in a flat one
 	foreach ($results as $result) {
 		$featured[] = $result['ID'];
@@ -1425,21 +1436,21 @@ function subarrum_get_featured($type = 'attachment', $limit = 100, $order = 'des
 /**
  * function to display similar posts to a post based on the tags,
  * has to be used in The Loop
- * 
+ *
  * @since Subar Rum 1.0
  *
  * @param integer $limit to set maximum shown posts
  * @param string $presentation set presentation mode (table or pictures)
  */
 if ( ! function_exists( 'subarrum_get_similar_posts' ) ) {
-function subarrum_get_similar_posts($limit = 0, $presentation = '') {	
+function subarrum_get_similar_posts($limit = 0, $presentation = '') {
 	// get option for similar posts limit
 	if (!$limit)
 		$limit = (int)get_theme_mod('similar_posts_limit', 4);
-	
+
 	// get tag ids for current post
 	$tags = wp_get_post_tags(get_the_ID(), array('fields' => 'ids'));
-	
+
 	// set query args
 	$args = array(
 		'tag__in' => $tags,
@@ -1447,16 +1458,16 @@ function subarrum_get_similar_posts($limit = 0, $presentation = '') {
 		'showposts' => $limit,
 		'ignore_sticky_posts' => 1
 		);
-	
+
 	// get similar posts
 	$similar = new wp_query($args);
 
 	if ($similar->have_posts()) {
-	
+
 	    // get option for similar posts presentation
 	    if (!$presentation)
 		$presentation = get_theme_mod('similar_posts_presentation', 'pictures');
-		
+
 	    if ($presentation == 'table') {
 		echo '<table class="table table-hover table-condensed">';
 		echo '<thead><tr><th>'. __('Post', 'subarrum') .'</th><th>'. __('Date', 'subarrum') .'</th><th><i class="icon-comment"></i></th></tr></thead>';
@@ -1472,7 +1483,7 @@ function subarrum_get_similar_posts($limit = 0, $presentation = '') {
 		}
 		echo '</tbody>';
 		echo '</table>';
-	    
+
 	    } elseif ($presentation == 'pictures') {
 		$count = 0;
 		while ($similar->have_posts()) {
@@ -1498,10 +1509,10 @@ function subarrum_get_similar_posts($limit = 0, $presentation = '') {
 			  </div>
 			<?php if ($count % 2 == 0) : ?>
 			</div>
-			<?php endif; ?>			
+			<?php endif; ?>
 		<?php
 		}
-		
+
 		if ($count % 2 != 0) : ?>
 		  <div class="span6">
 		  </div>
@@ -1509,7 +1520,7 @@ function subarrum_get_similar_posts($limit = 0, $presentation = '') {
 		<?php endif;
 	    }
 	}
-	
+
 	wp_reset_postdata(); // reset global post data after this query
 }
 }
@@ -1529,7 +1540,7 @@ function subarrum_the_category_hasTip($cat_list) {
 
 /**
  * Add filter to wp_tag_cloud to add hasTip class for niver hover tooltips
- * 
+ *
  * @since Subar Rum 1.0
  */
 function subarrum_wp_tag_cloud_hasTip($return) {
@@ -1540,41 +1551,41 @@ function subarrum_wp_tag_cloud_hasTip($return) {
 
 /**
  * Add filter to style the password form for protected entries
- * 
+ *
  * @since Subar Rum 1.0
  */
 function subarrum_password_form() {
 	global $post;
 	$label = 'pwbox-'.( empty( $post->ID ) ? rand() : $post->ID );
-	
+
 	$output = '<div class="alert">' . __( "This post is password protected. To view it please enter your password below:", 'subarrum' ) . '</div><form class="form-inline" action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post"><label for="' . $label . '"></label><div class="input-prepend input-append"><span class="add-on"><i class="icon-key"></i></span><input name="post_password" id="' . $label . '" type="password" class="input-medium" placeholder="' . __( "Password", 'subarrum' ) . '" /><button type="submit" name="Submit" value="' . esc_attr__( "Submit", 'subarrum' ) . '" class="btn">'.esc_attr__( "Submit", 'subarrum' ).'</button></div></form>';
-    
+
 	return $output;
 }
 
 
 /**
  * Add function to view a random post
- * 
+ *
  * @param string $text The button text
- * 
+ *
  * @since Subar Rum 1.0
  */
 function subarrum_get_random_post($text) {
 	global $wpdb;
 	$text = ($text) ? esc_attr($text) : __('Try your luck and hit or miss', 'subarrum');
-	
+
 	$randompost = $wpdb->get_results($wpdb->prepare(
 			"SELECT ID FROM $wpdb->posts
 			 WHERE post_status = %s
 			 AND post_type = %s
 			 ORDER BY RAND()
 			 LIMIT %d", 'publish', 'post', 1), ARRAY_A);
-	
+
 	$out  = '<a class="btn btn-info" href="';
 	$out .= esc_url(get_permalink($randompost[0]["ID"]));
 	$out .= '"><i class="icon-random"> </i>'. $text .'</a>';
-	
+
 	echo $out;
 }
 
@@ -1583,11 +1594,11 @@ function subarrum_get_random_post($text) {
 /**
  * Function to extract and prepare embedded videos
  * additionaly it creates HTML5 videos from given plain file links
- * 
+ *
  * This function is used in the video post format template.
- * 
+ *
  * CURRENTLY NOT IN USE
- * 
+ *
  * @since Subar Rum 1.0
  */
 // function subarrum_extract_video() {
@@ -1602,25 +1613,25 @@ function subarrum_get_random_post($text) {
 // 	$content = apply_filters('the_content', $content);
 // 	$content = str_replace(']]>', ']]&gt;', $content);
 // 	$videos = '';
-// 
+//
 // 	// find stuff that has already made responsive through another function
 // 	// if found something, return directly
 // 	if (strpos($content, 'embed-container')) return $content;
-// 	
+//
 // 	// find embedded html5 videos and make them responsive
 // 	if (preg_match($reg_exVideo, $content, $html5)) {
 // 	  $videos .= '<div class="embed-container subarrum-extract-video">'. $html5[0] .'</div>';
 // 	  $content = preg_replace($reg_exVideo, $videos, $content);
 // 	  return $content;
 // 	}
-// 	
+//
 // 	// find embedded iframs, for example from youtube, and make them responsive
 // 	if (preg_match($reg_exIframe, $content, $iframe)) {
 // 	  $videos .= '<div class="embed-container subarrum-extract-video">'. $iframe[0] .'</div>';
 // 	  $content = preg_replace($reg_exIframe, $videos, $content);
 // 	  return $content;
 // 	}
-// 	
+//
 // 	// find embedded embeds, for example from youtube, and make them responsive
 // 	if (preg_match($reg_exEmbed, $content, $embed)) {
 // 	  if (!strpos($embed[0], '"display:none"')) {
@@ -1629,8 +1640,8 @@ function subarrum_get_random_post($text) {
 // 	    return $content;
 // 	  }
 // 	}
-// 	
-// 	
+//
+//
 // 	// Find "normal" video links, either encapsulated by <a> tags or raw ones
 // 	// and put them in an assoziative array, where the URI is the key name.
 // 	// This construct allows automatically generated HTML5 video tags in the next stp.
@@ -1641,7 +1652,7 @@ function subarrum_get_random_post($text) {
 // 	  $file = $url['dirname'].'/'.$url['filename'];
 // 	  $videolist[$file][]= $url['extension'];
 // 	}
-// 
+//
 // 	// Build a HTML5 video object out of the extractet plain links and store in $videos
 // 	foreach($videolist as $url => $types) {
 // 	    $videos .= '<div class="embed-container subarrum-extract-video"><video controls="controls">';
@@ -1667,7 +1678,7 @@ function subarrum_get_random_post($text) {
 // 		    $videos .= '<source src="'.$src.'" type="video/mp4">';
 // 		    break;
 // 	    }
-// 	    
+//
 // 	  }
 // 	  $videos .= '<div class="alert">';
 // 	  $videos .= __('Apologies, unfortunately your browser does not support either HTML5 video or the used video codec, but you can downlod it directly in the following format(s): ', 'subarrum');
@@ -1692,10 +1703,10 @@ function subarrum_get_random_post($text) {
 // 	  }
 // 	  $videos .= '</div></video></div>';
 // 	}
-// 	
+//
 // 	// build everything together, videos and the rest of the content
 // 	return $videos.$content;
-// 
+//
 // }
 
 
@@ -1703,7 +1714,7 @@ function subarrum_get_random_post($text) {
 
 /**
  * Hook into the video embed funtion and add a container for more responsiveness... ;-)
- * 
+ *
  * @since Subar Rum 1.0
  * CURRENTLY NOT IN USE
  */
@@ -1732,16 +1743,16 @@ function subarrum_get_random_post($text) {
 
 /**
  * Hook into content presentation and make embedded stuff, especially videos and iframes, responsive
- * 
+ *
  * @param string $content post content
- * 
+ *
  * @since Subar Rum 1.0
  */
 function subarrum_make_embedded_repsonsive($content) {
 	$reg_exIframe = "/<iframe.*\/iframe>/";
 	$reg_exEmbed = "/<embed.*\/embed>/";
 	$reg_exVideo = "/<video.*\/video>/";
-	
+
 	preg_match_all($reg_exIframe, $content, $iframes, PREG_SET_ORDER);
 	if ($iframes) {
 	  foreach ($iframes as $iframe) {
@@ -1752,7 +1763,7 @@ function subarrum_make_embedded_repsonsive($content) {
 	  $content = preg_replace('/'.$pattern.'/', $container, $content);
 	  }
 	}
-	
+
 	preg_match_all($reg_exVideo, $content, $videos, PREG_SET_ORDER);
 	if ($videos) {
 	  foreach ($videos as $video) {
@@ -1761,7 +1772,7 @@ function subarrum_make_embedded_repsonsive($content) {
 	  $content = preg_replace('/'.$pattern.'/', $container, $content);
 	  }
 	}
-	
+
 	preg_match_all($reg_exEmbed, $content, $embeds, PREG_SET_ORDER);
 	if ($embeds) {
 	  foreach ($embeds as $embed) {
@@ -1770,7 +1781,7 @@ function subarrum_make_embedded_repsonsive($content) {
 	  $content = preg_replace('/'.$pattern.'/', $container, $content);
 	  }
 	}
-	
+
 	return $content;
 }
 
@@ -1778,7 +1789,7 @@ function subarrum_make_embedded_repsonsive($content) {
 
 /**
  * Get an excerpt by id outside the loop
- * 
+ *
  * @param integer $id post id
  * @param integer $length excerpt length in words
  *
@@ -1787,10 +1798,10 @@ function subarrum_make_embedded_repsonsive($content) {
 function subarrum_get_excerpt($id, $length = 30) {
 	$item = get_post(absint($id), ARRAY_A);
 	$length = absint($length);
-	
+
 	$excerpt = ($item['post_excerpt']) ? $item['post_excerpt'] : $item['post_content'];
 	$excerpt = strip_tags(strip_shortcodes($excerpt));
-	
+
 	$words = explode(' ', $excerpt, $length +1);
 	if (count($words) > $length) {
 		array_pop($words);
@@ -1804,7 +1815,7 @@ function subarrum_get_excerpt($id, $length = 30) {
 
 /**
  * function to integrate the comment reply script only when needed
- * 
+ *
  * @since Subar Rum 1.0
  */
 function subarrum_enqueue_comments_reply() {
@@ -1834,11 +1845,11 @@ function subarrum_thumbnail_shortcode($attr) {
                 'caption'   => '',
                 'link'      => '#'
         ), $attr, 'sr_thumbnail'));
-        
+
         if ($src == '') { return ""; };
-        
+
         if ($label != '' || $caption != '') {
-        
+
                 $output = "\n<div class='thumbnail'>\n";
                 $output .= "<a href='". $link ."'>";
                 $output .= "<img src='". $src ."' alt='' />";
@@ -1850,13 +1861,13 @@ function subarrum_thumbnail_shortcode($attr) {
                         $output .= "<p>". $caption ."</p>\n";
                 }
                 $output .= "</div>\n";
-            
+
         } else {
                 $output  = "\n<a href='". $link ."' class='thumbnail'>\n";
                 $output .= "<img src='". $src ."' alt'' />";
                 $output .= "</a>\n";
         };
-        
+
         return $output;
 };
 
@@ -1864,7 +1875,7 @@ function subarrum_thumbnail_shortcode($attr) {
 
 /**
  * Subar Rum Add Excerpt to pages
- * 
+ *
  * Adds the excerpt field to page for use in gallery overview shortcode.
  *
  * @since Subar Rum 1.3.0
@@ -1882,8 +1893,8 @@ function subarrum_add_excerpt_to_ages() {
  *
  * Takes page ID or list of page IDs to generate a gallery overview, consisting of
  * post tumbunail, excerpt and page permalink.
- * 
- * Used internally by 
+ *
+ * Used internally by
  *
  * @since Subar Rum 1.3.0
  * @param array $ids page IDs
@@ -1897,70 +1908,70 @@ function subarrum_gallery_overview_private($ids = null, $page_id = null, $column
         $_pages = array();
 
         if (is_null($ids) && is_null($page_id)) {
-    
+
             return "";
-            
+
         } elseif (is_null($ids) || empty($ids)) {
-            
+
             $_pages = get_pages( array('hierarchical' => 'false', 'parent' => $page_id, 'sort_column' => 'menu_order') );
-            
+
         } else {
-    
+
             $_pages = get_pages( array('include' => $ids) );
-            
+
         }
-        
+
         if (empty($_pages)) {
                 return "";
         }
-        
+
         if ($style == '') {
                 $style = get_theme_mod('gallery_overview_layout', 'grid');
         }
-        
+
         if ($columns == 0) {
                 $columns = get_theme_mod('gallery_overview_columns', 3);
         }
-        
-        
+
+
         $output = "\n<h4>";
         $output .= __('Sub albums', 'subarrum');
         $output .= "</h4>\n";
-        
-        
+
+
         if ($style == 'list') {
-        
-        
-                
-                
+
+
+
+
                 foreach($_pages as $page) {
                         $_thumb_image_url = wp_get_attachment_image_src( get_post_thumbnail_id($page->ID), 'thumbnail');
-                        
+
                         if (empty($_thumb_image_url)) {
                             $_thumb_image_url[0] = get_theme_mod('gallery_overview_list_placeholder', get_template_directory_uri() . '/images/gallery_overview_small.jpg');
                         }
-                        
+
                         $_page_link = get_permalink($page);
-                
+
                         $output .= "<div class='media'>\n";
-                
+
                         $output .= "<a class='pull-left' href='{$_page_link}'>";
 //                         $output .= "<img class='media-object' src='". esc_url( $_thumb_image_url[0] ) ."' width='". $_thumb_image_url[1] ."' height='". $_thumb_image_url[3] ."' alt='". $page->post_title ."' /></a>\n";
                         $output .= "<img class='media-object img-polaroid no-deco' src='". esc_url( $_thumb_image_url[0] ) ."' width='96' height='96' alt='". $page->post_title ."' /></a>\n";
-                        
+
                         $output .= "<div class='media-body'>\n";
                         $output .= "<h4 class='media-heading'>{$page->post_title}</h4>\n";
                         $output .= "{$page->post_excerpt}\n";
                         $output .= "</div>\n";
-                        
-                        
+
+
                         $output .= "</div>\n";
                 }
-        
-        
+
+
         } else {
-    
-    
+
+
                 $size = 'post-image-full';
                 switch($content_width) {
                         case 630:
@@ -1971,7 +1982,7 @@ function subarrum_gallery_overview_private($ids = null, $page_id = null, $column
                         case 960:
                                 $size = 'post-image-full-width';
                 }
-                
+
                 $span = "span4";
                 switch($columns) {
                         case 0:
@@ -1999,66 +2010,66 @@ function subarrum_gallery_overview_private($ids = null, $page_id = null, $column
                         case 12:
                                 $span = "span1";
                 }
-                
+
 
                 $output .= "\n<ul class='thumbnails'>\n";
 
                 $i = 0;
                 foreach ($_pages as $page) {
-                
+
                         $output .= "<li class='".$span."'>\n";
-                        
+
                         $output .= "<div class='thumbnail'>\n";
-                        
+
                         $thumb_image_url = wp_get_attachment_image_src( get_post_thumbnail_id($page->ID), $size);
-                        
+
                         if (empty($thumb_image_url)) {
                             $thumb_image_url[0] = get_theme_mod('gallery_overview_grid_placeholder', get_template_directory_uri() . '/images/gallery_overview_big.jpg');
                             $thumb_image_url[1] = "";
                             $thumb_image_url[2] = "";
                         }
-                        
+
                         $page_link = get_permalink($page);
-                        
+
                         $output .= "<a href='{$page_link}'>";
-                        
+
                         $output .= "<img src='". esc_url( $thumb_image_url[0] ) ."' width='". $thumb_image_url[1] ."' height='". $thumb_image_url[2] ."' alt='". $page->post_title ."' /></a>\n";
-                        
+
                         $output .= "<h4>{$page->post_title}</h4>\n";
-                        
+
                         $output .= "<p>{$page->post_excerpt}</p>\n";
-                        
-                        
-                        $output .= "</div>\n";                
-                        
+
+
+                        $output .= "</div>\n";
+
                         $output .= "</li>\n";
-                
-                
+
+
                         if ( $columns > 0 && ++$i % $columns == 0 )
                                 $output .= "</ul>\n<ul class='thumbnails'>";
-                    
+
                 }
-                
+
                 $output .= "</ul>\n";
-        
+
         }
-    
+
         return $output;
 }
 
 
 
 function subarrum_get_gallery_overview($columns = 0) {
-        
+
         $_page = get_post();
         $page_id = $_page->ID;
-        
+
         echo subarrum_gallery_overview_private(null, $page_id, $columns);
-        
+
 };
 
 
- 
+
 /**
  * Subar Rum gallery overview shortcode
  *
@@ -2078,17 +2089,17 @@ function subarrum_gallery_overview($attr = null) {
                         'columns'   => 0,
                         'style'     => ''
                ), $attr, 'sr_gallery_overview'));
-               
+
         $page_id = null;
-               
+
         if (empty($ids)) {
                 $_page = get_post();
                 echo var_dump($_page);
                 $page_id = $_page->ID;
         }
-        
+
         echo var_dump($_page->ID);
-        
+
         return subarrum_gallery_overview_private($ids, $page_id, $columns, $style);
 }
 
@@ -2144,11 +2155,11 @@ function subarrum_gallery_shortcode($attr) {
 		'exclude'    => '',
 		'link'       => ''
 	), $attr, 'gallery'));
-	
+
 	$_captions = ($captions == 'true') ? true : false;
 	$_fixedHeight = ($fixedheight == 'true') ? true : false;
 	$_justifyLastRow = ($justifylastrow == 'true') ? true : false;
-	
+
 	$size = 'post-image-full';
 	switch($content_width) {
 		case 630:
@@ -2189,7 +2200,7 @@ function subarrum_gallery_shortcode($attr) {
 
 	$columns = intval($columns);
 	$float = is_rtl() ? 'right' : 'left';
-	
+
 	$selector = "gallery-{$instance}";
 
 
@@ -2197,38 +2208,38 @@ function subarrum_gallery_shortcode($attr) {
 
 		wp_enqueue_style( 'justified-gallery-css' );
 		wp_enqueue_script( 'justified-gallery' );
-		
+
 		$output = "\n<div id='".$selector."'>\n";
-		
+
 		$_size = ($type == 'rectangular') ? $size : 'thumbnail';
-		
+
 		foreach ( $attachments as $id => $attachment ) {
-		
+
 			$thumb_image_url = wp_get_attachment_image_src( $id, $_size);
 			$full_image_url = wp_get_attachment_image_src( $id, 'full');
-			
+
 			$caption = '';
 			if ( ! empty($attachment->post_excerpt) ) {
 				$caption = $attachment->post_excerpt;
 			} else {
 				$caption = $attachment->post_title;
 			}
-				
+
 			$output .= '<a href="';
 			$output .= ( ! empty( $link ) && 'file' === $link ) ? esc_url( $full_image_url[0] ) . '" ' : esc_url( get_permalink(get_post($id))) . '" '; // link to image url or to image page
 			$output .= ( ! empty( $link ) && 'file' === $link ) ? 'rel="lightbox['.$selector.']" ' : ''; // add lightbox or not
 			$output .= 'title="'. wptexturize($caption) .'">';
-			
+
 			$output .= '<img src="'. esc_url( $thumb_image_url[0] ) .'" alt="'. wptexturize($caption) .'" /></a>';
 			$output .= "\n";
 		}
-		
-		
+
+
 		$output .= "</div>\n";
-		
-		
+
+
 		$output .= '<script type="text/javascript">';
-		
+
 		$output .= 'jQuery("#'.$selector.'").justifiedGallery({
                 "sizeRangeSuffixes" : {
                         "lt100":"",
@@ -2242,15 +2253,15 @@ function subarrum_gallery_shortcode($attr) {
                 if (!$_justifyLastRow) $output .= '"justifyLastRow":false,';
                 $output .= '"rowHeight":' . $rowheight . ',';
                 $output .= '"margins":2});';
-		
+
 		$output .= "</script>\n";
-		
+
         } else if ($type == 'slideshow') {
-        
+
                 $output = "\n<div id='".$selector."' class='carousel slide'>\n";
-                
+
                 $output .= "<ol class='carousel-indicators'>\n";
-                
+
                 $iii = 0;
                 foreach ( $attachments as $id => $attachment ) {
                     if ($iii == 0) {
@@ -2260,23 +2271,23 @@ function subarrum_gallery_shortcode($attr) {
                     }
                     $iii++;
                 }
-                
+
                 $output .= "</ol>\n";
-                
-                
+
+
                 $output .= "<div class='carousel-inner'>\n";
-                
+
                 $iii = 0;
                 foreach ( $attachments as $id => $attachment ) {
-                
+
                     $thumb_image_url = wp_get_attachment_image_src( $id, 'post-image-full');
-                
+
                     if ($iii == 0) {
                         $output .= "<div class='active item'>\n";
                     } else {
                         $output .= "<div class='item'>\n";
                     }
-                    
+
                     if ($link != 'none') {
                         if ($link == 'file') {
                             $full_image_url = wp_get_attachment_image_src( $id, 'full');
@@ -2285,13 +2296,13 @@ function subarrum_gallery_shortcode($attr) {
                             $output .= "<a href='". esc_url( get_permalink(get_post($id))) ."'>\n";
                         }
                     }
-                    
+
                     $output .= "<img src='". esc_url( $thumb_image_url[0] ) ."' alt='". wptexturize($attachment->post_title) ."' />\n";
-                    
+
                     if ($link != 'none') {
                         $output .= "</a>\n";
                     }
-                    
+
                     if ($captions == "true") {
                         $output .= "<div class='carousel-caption'>\n";
                         $output .= "<h4>". wptexturize($attachment->post_title) ."</h4>\n";
@@ -2300,25 +2311,25 @@ function subarrum_gallery_shortcode($attr) {
                         }
                         $output .= "</div>\n";
                     }
-                    
+
                     $output .= "</div>\n";
                     $iii++;
                 }
-                
+
                 $output .= "</div>\n";
-                
+
                 $output .= "<a class='carousel-control left' href='#".$selector."' data-slide='prev'>&lsaquo;</a>\n";
                 $output .= "<a class='carousel-control right' href='#".$selector."' data-slide='next'>&rsaquo;</a>\n";
-                
+
                 $output .= "</div>\n";
-                
+
                 $output .= "<script type='text/javascript'>\n";
                 $output .= "jQuery(#".$selector.").carousel({interval:0});\n";
                 $output .= "</script>\n";
-                
-		
+
+
 	} else {
-	
+
 		$span = "span4";
 		switch($columns) {
 			case 0:
@@ -2349,7 +2360,7 @@ function subarrum_gallery_shortcode($attr) {
 
 		$gallery_style = $gallery_div = '';
 		if ( apply_filters( 'use_default_gallery_style', true ) )
-			$gallery_stlye = "";
+			$gallery_style = "";
 
 		$size_class = sanitize_html_class( $size );
 		$gallery_div = "\n<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>\n";
