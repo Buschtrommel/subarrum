@@ -2,7 +2,7 @@
 /**
  * Custom widgets for nicer presentations. Do not override the existing ones,
  * so you are still free to choose.
- * 
+ *
  * @revised   April 16, 2013
  * @author    Matthias Fehring, http://www.buschmann23.de
  * @license   GPLv3, http://www.gnu.org/licenses/gpl-3.0.en.html
@@ -115,7 +115,7 @@ class Subarrum_Recent_Posts extends WP_Widget {
 		<?php echo $before_widget; ?>
 		<?php if ( $title ) echo $before_title . $title . $after_title; ?>
 
-		<?php while ( $r->have_posts() ) : $r->the_post(); 
+		<?php while ( $r->have_posts() ) : $r->the_post();
 			if ($show_image) {
 			$thumb_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'thumbnail');
 			$thumb_image_alt = get_post_meta(get_post_thumbnail_id(),'_wp_attachment_image_alt', true);
@@ -181,7 +181,7 @@ class Subarrum_Recent_Posts extends WP_Widget {
 
 		<p><input class="checkbox" type="checkbox" <?php checked( $show_date ); ?> id="<?php echo $this->get_field_id( 'show_date' ); ?>" name="<?php echo $this->get_field_name( 'show_date' ); ?>" />
 		<label for="<?php echo $this->get_field_id( 'show_date' ); ?>"><?php _e( 'Display post date?', 'subarrum' ); ?></label></p>
-		
+
 		<p><input class="checkbox" type="checkbox" <?php checked( $show_image ); ?> id="<?php echo $this->get_field_id( 'show_image' ); ?>" name="<?php echo $this->get_field_name( 'show_image' ); ?>" />
 		<label for="<?php echo $this->get_field_id( 'show_image' ); ?>"><?php _e( 'Display post thumbnail?', 'subarrum' ); ?></label></p>
 <?php
@@ -298,7 +298,7 @@ class Subarrum_Recent_Comments extends WP_Widget {
 
 		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e('Number of comments to show:', 'subarrum'); ?></label>
 		<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $number; ?>" size="3" /></p>
-		
+
 		<p><input class="checkbox" type="checkbox" <?php checked( $show_image ); ?> id="<?php echo $this->get_field_id( 'show_image' ); ?>" name="<?php echo $this->get_field_name( 'show_image' ); ?>" />
 		<label for="<?php echo $this->get_field_id( 'show_image' ); ?>"><?php _e( 'Display avatar image?', 'subarrum' ); ?></label></p>
 <?php
@@ -328,7 +328,7 @@ class Subarrum_Random_Post_Widget extends WP_Widget {
 		echo $before_widget;
 		if ( $title )
 			echo $before_title . $title . $after_title;
-			
+
 			subarrum_get_random_post($text);
 
 		echo $after_widget;
@@ -348,7 +348,7 @@ class Subarrum_Random_Post_Widget extends WP_Widget {
 		$text = strip_tags($instance['text']);
 ?>
 			<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'subarrum'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
-			
+
 			<p><label for="<?php echo $this->get_field_id('text'); ?>"><?php _e('Button-Text:', 'subarrum'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('text'); ?>" name="<?php echo $this->get_field_name('text'); ?>" type="text" value="<?php echo esc_attr($text); ?>" /></p>
 <?php
 	}
@@ -368,32 +368,32 @@ class Subarrum_Gallery_Widget extends WP_Widget {
         function __construct() {
                 $widget_opts = array('description' => __( 'Displays images from the WordPress gallery.', 'subarrum') );
                 parent::__construct('subarrum_gallery_images', __('Subar Rum Gallery', 'subarrum'), $widget_opts);
-                
+
                 add_action( 'save_post', array($this, 'flush_widget_cache') );
 		add_action( 'deleted_post', array($this, 'flush_widget_cache') );
 		add_action( 'switch_theme', array($this, 'flush_widget_cache') );
         }
-        
-        
+
+
         function widget($args, $instance) {
                 $cache = wp_cache_get('subarrum_gallery_images', 'widget');
-                
+
                 if ( !is_array($cache) ) {
                         $cache = array();
                 }
-                
+
                 if ( !isset($args['widget_id']) ) {
                         $args['widget_id'] = $this->id;
                 }
-                
+
                 if ( isset($cache[$args['widget_id']]) ) {
                         echo $cache[$args['widget_id']];
                         return;
                 }
-                
-                
+
+
                 ob_start();
-                
+
                 extract($args);
                 $title = apply_filters('widget_title', empty($instance['title']) ? __('Gallery', 'subarrum') : $instance['title'], $instance, $this->id_base);
                 $type = empty($instance['type']) ? 'post' : $instance['type'];
@@ -402,24 +402,24 @@ class Subarrum_Gallery_Widget extends WP_Widget {
 		$order = empty($instance['order']) ? 'random' : $instance['order'];
 		$linktarget = empty($instance['linktarget']) ? 0 : $instance['linktarget'];
 		$number = $rows * $columns;
-		
+
 		$_attachments = array();
 		$_mimetypes = array('image/jpeg', 'image/png');
-		
+
 		if ($order == 'random') {
                         $_attachments = get_posts(array('orderby' => 'rand', 'post_type' => 'attachment', 'posts_per_page' => $number, 'post_mime_type' => $_mimetypes));
 		} elseif ($order == 'newest') {
                         $_attachments = get_posts(array('orderby' => 'post_date', 'order' => 'DESC', 'post_type' => 'attachment', 'posts_per_page' => $number, 'post_mime_type' => $_mimetypes));
 		}
-		
-		
+
+
 		echo $before_widget;
 		if ( $title ) echo $before_title . $title . $after_title;
-		
+
 		if (empty($_attachments)) {
                         $output = __('You have no images in your WordPress media gallery.');
                 } else {
-                
+
                         $span = "span4";
                         switch($columns) {
                             case 0:
@@ -447,28 +447,28 @@ class Subarrum_Gallery_Widget extends WP_Widget {
                             case 12:
                                 $span = "span1";
                         }
-                
+
                         $_pic_size = 'thumbnail';
                         if ($columns == 1) {
                                 $_pic_size = 'post-image-full';
                         }
-                        
+
                         $output = "\n<ul class='thumbnails'>\n";
-                        
+
                         $i = 0;
                         foreach($_attachments as $_attachment) {
 
                             $_thumb_image_url = wp_get_attachment_image_src( $_attachment->ID, $_pic_size);
-                            
+
 //                             if (empty($thumb_image_url)) {
 //                                 $thumb_image_url[0] = get_theme_mod('gallery_overview_grid_placeholder', get_template_directory_uri() . '/images/gallery_overview_big.jpg');
 //                                 $thumb_image_url[1] = "";
 //                                 $thumb_image_url[2] = "";
 //                             }
-                            
-                            $output .= "<li class='".$span."' style='margin-bottom:0px'>\n";
-                            
-                                          
+
+                            $output .= "<li class='".$span."'>\n";
+
+
                             if ($linktarget == 0) {
                                 $page_link = get_permalink($_attachment);
                                 $output .= "<a href='{$page_link}' class='thumbnail'>";
@@ -477,30 +477,30 @@ class Subarrum_Gallery_Widget extends WP_Widget {
                                 $page_link = $_image_full_url[0];
                                 $output .= "<a href='{$page_link}' class='thumbnail' rel='lightbox'>";
                             }
-                        
-                            $output .= "<img src='". esc_url( $_thumb_image_url[0] ) ."' width='". $_thumb_image_url[1] ."' height='". $_thumb_image_url[2] ."' alt='". $_attachment->post_title ."' title='". $_attachment->post_title ."' /></a>\n";                        
-                        
+
+                            $output .= "<img src='". esc_url( $_thumb_image_url[0] ) ."' width='". $_thumb_image_url[1] ."' height='". $_thumb_image_url[2] ."' alt='". $_attachment->post_title ."' title='". $_attachment->post_title ."' /></a>\n";
+
 
                             $output .= "</li>\n";
-                
-                
+
+
                             if ( $columns > 0 && ++$i % $columns == 0 )
                                 $output .= "</ul>\n<ul class='thumbnails'>";
                             }
-                        
+
                         $output .= "</ul>\n";
                 }
-                
+
                 echo $output;
 
                 echo $after_widget;
-		
+
 		$cache[$args['widget_id']] = ob_get_flush();
 		wp_cache_set('subarrum_recommended', $cache, 'widget');
         }
-        
-        
-        
+
+
+
         function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
@@ -517,7 +517,7 @@ class Subarrum_Gallery_Widget extends WP_Widget {
 		} else {
 			$instance['order'] = 'random';
 		}
-		
+
 		$this->flush_widget_cache();
 
 		$alloptions = wp_cache_get( 'alloptions', 'options' );
@@ -526,14 +526,14 @@ class Subarrum_Gallery_Widget extends WP_Widget {
 
 		return $instance;
 	}
-	
+
 	function flush_widget_cache() {
 		wp_cache_delete('subarrum_gallery_images', 'widget');
 	}
-        
-        
-        
-        
+
+
+
+
         function form( $instance ) {
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'rows' => 3, 'columns' => 3, 'order' => 'random', 'linktarget' => 0 ) );
 		$title = strip_tags($instance['title']);
@@ -543,7 +543,7 @@ class Subarrum_Gallery_Widget extends WP_Widget {
 		$linktarget = isset($instace['linktarget']) ? $instance['linktarget'] : 0;
 ?>
 			<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'subarrum'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
-			
+
 			<p>
 			<label for="<?php echo $this->get_field_id('order'); ?>"><?php _e( 'Order:', 'subarrum' ); ?></label>
 			<select name="<?php echo $this->get_field_name('order'); ?>" id="<?php echo $this->get_field_id('order'); ?>" class="widefat">
@@ -551,8 +551,8 @@ class Subarrum_Gallery_Widget extends WP_Widget {
 				<option value="newest"<?php selected( $instance['order'], 'newest' ); ?>><?php _e('Newest', 'subarrum'); ?></option>
 			</select>
 			</p>
-			
-			
+
+
 			<p>
 			<label for="<?php echo $this->get_field_id('linktarget'); ?>"><?php _e( 'Order:', 'subarrum' ); ?></label>
 			<select name="<?php echo $this->get_field_name('linktarget'); ?>" id="<?php echo $this->get_field_id('linktarget'); ?>" class="widefat">
@@ -560,11 +560,11 @@ class Subarrum_Gallery_Widget extends WP_Widget {
 				<option value="1"<?php selected( $instance['linktarget'], 1 ); ?>><?php _e('Lightbox (not included)', 'subarrum'); ?></option>
 			</select>
 			</p>
-			
-			
+
+
 			<p><label for="<?php echo $this->get_field_id('rows'); ?>"><?php _e('Rows:', 'subarrum'); ?></label>
 			<input id="<?php echo $this->get_field_id('rows'); ?>" name="<?php echo $this->get_field_name('rows'); ?>" type="number" value="<?php echo $rows; ?>" min="1" max="100" step="1" /></p>
-			
+
 			<p><label for="<?php echo $this->get_field_id('columns'); ?>"><?php _e('Columns:', 'subarrum'); ?></label>
 			<input id="<?php echo $this->get_field_id('columns'); ?>" name="<?php echo $this->get_field_name('columns'); ?>" type="number" value="<?php echo $columns; ?>" min="1" max="12" step="1" size="3" /></p>
 <?php
@@ -587,14 +587,14 @@ class Subarrum_Recommended_Widget extends WP_Widget {
 	function __construct() {
 		$widget_ops = array('description' => __( "Display as recommended marked posts or images", "subarrum") );
 		parent::__construct('subarrum_recommended', __('Subar Rum Recommended', 'subarrum'), $widget_ops);
-		
+
 		add_action( 'save_post', array($this, 'flush_widget_cache') );
 		add_action( 'deleted_post', array($this, 'flush_widget_cache') );
 		add_action( 'switch_theme', array($this, 'flush_widget_cache') );
 	}
 
 	function widget( $args, $instance ) {
-	
+
 		$cache = wp_cache_get('subarrum_recommended', 'widget');
 
 		if ( !is_array($cache) )
@@ -609,7 +609,7 @@ class Subarrum_Recommended_Widget extends WP_Widget {
 		}
 
 		ob_start();
-		
+
 		extract($args);
 		$title = apply_filters('widget_title', empty($instance['title']) ? __('Recommended', 'subarrum') : $instance['title'], $instance, $this->id_base);
 		$type = empty($instance['type']) ? 'post' : $instance['type'];
@@ -619,19 +619,19 @@ class Subarrum_Recommended_Widget extends WP_Widget {
 		$show_date = isset( $instance['show_date'] ) ? $instance['show_date'] : false;
 		$show_image = isset( $instance['show_image'] ) ? $instance['show_image'] : false;
 
-		
+
 		$ids = subarrum_get_featured($type, $limit, $order);
-		
+
 
 		echo $before_widget;
 		if ( $title ) echo $before_title . $title . $after_title; ?>
-		
-		
+
+
 		<?php if ($type == 'post'):
 		  $r = new WP_Query( apply_filters( 'widget_posts_args', array( 'post_type' => 'post', 'post__in' => $ids, 'ignore_sticky_posts' => 1 ) ) );
 		  if ($r->have_posts()) : ?>
 
-		  <?php while ( $r->have_posts() ) : $r->the_post(); 
+		  <?php while ( $r->have_posts() ) : $r->the_post();
 			if ($show_image) {
 			$thumb_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'thumbnail');
 			$thumb_image_alt = get_post_meta(get_post_thumbnail_id(),'_wp_attachment_image_alt', true);
@@ -653,17 +653,17 @@ class Subarrum_Recommended_Widget extends WP_Widget {
 
 		  <?php endwhile; ?>
 
-		  
+
 <?php
 		  // Reset the global $the_post as this query will have stomped on it
 		  wp_reset_postdata();
 
 		  endif;
 		endif; ?>
-		
+
 		<?php if ($type == 'attachment') :
 		  $count = 0;
-		  foreach ($ids as $id) : 
+		  foreach ($ids as $id) :
 			$count++;
 			$imgsrc = wp_get_attachment_image_src( $id, 'thumbnail' );
 			$permalink = get_permalink( $id );?>
@@ -685,9 +685,9 @@ class Subarrum_Recommended_Widget extends WP_Widget {
 			 </div>
 		  <?php endif;
 		      endif;
-		
+
 		echo $after_widget;
-		
+
 		$cache[$args['widget_id']] = ob_get_flush();
 		wp_cache_set('subarrum_recommended', $cache, 'widget');
 	}
@@ -708,7 +708,7 @@ class Subarrum_Recommended_Widget extends WP_Widget {
 		} else {
 			$instance['order'] = 'descending';
 		}
-		
+
 		$this->flush_widget_cache();
 
 		$alloptions = wp_cache_get( 'alloptions', 'options' );
@@ -717,7 +717,7 @@ class Subarrum_Recommended_Widget extends WP_Widget {
 
 		return $instance;
 	}
-	
+
 	function flush_widget_cache() {
 		wp_cache_delete('subarrum_recommended', 'widget');
 	}
@@ -730,7 +730,7 @@ class Subarrum_Recommended_Widget extends WP_Widget {
 		$show_image = isset( $instance['show_image'] ) ? (bool) $instance['show_image'] : false;
 ?>
 			<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'subarrum'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
-			
+
 			<p>
 			<label for="<?php echo $this->get_field_id('type'); ?>"><?php _e( 'Type:', 'subarrum' ); ?></label>
 			<select name="<?php echo $this->get_field_name('type'); ?>" id="<?php echo $this->get_field_id('type'); ?>" class="widefat">
@@ -738,7 +738,7 @@ class Subarrum_Recommended_Widget extends WP_Widget {
 				<option value="attachment"<?php selected( $instance['type'], 'attachment' ); ?>><?php _e('Images', 'subarrum'); ?></option>
 			</select>
 			</p>
-			
+
 			<p>
 			<label for="<?php echo $this->get_field_id('order'); ?>"><?php _e( 'Sort by:', 'subarrum' ); ?></label>
 			<select name="<?php echo $this->get_field_name('order'); ?>" id="<?php echo $this->get_field_id('order'); ?>" class="widefat">
@@ -747,13 +747,13 @@ class Subarrum_Recommended_Widget extends WP_Widget {
 				<option value="random"<?php selected( $instance['order'], 'random' ); ?>><?php _e('Random', 'subarrum'); ?></option>
 			</select>
 			</p>
-			
+
 			<p><label for="<?php echo $this->get_field_id('limit'); ?>"><?php _e('Number of items to show:', 'subarrum'); ?></label>
 			<input id="<?php echo $this->get_field_id('limit'); ?>" name="<?php echo $this->get_field_name('limit'); ?>" type="text" value="<?php echo $limit; ?>" size="3" /></p>
-			
+
 			<p><input class="checkbox" type="checkbox" <?php checked( $show_date ); ?> id="<?php echo $this->get_field_id( 'show_date' ); ?>" name="<?php echo $this->get_field_name( 'show_date' ); ?>" />
 			<label for="<?php echo $this->get_field_id( 'show_date' ); ?>"><?php _e( 'Display post date?', 'subarrum' ); ?></label></p>
-		
+
 			<p><input class="checkbox" type="checkbox" <?php checked( $show_image ); ?> id="<?php echo $this->get_field_id( 'show_image' ); ?>" name="<?php echo $this->get_field_name( 'show_image' ); ?>" />
 			<label for="<?php echo $this->get_field_id( 'show_image' ); ?>"><?php _e( 'Display post thumbnail?', 'subarrum' ); ?></label></p>
 <?php

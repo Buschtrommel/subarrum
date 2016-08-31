@@ -1,6 +1,6 @@
-<?php 
+<?php
 /**
- * Tag archive 
+ * Tag archive
  *
  * Displays the archive by tag.
  *
@@ -19,11 +19,10 @@ get_header(); ?>
 	  <?php else: ?>
 	  <div class="span12">
 	  <?php endif; ?>
-	  
+
 	  <h3>
 		<?php global $wp_query; $fp = (int)$wp_query->found_posts;
 		$tag = get_tag($wp_query->query_vars['tag_id']);
-// 		var_dump($tag);
 			printf(__('%1$s %2$s tagged with <span class="grey">%3$s</span>', 'subarrum'),
 				$fp,
 				$fp == 1 ? __('post', 'subarrum') : __('posts', 'subarrum'),
@@ -40,14 +39,14 @@ get_header(); ?>
 				); ?></p>
 	  </div>
 	  <hr />
-	  
+
 	  <?php if ( have_posts() ) :
-	  
+
 		  $two_columns_enable = get_theme_mod('two_columns_enable', 0);
-	  
+
 		  if (!$two_columns_enable) :
-		    while ( have_posts() ) : 
-			
+		    while ( have_posts() ) :
+
 			the_post();
 			/* Include the post format-specific template for the content. If you want to
 			 * this in a child theme then include a file called called content-___.php
@@ -60,7 +59,7 @@ get_header(); ?>
 		    $dpp = $wp_query->post_count; //displayed posts
 		    $count = 0;
 		    $row = 1;
-		    while ( have_posts() ) : 
+		    while ( have_posts() ) :
 			$count++;
 			if ($count % 2 != 0) :
 			echo '<div class="row-fluid two-col-row">';
@@ -89,18 +88,18 @@ get_header(); ?>
 			echo '</div>';
 			endif;
 		    endwhile;
-		    
+
 		    if ($dpp % 2 != 0) :
 			echo '<div class="span6"></div></div>';
 		    endif;
 		  endif;
-		
+
 		else: ?>
 			<p><?php _e('Sorry, no posts matched your criteria.', 'subarrum'); ?></p>
 	  <?php endif; ?>
 	  <?php subarrum_paginate_links( 'nav-below' ); ?>
 	  </div>
-	
+
 	  <?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
 	  <div class="span4">
 		<?php get_sidebar(); ?>

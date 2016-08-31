@@ -1,13 +1,13 @@
 /**
  * Base Style
- * 
+ *
  * This is the base style, loaded after the bootstrap and additional styles.
- * 
+ *
  * Based on Bootstrap, with the following settings:
  * @linkColor: #25749a, @sansFontFamily: 'Droid Sans', 'Nimbus Sans L', Helvetica, Arial, sans-serif
  * @serifFontFamily: 'Droid Serif', Georgia, 'Times New Roman', Times, serif @baseFontSize: 14px
  * @baseFontFamily: sansFontFamily , @headingsFontFamily: serifFontFamily
- * 
+ *
  * @revised   April 16, 2013
  * @author    Matthias Fehring, http://www.buschmann23.de
  * @license   GPLv3, http://www.gnu.org/licenses/gpl-3.0.en.html
@@ -52,16 +52,16 @@ body {
     padding-right: 0px;
     padding-bottom: 0px;
   }
-  
+
   .body .container {
     padding: 3px;
   }
-  
+
   .navbar-fixed-top {
     margin-left: 0px;
     margin-right: 0px;
   }
-  
+
   .hero-unit {
     padding: 5px;
  }
@@ -71,7 +71,7 @@ body {
   div.similar-posts-row .col2 {
     margin-top: 15px;
   }
-  
+
   .hero-unit {
     padding: 20px;
   }
@@ -338,6 +338,10 @@ ul.tracks,
   font-style: italic;
 }
 
+.widget_subarrum_gallery_images li {
+	margin-bottom: 0px;
+}
+
 /***********************************************/
 /*	Primary menu stylings		       */
 /***********************************************/
@@ -411,7 +415,7 @@ ul.tracks,
 }
 
 .gallery-columns-3.gallery-size-thumbnail {
-  width: 71.4285714286%!important;  
+  width: 71.4285714286%!important;
 }
 
 .gallery-columns-4.gallery-size-thumbnail {
