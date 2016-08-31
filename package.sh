@@ -50,7 +50,7 @@ do
 done
 
 # Get current version
-VERSION=`grep "Version:" $INFOFILE | sed 's/Version: //' | sed 's/^[ \t]*//;s/[ \t]*$//'`
+VERSION=`grep "Version:" $INFOFILE | sed 's/Version: //' | sed 's/[ \t]//g;s/.$//'`
 
 # Create archives
 tar -c -j -f ../${PKGNAME}-${VERSION}.tar.bz2 --exclude-vcs --exclude=*.kdev4 --exclude=.kdev4 --exclude=package.sh *
