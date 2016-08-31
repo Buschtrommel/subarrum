@@ -1,8 +1,12 @@
+##### Wed Aug 31 12:07:00 CEST 2016 - Subar Rum - 1.4.1
++ use CDNs for some scripts and styles
+
 ##### Sat Feb 13 02:46:00 CET 2016 - Subar Rum - 1.4.0
 + implement gallery widget to show media gallery pictures
 + updated bxSlider to version 4.2.5
 + updated Justified Gallery to version 3.6.1
 + updated HTML5 Shiv to version 3.7.3
++ minify scripts and styles
 
 ##### Wed Jan 21 18:29:00 CET 2014 - Subar Rum - 1.3.0
 + implement gallery overview shortcode and display subpages on gallery page templates
